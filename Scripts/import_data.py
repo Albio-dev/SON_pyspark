@@ -2,25 +2,20 @@ from pymongo import MongoClient
 import csv
 
 client = MongoClient('mongodb://localhost:27017')
-db = client.database_name
-collection = db.collection_name
+db = client.TravelReviews
+collection = db.reviews
 
-file = 'path/to/file'
+file = '../Datasets/Travel Reviews/tripadvisor_review.csv'
 
 # Open the file and read it
 with open(file, 'r') as f:
-    csv_reader = csv.DictReader(f, delimiter=';')
+    csv_reader = csv.DictReader(f, delimiter=',')
 
     for line in csv_reader:
-        # Extract data from line
-        field1 = line['field1']
-        field2 = line['field2']
-        field3 = line['field3']
-        # ...
-
         # Create a document
-        document = {'field1': field1, 'field2': field2, 'field3': field3}
-
+        document = {list(line.values())[0].split(' ')[1]: [i + str(round(float(j))) for i, j in list(line.items())[1:]]}
+        # print(document)
+        
         # Insert the document in the collection
         collection.insert_one(document)
 
