@@ -6,26 +6,22 @@ client = MongoClient('mongodb://localhost:27017')
 db = client.TravelReviews
 collection = db.reviews
 
-def apriori(scores, support = 2):
+def apriori(scores, support = 100):
     # First pass
 
     # Translate items to numbers
     # Create a dictionary with the items and their corresponding number
     items = {}
     index = 0
+    # List of counts for each item
+    # The i-th element of the list is the count of the i-th item
+    counts = []
     for s in scores:
         for i in s:
             if i not in items:
                 items[i] = index
                 index += 1
-
-    # List of counts for each item
-    # The i-th element of the list is the count of the i-th item
-    counts = [0] * len(items)
-
-    # Count the number of times each item appears
-    for s in scores:
-        for i in s:
+                counts.append(0)
             counts[items[i]] += 1
 
     # Print the frequent items
@@ -40,6 +36,7 @@ def apriori(scores, support = 2):
     # Second pass
 
     # Create a list of all possible pairs of items
+    # TODO: is there a better way to do this (without creating all the possible pairs)?
     pairs = list(combinations(items.keys(), 2))
     # print(pairs)
 
@@ -64,7 +61,6 @@ documents = collection.find({})
 # Get the scores of each user
 scores = []
 for d in documents:
-    # print(d['scores'])
     scores.append(d['good_scores'])
 
 # apriori([
