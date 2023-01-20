@@ -1,0 +1,1 @@
+pyspark --conf "spark.mongodb.input.uri=mongodb://127.0.0.1/TravelReviews.reviews" --conf "spark.mongodb.output.uri=mongodb://127.0.0.1/TravelReviews.reviews" --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.1 --conf "sampleSize=500"
