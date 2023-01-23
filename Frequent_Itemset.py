@@ -7,6 +7,7 @@ from itertools import combinations
 import SON
 
 db_addr = '127.0.0.1'
+forcePartitions = 10
 
 spark = SparkSession.builder.config('spark.jars.packages', 'org.mongodb.spark:mongo-spark-connector_2.12:3.0.1') \
     .config("spark.mongodb.input.uri", "mongodb://127.0.0.1/TravelReviews.reviews") \
@@ -19,17 +20,13 @@ spark = SparkSession.builder.config('spark.jars.packages', 'org.mongodb.spark:mo
 data = spark.read.format("mongo").load()
 
 print("\n\n")
-print(data)
-print(spark.conf.get("spark.mongodb.input.partitionerOptions.numberOfPartitions"))
-
+print(f'Settings partition value:\t\t{spark.conf.get("spark.mongodb.input.partitionerOptions.numberOfPartitions")}')
+print(f'Automatically partitioned value: \t{data.rdd.getNumPartitions()}')
+data = data.coalesce(forcePartitions)
+print(f'Partitions after forcing {forcePartitions}: \t\t{data.rdd.getNumPartitions()}')
 
 
 epsilon = .5
-p = .1
-
-print(data.rdd.getNumPartitions())
-data = data.coalesce(10)
-print(data.rdd.getNumPartitions())
 
 son = SON.SON(data, epsilon)
 son.candidate_frequent_itemsets()
