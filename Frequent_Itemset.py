@@ -31,5 +31,5 @@ print(data.rdd.getNumPartitions())
 data = data.coalesce(10)
 print(data.rdd.getNumPartitions())
 
-son = SON.SON(data, 10, 100)
+son = SON.SON(data, epsilon)
 son.candidate_frequent_itemsets()

@@ -4,11 +4,13 @@ from itertools import combinations
 
 class SON:
 
-    def __init__(self, data, partitions, support):
+    def __init__(self, data, support):
         self.data = data
-        self.partitions = partitions
+        self.partitions = data.rdd.getNumPartitions()
+        self.basket_size = data.count()/self.partitions
         self.support = support
         self.basket_support = self.support / self.partitions
+
 
 
     def candidate_frequent_itemsets(self):
@@ -20,15 +22,19 @@ class SON:
         # Emit fi
 
         basket_support = self.basket_support
+        #basket_size = self.basket_size
+        basket_sizes = [len(i) for i in self.data.rdd.glom().collect()]
+
+        print(f'{self.partitions} partizioni\n{basket_support} supporto richiesto in ogni basket\n{self.basket_size} elementi in ogni basket')
 
         # Clean up and extract items in every partition
         baskets = self.data.rdd.mapPartitions(lambda x: [j.good_scores for j in x], preservesPartitioning = True) \
-            .mapPartitions(lambda x: [list(set([k for j in x for k in j])), x], True)
+            .mapPartitionsWithIndex(lambda i, x: [list(set([k for j in x for k in j])), x, basket_sizes[i]], True)
         
         # Count and extract items appearances in each basket
         frequent_itemsets_singlets = baskets.mapPartitions(count_frequencies, True) \
-            .filter(lambda x: x[1] >= basket_support) \
-            .keys() 
+            .filter(lambda x: x[1]/x[2] >= basket_support) \
+            .keys()
 
         # Save first pass of apriori
         frequent_itemsets = frequent_itemsets_singlets.glom().collect()
@@ -36,24 +42,26 @@ class SON:
         frequent_items = frequent_itemsets
 
         # Prepare baskets for next round of counting by stripping them of items and adding partition index
-        #baskets = baskets.mapPartitionsWithIndex(lambda i, x: [i, x[1]])
-        baskets = baskets.mapPartitions(lambda x: x[1])
+        baskets = baskets.mapPartitions(lambda x: [x[1], x[2]])
+
+        # TODO: Vedere se il ciclo può cominciare da qui
 
         # Prepare new itemsets as FI x FI
-        #new_candidates = frequent_itemsets_singlets.mapPartitionsWithIndex(lambda i, x: (i, list(combinations(x, 2))))
         new_candidates = frequent_itemsets_singlets.mapPartitions(lambda x: list(combinations(x, 2)))
 
         # Combine structures per partition and clean of indexes
         #new_structure = new_candidates.zip(baskets).mapPartitions(lambda x: list(x)[1], True)
-        new_structure = new_candidates.glom().zip(baskets.glom()).mapPartitions(lambda x: list(x)[0])
+        new_structure = new_candidates.glom().zip(baskets.glom()) \
+            .mapPartitions(lambda x: (y:=list(x)[0], [y[0], y[1][0], y[1][1]])[-1], True)
+
         # Again, count
         new_frequent_itemsets = new_structure.mapPartitions(count_frequencies, True) \
-            .filter(lambda x: x[1] >= basket_support) \
+            .filter(lambda x: x[1]/x[2] >= basket_support) \
             .keys() 
 
         while not new_frequent_itemsets.isEmpty():
             frequent_items = [i + j for i, j in zip(frequent_items, new_frequent_itemsets.glom().collect())]
-            
+            # TODO: Filtrare e tenere solo quelli massimali
 
             # Generate new candidate itemsets starting from frequent ones
             new_candidate_itemsets = new_frequent_itemsets.glom() \
@@ -64,13 +72,22 @@ class SON:
                 .mapPartitions(lambda x: [tuple(j) for j in {frozenset(i) for i in x}])
                 #.mapPartitions(lambda x: [list(j) + [k] for j in list(x)[0] for k in list(x)[1] if k not in j])
 
-            new_structure = new_candidate_itemsets.glom().zip(baskets.glom()).mapPartitions(lambda x: list(x)[0])
+            new_structure = new_candidate_itemsets.glom().zip(baskets.glom()).mapPartitions(lambda x: (y:=list(x)[0], [y[0], y[1][0], y[1][1]])[-1], True)
 
             new_frequent_itemsets = new_structure.mapPartitions(count_frequencies, True) \
-                .filter(lambda x: x[1] >= basket_support) \
+                .filter(lambda x: x[1]/x[2] >= basket_support) \
                 .keys()
 
         print(frequent_items)
+
+        # TODO: Va bene sequenziale (singola macchina) o è meglio farlo fare a spark??
+        candidate_itemsets = set()
+        for i in frequent_items:
+            candidate_itemsets = candidate_itemsets.union(i)
+
+        
+
+        
 
 def count_frequencies(data_chunk):
     itemsets = data_chunk[0]
@@ -88,20 +105,11 @@ def count_frequencies(data_chunk):
             else:
                 if all(items in j for items in i):
                     count += 1
-        values.append((i, count))
+        values.append((i, count, data_chunk[2]))
     #print(f'{values}\n\n\n')
     return values
 
-'''
-baskets.mapPartitions(count_frequencies) \
-    .filter(lambda x: x[1] >= basket_support) \
-    .keys() \
-    .foreachPartition(lambda x: print(f"{x}\n"))
-  
-baskets.mapPartitions(count_frequencies).collect()
-'''
 
-#baskets.mapPartitions(lambda x: Counter(i for j in x[1] for i in j).items()).collect()
 
 def apriori(basket):
     # Translate items to numbers
