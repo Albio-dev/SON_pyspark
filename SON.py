@@ -29,9 +29,9 @@ class SON:
         [print(f'{i}\n') for i in test.glom().collect()]
 
         # TODO: Mantenere tutti gli itemset che compaiono almeno una volta
-        
 
-        
+
+
 def apriori2(basket, basket_e):
 
     basket = list(basket)
@@ -46,8 +46,12 @@ def apriori2(basket, basket_e):
 
     new_frequent_itemsets = frequent_items
     while new_frequent_itemsets != []:
-        frequent_itemsets.append(new_frequent_itemsets)
-        # TODO: Mantenere solo i superset
+        frequent_itemsets = new_frequent_itemsets + \
+            [(i, ) if isinstance(i, str) else i \
+            for i in frequent_itemsets \
+                if all( \
+                    [not set([i]).issubset(k) if isinstance(i, str) else not set(i).issubset(k) for k in new_frequent_itemsets] \
+                    )]
 
         new_candidate_itemsets = [(j, ) + (k, ) if isinstance(j, str) else j + (k,) for j in new_frequent_itemsets for k in frequent_items if k not in j]
         new_candidate_itemsets = [tuple(j) for j in {frozenset(i) for i in new_candidate_itemsets}]
@@ -61,13 +65,10 @@ def apriori2(basket, basket_e):
 def count_frequencies2(data_chunk):
     itemsets = data_chunk[0]
     data = data_chunk[1]
-    values = []        
-    #print(f'In itemset {itemsets}')
+    values = []
     for i in itemsets:
-        #print(f'Item: {i}')
         count = 0        
         for j in data:
-            #print(f'basket: {j}')
             if type(i) not in [list, tuple, set]:
                 if i in j:
                     count += 1
@@ -75,5 +76,4 @@ def count_frequencies2(data_chunk):
                 if all(items in j for items in i):
                     count += 1
         values.append((i, count))
-    #print(f'{values}\n\n\n')
     return values
