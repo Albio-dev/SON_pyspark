@@ -24,7 +24,12 @@ class SON:
         # Clean up and extract items in every partition
         baskets = self.data.rdd.mapPartitions(lambda x: [j.good_scores for j in x], preservesPartitioning = True) 
         
-        test = baskets.mapPartitions(lambda x: apriori2(x, basket_support))
+        test = baskets.mapPartitions(lambda x: apriori2(x, basket_support)) \
+            .map(lambda x: [(i, 1) for i in x]) \
+            .flatMap(lambda x: x) \
+            .groupByKey() \
+            .map(lambda x: x[0])
+
 
         [print(f'{i}\n') for i in test.glom().collect()]
 
