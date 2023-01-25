@@ -32,58 +32,35 @@ class SON:
         baskets = self.data.rdd.mapPartitions(lambda x: [j.good_scores for j in x], preservesPartitioning = True) # Extract column from every row in partition
 
         # Extract frequent itemsets from every partition
-        frequent_itemsets_partitions = (baskets
-            .mapPartitions(lambda x: apriori2(x, basket_support))   # Applying apriori algorithm on every partition
-            .map(lambda x: (x, 1))                     # Form key-value shape emitting (itemset, 1)
+        candidate_frequent_itemsets = (baskets
+            .mapPartitions(lambda x: apriori2(x, basket_support))# Applying apriori algorithm on every partition
+            .map(lambda x: (x, 1))# Form key-value shape emitting (itemset, 1)
+            .groupByKey() 
+            .map(lambda x: x[0])
             )
-        
-        # Use this if we keep the smaller itemsets (in apriori)
-        test = (baskets.mapPartitions(lambda x: apriori2(x, basket_support))
-            .map(lambda x: (x, 1))
-            .groupByKey()
-            .map(lambda x: x[0]))
 
-        # [print(f'{i}\n') for i in test.glom().collect()]
 
         support = self.support
-        frequent_itemsets = (test.coalesce(1).glom().cartesian(baskets.glom())
+        frequent_itemsets = (candidate_frequent_itemsets
+            .coalesce(1)
+            .glom()
+            .cartesian(baskets.glom())
             .mapPartitions(lambda x: list(x)[0])
             .mapPartitions(count_frequencies2)
             .reduceByKey(lambda x, y: x + y)
-            .filter(lambda x: x[1] / 980 >= support))
+            .filter(lambda x: x[1] / 980 >= support)
+            )
 
-        print(frequent_itemsets.glom().collect())
+        fi = frequent_itemsets.glom().collect()
+        print(fi)
 
-        # support = self.support
-        # test.persist()
-        # frequent_itemsets = baskets.mapPartitionsWithIndex(lambda idx, it: count_frequencies2(test.value[idx], it)) \
-        #                    .flatMap(lambda x: x) \
-        #                    .reduceByKey(lambda x, y: x + y) \
-        #                    .filter(lambda x: x[1] >= support)
+        '''frequent_itemsets = new_frequent_itemsets + \
+            [(i, ) if isinstance(i, str) else i \
+            for i in frequent_itemsets \
+                if all( \
+                    [not set([i]).issubset(k) if isinstance(i, str) else not set(i).issubset(k) for k in new_frequent_itemsets] \
+                    )]'''
 
-
-        # # Print frequent itemsets
-        # print(frequent_itemsets.collect())
-
-        # Use this if we keep only the bigger itemsets (in apriori)
-        # candidates = baskets.mapPartitions(lambda x: apriori2(x, basket_support)) \
-        #     .map(lambda x: (x, 1)) \
-        #     .groupByKey() \
-        #     .map(lambda x: x[0])
-
-        # # Print candidates
-        # [print(f'{i}\n') for i in candidates.glom().collect()]
-
-        # b = baskets.collect()
-        # basket_size = self.basket_size
-        # support = self.support
-        # # Count frequencies
-        # frequencies = candidates.mapPartitions(lambda x: count_frequencies2([x, b])) \
-        #     .map(lambda x: (x[0], x[1]/basket_size)) \
-        #     .filter(lambda x: x[1] >= support)
-
-        # # Print frequent itemsets
-        # [print(f'{i}\n') for i in frequencies.glom().collect()]
 
 
 
