@@ -24,6 +24,8 @@ print(f'Automatically partitioned value: \t{data.rdd.getNumPartitions()}')
 data = data.coalesce(forcePartitions)
 print(f'Partitions after forcing {forcePartitions}: \t\t{data.rdd.getNumPartitions()}')
 
+# Preprocessing: trasformare gli item in numeri
+#items = {i: items[i] for i in items if counts[items[i]] >= support}
 
 epsilon = .5
 

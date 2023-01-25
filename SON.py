@@ -54,6 +54,7 @@ class SON:
         fi = frequent_itemsets.glom().collect()
         print(fi)
 
+        # Tenere solo i superset
         '''frequent_itemsets = new_frequent_itemsets + \
             [(i, ) if isinstance(i, str) else i \
             for i in frequent_itemsets \
