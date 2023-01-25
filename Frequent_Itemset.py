@@ -16,7 +16,6 @@ spark = SparkSession.builder.config('spark.jars.packages', 'org.mongodb.spark:mo
     .config("spark.mongodb.input.partitionerOptions.partitionKey", "_id") \
     .config("spark.mongodb.input.partitionerOptions.numberOfPartitions", "10") \
     .getOrCreate()
-#print(spark)
 data = spark.read.format("mongo").load()
 
 print("\n\n")
