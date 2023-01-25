@@ -33,22 +33,22 @@ class SON:
 
         # Extract frequent itemsets from every partition
         candidate_frequent_itemsets = (baskets
-            .mapPartitions(lambda x: apriori2(x, basket_support))# Applying apriori algorithm on every partition
-            .map(lambda x: (x, 1))# Form key-value shape emitting (itemset, 1)
-            .groupByKey() 
-            .map(lambda x: x[0])
+            .mapPartitions(lambda x: apriori2(x, basket_support))   # Applying apriori algorithm on every partition
+            .map(lambda x: (x, 1))                                  # Form key-value shape emitting (itemset, 1)
+            .groupByKey()                                           # Group every itemset
+            .map(lambda x: x[0])                                    # Keep only itemsets
             )
 
 
         support = self.support
         frequent_itemsets = (candidate_frequent_itemsets
-            .coalesce(1)
-            .glom()
-            .cartesian(baskets.glom())
-            .mapPartitions(lambda x: list(x)[0])
-            .mapPartitions(count_frequencies2)
-            .reduceByKey(lambda x, y: x + y)
-            .filter(lambda x: x[1] / 980 >= support)
+            .coalesce(1)                                # Set candidates as a single partition
+            .glom()                                     # Group partition elements together
+            .cartesian(baskets.glom())                  # Distribute to every basket partition
+            .mapPartitions(lambda x: list(x)[0])        # Remove tuple TODO: rendere non necessario
+            .mapPartitions(count_frequencies2)          # Count candidates absolute frequencies for every batch
+            .reduceByKey(lambda x, y: x + y)            # Sum absolute frequencies for every candidate itemset
+            .filter(lambda x: x[1] / 980 >= support)    # Filter out candidates with less than required support
             )
 
         fi = frequent_itemsets.glom().collect()

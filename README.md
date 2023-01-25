@@ -9,6 +9,7 @@ ToDo SON:
 - [X] 4. sommare le occorrenze di ogni basket e calcolare il supporto totale
 
 ToDo progetto:
+ - [ ] Far funzionare le funzioni con tuple chiave-valore
  - [ ] Controllare la composizione e la suddivisione delle partizioni (che non si rompa con partizioni vuote)(che venga partizionato automaticamente)
  - [ ] Distribuire il calcolo della dimensione di ogni partizione (no basket_sizes)
  - [ ] Fare una compilazione degli item in numeri
