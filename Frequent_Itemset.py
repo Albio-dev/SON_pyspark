@@ -10,21 +10,21 @@ db_addr = '127.0.0.1'
 forcePartitions = 10
 
 spark = (SparkSession.builder
-    .config('spark.jars.packages', 'org.mongodb.spark:mongo-spark-connector_2.12:3.0.1') \
-    .config("spark.mongodb.input.uri", f"mongodb://{db_addr}/TravelReviews.reviews") \
-    .config("spark.mongodb.output.uri", f"mongodb://{db_addr}/TravelReviews.reviews") \
-    .config("spark.mongodb.input.partitioner", "MongoPaginateByCountPartitioner") \
-    .config("spark.mongodb.input.partitionerOptions.partitionKey", "_id") \
-    .config("spark.mongodb.input.partitionerOptions.numberOfPartitions", "10") \
+    .config('spark.jars.packages', 'org.mongodb.spark:mongo-spark-connector_2.12:3.0.1')
+    .config("spark.mongodb.input.uri", f"mongodb://{db_addr}/TravelReviews.reviews") #("spark.mongodb.input.uri", f"mongodb://{db_addr}/OnlineRetail.transactions") \
+    .config("spark.mongodb.output.uri", f"mongodb://{db_addr}/TravelReviews.reviews") #("spark.mongodb.output.uri", f"mongodb://{db_addr}/OnlineRetail.transactions")
+    # .config("spark.mongodb.input.partitioner", "MongoPaginateByCountPartitioner")
+    .config("spark.mongodb.input.partitionerOptions.partitionKey", "_id")
+    # .config("spark.mongodb.input.partitionerOptions.numberOfPartitions", "4")
     .getOrCreate()
     )
 input_data = spark.read.format("mongo").load()
 
 print("\n\n")
-print(f'Settings partition value:\t\t{spark.conf.get("spark.mongodb.input.partitionerOptions.numberOfPartitions")}')
+# print(f'Settings partition value:\t\t{spark.conf.get("spark.mongodb.input.partitionerOptions.numberOfPartitions")}')
 print(f'Automatically partitioned value: \t{input_data.rdd.getNumPartitions()}')
-input_data = input_data.coalesce(forcePartitions)
-print(f'Partitions after forcing {forcePartitions}: \t\t{input_data.rdd.getNumPartitions()}')
+# input_data = input_data.coalesce(forcePartitions)
+# print(f'Partitions after forcing {forcePartitions}: \t\t{input_data.rdd.getNumPartitions()}')
 
 data = input_data.rdd.mapPartitions(lambda x: [j.good_scores for j in x])
 
