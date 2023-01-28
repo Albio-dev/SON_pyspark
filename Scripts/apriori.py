@@ -1,73 +1,36 @@
-from pymongo import MongoClient
+from Scripts.utils import count_frequencies
 
-from itertools import combinations
-
-client = MongoClient('mongodb://localhost:27017')
-db = client.TravelReviews
-collection = db.reviews
-
-def apriori(scores, support = 100):
-    # First pass
-
-    # Translate items to numbers
-    # Create a dictionary with the items and their corresponding number
-    items = {}
-    index = 0
-    # List of counts for each item
-    # The i-th element of the list is the count of the i-th item
-    counts = []
-    for s in scores:
-        for i in s:
-            if i not in items:
-                items[i] = index
-                index += 1
-                counts.append(0)
-            counts[items[i]] += 1
-
-    # Print the frequent items
-    # for i in items:
-    #     if counts[items[i]] >= support:
-    #         print(i, counts[items[i]])
-
-    # Remove the infrequent items
-    items = {i: items[i] for i in items if counts[items[i]] >= support}
-    counts = [counts[i] for i in items.values()]
-
-    # Second pass
-
-    # Create a list of all possible pairs of items
-    # TODO: is there a better way to do this (without creating all the possible pairs)?
-    pairs = list(combinations(items.keys(), 2))
-    # print(pairs)
-
-    # List of counts for each pair
-    # The i-th element of the list is the count of the i-th pair
-    counts_pairs = [0] * len(pairs)
-
-    # Count the number of times each pair appears
-    for s in scores:
-        for p in pairs:
-            if p[0] in s and p[1] in s:
-                counts_pairs[pairs.index(p)] += 1
-
-    # Print the frequent pairs
-    for p in pairs:
-        if counts_pairs[pairs.index(p)] >= support:
-            print(p, counts_pairs[pairs.index(p)])
-
-
-# Retrieve all the documents
-documents = collection.find({})
-# Get the scores of each user
-scores = []
-for d in documents:
-    scores.append(d['good_scores'])
-
-# apriori([
-#     ['A', 'B', 'C'],
-#     ['B', 'C', 'D'],
-#     ['A', 'C', 'D'],
-#     ['A', 'B', 'C', 'D'],
-#     ['B', 'D']
-# ])
-apriori(scores)
+# Apriori algorithm. Requires data as list and accepted support
+def apriori(data, support):
+    # Get actual batch size
+    basket_size = len(data)
+    # Prepare output structure
+    frequent_itemsets = []
+    # Extract item list
+    items = list(set([k for j in data for k in j]))
+    # Use function to get items frequencies in batch
+    temp = count_frequencies((items, data))
+    # Filter only frequent ones and put singlets in tuples
+    frequent_items = [i[0] for i in temp if i[1]/basket_size >= support]
+    # Check if any is produced
+    new_frequent_itemsets = frequent_items
+    while new_frequent_itemsets != []:
+        # If so, store them
+        frequent_itemsets += new_frequent_itemsets
+        # Keep only largest sets
+        '''frequent_itemsets = new_frequent_itemsets + \
+            [(i, ) if isinstance(i, str) else i \
+            for i in frequent_itemsets \
+                if all( \
+                    [not set([i]).issubset(k) if isinstance(i, str) else not set(i).issubset(k) for k in new_frequent_itemsets] \
+                    )]'''
+        # Form new candidates appending singlets to the last frequent itemsets
+        new_candidate_itemsets = [(j, ) + (k, ) if isinstance(j, str) else j + (k,) for j in new_frequent_itemsets for k in frequent_items if k not in j]
+        # Filter out repeated elements (not considering order)
+        new_candidate_itemsets = [tuple(j) for j in {frozenset(i) for i in new_candidate_itemsets}]        
+        # Count occurrences of the new itemset
+        temp = count_frequencies((new_candidate_itemsets, data))
+        # Filter out non-frequent itemsets
+        new_frequent_itemsets = [i[0] for i in temp if i[1]/basket_size >= support]
+        
+    return frequent_itemsets

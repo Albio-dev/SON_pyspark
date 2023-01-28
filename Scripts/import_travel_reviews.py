@@ -5,7 +5,7 @@ client = MongoClient('mongodb://localhost:27017')
 db = client.TravelReviews
 collection = db.reviews
 
-file = '../Datasets/Travel Reviews/tripadvisor_review.csv'
+file = './Datasets/Travel Reviews/tripadvisor_review.csv'
 
 # Open the file and read it
 with open(file, 'r') as f:
@@ -18,7 +18,7 @@ with open(file, 'r') as f:
         # We arbitrarily consider that a score of 2.5 or more is a good score
         good_score_limit = 2.5
         document = {"_id": int(list(line.values())[0].split(' ')[1]),
-                    "good_scores": [i for i, j in list(line.items())[1:] if float(j) >= good_score_limit]}
+                    "items": [i for i, j in list(line.items())[1:] if float(j) >= good_score_limit]}
         
         # Insert the document in the collection
         collection.insert_one(document)

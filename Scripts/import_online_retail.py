@@ -5,7 +5,7 @@ client = MongoClient('mongodb://localhost:27017')
 db = client.OnlineRetail
 collection = db.transactions
 
-file = '../Datasets/Online Retail/Online Retail.csv'
+file = './Datasets/Online Retail/Online Retail.csv'
 
 # Open the file and read it
 with open(file, 'r') as f:
