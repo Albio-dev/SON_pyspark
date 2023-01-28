@@ -77,6 +77,7 @@ items = {}
                 counts.append(0)
             counts[items[i]] += 1
 '''
+
 # SON execution function given the parameters
 # data: the data to use SON onto. A pyspark RDD is required
 # epsilon: the support required for an itemset to be considered supported

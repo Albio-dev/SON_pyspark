@@ -50,7 +50,6 @@ class SON:
             .filter(lambda x: x[1] / data_size >= support)              # Filter out candidates with less than required support
             )
 
-
         fi = frequent_itemsets.collect()
         logger.debug(f'Found itemsets: {fi}')
 
