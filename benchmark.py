@@ -66,7 +66,7 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True):
     
     #spark = SparkContext(appName='benchmark')
     spark = data.context
-    data = spark.parallelize(dataset)
+    data = spark.parallelize(dataset, partitions)
     start_time = time.time()
     SON_result = Frequent_Itemset.execute_SON(data, support, logger)
     benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
