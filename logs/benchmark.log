@@ -72,3 +72,60 @@
 2023-01-30 19:42:07,825:DB SON execution time: 8.318514585494995s
 2023-01-30 19:42:51,370:Local SON execution time: 43.504802942276s
 2023-01-30 19:42:51,370:Functions results were equal
+2023-01-30 21:09:55,686:Loaded dataset. Using 490 samples
+2023-01-30 21:09:55,686:Benchmark with support: 0.5, partitions: 1
+2023-01-30 21:09:55,689:Apriori execution time: 0.0019981861114501953s
+2023-01-30 21:11:33,012:Loaded dataset. Using 490 samples
+2023-01-30 21:11:33,012:Benchmark with support: 0.5, partitions: 1
+2023-01-30 21:11:33,015:Apriori execution time: 0.0028166770935058594s
+2023-01-30 21:11:58,935:DB SON execution time: 7.753148317337036s
+2023-01-30 21:12:06,507:Local SON execution time: 7.567253351211548s
+2023-01-30 21:12:06,507:Functions results were not equal: apriori: ['religious', 'beaches', 'parks', ('beaches', 'religious'), ('parks', 'beaches'), ('parks', 'religious'), ('parks', 'beaches', 'religious')], SON: [('beaches', 'religious', 'parks')]
+2023-01-30 21:12:06,507:Benchmark with support: 0.9, partitions: 1
+2023-01-30 21:12:06,509:Apriori execution time: 0.0010335445404052734s
+2023-01-30 21:12:13,835:DB SON execution time: 6.929837465286255s
+2023-01-30 21:12:20,442:Local SON execution time: 6.6044745445251465s
+2023-01-30 21:12:20,442:Functions results were not equal: apriori: ['beaches', 'parks', ('parks', 'beaches')], SON: [('beaches', 'parks')]
+2023-01-30 21:12:20,442:Benchmark with support: 0.5, partitions: 2
+2023-01-30 21:12:20,446:Apriori execution time: 0.003993034362792969s
+2023-01-30 21:12:31,935:DB SON execution time: 11.076250791549683s
+2023-01-30 21:12:42,820:Local SON execution time: 10.881181955337524s
+2023-01-30 21:12:42,820:Functions results were not equal: apriori: ['religious', 'beaches', 'parks', ('beaches', 'religious'), ('parks', 'beaches'), ('parks', 'religious'), ('parks', 'beaches', 'religious')], SON: [('beaches', 'religious', 'parks')]
+2023-01-30 21:12:42,820:Benchmark with support: 0.9, partitions: 2
+2023-01-30 21:12:42,822:Apriori execution time: 0.0020008087158203125s
+2023-01-30 21:12:56,175:DB SON execution time: 13.114174604415894s
+2023-01-30 21:13:09,990:Local SON execution time: 13.811377763748169s
+2023-01-30 21:13:09,990:Functions results were not equal: apriori: ['beaches', 'parks', ('parks', 'beaches')], SON: [('beaches', 'parks')]
+2023-01-30 21:13:09,990:Benchmark with support: 0.5, partitions: None
+2023-01-30 21:13:09,993:Apriori execution time: 0.002001523971557617s
+2023-01-30 21:13:15,764:DB SON execution time: 5.66212797164917s
+2023-01-30 21:13:50,505:Local SON execution time: 34.73779249191284s
+2023-01-30 21:13:50,505:Functions results were not equal: apriori: ['religious', 'beaches', 'parks', ('beaches', 'religious'), ('parks', 'beaches'), ('parks', 'religious'), ('parks', 'beaches', 'religious')], SON: [('beaches', 'religious', 'parks')]
+2023-01-30 21:13:50,505:Benchmark with support: 0.9, partitions: None
+2023-01-30 21:13:50,506:Apriori execution time: 0.0009984970092773438s
+2023-01-30 21:13:56,708:DB SON execution time: 6.0940046310424805s
+2023-01-30 21:14:30,413:Local SON execution time: 33.699910402297974s
+2023-01-30 21:14:30,413:Functions results were not equal: apriori: ['beaches', 'parks', ('parks', 'beaches')], SON: [('beaches', 'parks')]
+2023-01-30 21:14:30,413:Benchmark with support: 0.5, partitions: 1
+2023-01-30 21:14:30,415:Apriori execution time: 0.0019981861114501953s
+2023-01-30 21:14:37,199:DB SON execution time: 6.608639717102051s
+2023-01-30 21:14:42,777:Local SON execution time: 5.573615550994873s
+2023-01-30 21:14:42,777:Functions results were not equal: apriori: ['religious', 'beaches', 'parks', ('beaches', 'religious'), ('parks', 'beaches'), ('parks', 'religious'), ('parks', 'beaches', 'religious')], SON: [('beaches', 'religious', 'parks')]
+2023-01-30 21:14:42,777:Benchmark with support: 0.9, partitions: 1
+2023-01-30 21:14:42,778:Apriori execution time: 0.0009992122650146484s
+2023-01-30 21:14:48,495:DB SON execution time: 5.536491870880127s
+2023-01-30 21:14:53,940:Local SON execution time: 5.44238543510437s
+2023-01-30 21:14:53,940:Functions results were not equal: apriori: ['beaches', 'parks', ('parks', 'beaches')], SON: [('beaches', 'parks')]
+2023-01-30 21:14:53,940:Benchmark with support: 0.5, partitions: 2
+2023-01-30 21:14:53,943:Apriori execution time: 0.00292205810546875s
+2023-01-30 21:15:04,776:DB SON execution time: 10.689585447311401s
+2023-01-30 21:15:16,338:Local SON execution time: 11.559213399887085s
+2023-01-30 21:15:16,338:Functions results were not equal: apriori: ['religious', 'beaches', 'parks', ('beaches', 'religious'), ('parks', 'beaches'), ('parks', 'religious'), ('parks', 'beaches', 'religious')], SON: [('beaches', 'religious', 'parks')]
+2023-01-30 21:15:16,338:Benchmark with support: 0.9, partitions: 2
+2023-01-30 21:15:16,339:Apriori execution time: 0.0009982585906982422s
+2023-01-30 21:15:27,418:DB SON execution time: 10.9334077835083s
+2023-01-30 21:15:38,612:Local SON execution time: 11.190947532653809s
+2023-01-30 21:15:38,612:Functions results were not equal: apriori: ['beaches', 'parks', ('parks', 'beaches')], SON: [('beaches', 'parks')]
+2023-01-30 21:15:38,612:Benchmark with support: 0.5, partitions: None
+2023-01-30 21:15:38,615:Apriori execution time: 0.002996206283569336s
+2023-01-30 21:15:44,280:DB SON execution time: 5.56555962562561s

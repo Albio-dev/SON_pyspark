@@ -36,6 +36,7 @@ def load_data(preprocessing_function, perc_ds = 1, ip = 'localhost', port = 2701
     for i, j in enumerate(test_dataset):
         document = {'_id': i, 'items': j}
         collection.insert_one(document)
+        #collection.insert_many()
     client.close()
 
     benchmark_logger.info(f'Loaded dataset. Using {size} samples')
@@ -45,8 +46,8 @@ def load_data(preprocessing_function, perc_ds = 1, ip = 'localhost', port = 2701
 # support: the support accepted in both apriori and SON
 # partitions: how many partitions use in SON
 # logging: if SON should use the logging functionalities
-def benchmark(dataset, support = 0.5, partitions = None, logging = True):
-    benchmark_logger.info(f'Benchmark with support: {support}, partitions: {partitions}')
+def benchmark(dataset, support = 0.5, partitions = None, logging = True, partition_size = None, samples_per_partition = None ):
+    benchmark_logger.info(f'Benchmark with support: {support}, partitions: {partitions}, partition_size: {partition_size}, samples_per_partition: {samples_per_partition}')
 
     # Run and time apriori
     start_time = time.time()
@@ -61,7 +62,7 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True):
     # Load spark session with specified parameters
     # selectedDataset: dataset to use
     # forcePartitions: how many partitions to use. None for automatic
-    data = Frequent_Itemset.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger)
+    data = Frequent_Itemset.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, partition_size=partition_size, samples_per_partition=samples_per_partition)
     # Run and time SON
     start_time = time.time()
     SON_result = Frequent_Itemset.execute_SON(data, support, logger)
@@ -75,12 +76,13 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True):
     SON_result = Frequent_Itemset.execute_SON(data, support, logger)
     benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
     
+    '''
     # Check whether results are equal
     if apriori_result == SON_result:
         benchmark_logger.info(f'Functions results were equal')
     else:
         benchmark_logger.info(f'Functions results were not equal: apriori: {apriori_result}, SON: {SON_result}')
-
+    '''
 
 
 
@@ -135,12 +137,15 @@ if __name__ == '__main__':
     benchmark(data, support = .5)
 
 
-def gridsearch(data_sizes, partitions, supports):
+def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_partition):
 
     # Iterate over every required data percentage
     for i in data_sizes:
         data = load_data(tripadvisor_review, perc_ds = i, port = '60000')
         # Iterate over partitions and supports
-        for j in partitions:
-            for k in supports:
-                benchmark(data, partitions = j, support=k)
+        
+        for n in partition_sizes:
+            for m in samples_per_partition:
+                for j in partitions:
+                    for k in supports:
+                        benchmark(data, partitions = j, support=k, partition_size=n, samples_per_partition=m)
