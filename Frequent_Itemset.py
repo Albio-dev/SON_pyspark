@@ -7,11 +7,13 @@ import Scripts.SON
 def loadlogger():
 
     logger = logging.getLogger('son')
-    logger.setLevel(logging.DEBUG)
-    file_handler = logging.FileHandler("logs/SON.log")
-    formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(message)s')
-    file_handler.setFormatter(formatter)
-    logger.addHandler(file_handler)
+
+    if not logger.hasHandlers():
+        logger.setLevel(logging.DEBUG)
+        file_handler = logging.FileHandler("logs/SON.log")
+        formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(message)s')
+        file_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
 
     # Silence log4j, giving trouble
     logging.getLogger('pyspark').setLevel(logging.ERROR)
