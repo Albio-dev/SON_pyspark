@@ -4,6 +4,7 @@ import time
 import Frequent_Itemset
 from pymongo import MongoClient
 import logging
+from pyspark import SparkContext
 
 benchmark_logger = logging.getLogger('benchmark')
 benchmark_logger.setLevel(logging.INFO)
@@ -60,8 +61,16 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True):
     # Run and time SON
     start_time = time.time()
     SON_result = Frequent_Itemset.execute_SON(data, support, logger)
-    benchmark_logger.info(f'SON execution time: {time.time() - start_time}s')
+    benchmark_logger.info(f'DB SON execution time: {time.time() - start_time}s')
 
+    
+    #spark = SparkContext(appName='benchmark')
+    spark = data.context
+    data = spark.parallelize(dataset)
+    start_time = time.time()
+    SON_result = Frequent_Itemset.execute_SON(data, support, logger)
+    benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
+    
     # Check whether results are equal
     if apriori_result == SON_result:
         benchmark_logger.info(f'Functions results were equal')
