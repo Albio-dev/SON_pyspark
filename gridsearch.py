@@ -1,8 +1,8 @@
 import benchmark
 
 data_sizes = [.5, 1]
-partitions = [1, 2, None]
-supports = [.5, .9]
+partitions = [1, 5, None]
+supports = [.9]
 
 partition_sizes = [None, 1, 10]
 samples_per_partition = [None, 20, 50]

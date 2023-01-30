@@ -33,10 +33,7 @@ def load_data(preprocessing_function, perc_ds = 1, ip = 'localhost', port = 2701
     client.admin.command('enableSharding', db.name)
     client.admin.command('shardCollection', db.name + '.' + collection.name, key={'_id': "hashed"})
 
-    for i, j in enumerate(test_dataset):
-        document = {'_id': i, 'items': j}
-        collection.insert_one(document)
-        #collection.insert_many()
+    collection.insert_many([{'items': i} for i in test_dataset])
     client.close()
 
     benchmark_logger.info(f'Loaded dataset. Using {size} samples')
@@ -141,11 +138,12 @@ def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_pa
 
     # Iterate over every required data percentage
     for i in data_sizes:
-        data = load_data(tripadvisor_review, perc_ds = i, port = '60000')
+        data = load_data(online_retail, perc_ds = i, port = '60000')
         # Iterate over partitions and supports
         
-        for n in partition_sizes:
-            for m in samples_per_partition:
-                for j in partitions:
+        
+        for j in partitions:
+            for n in partition_sizes:
+                for m in samples_per_partition:
                     for k in supports:
                         benchmark(data, partitions = j, support=k, partition_size=n, samples_per_partition=m)
