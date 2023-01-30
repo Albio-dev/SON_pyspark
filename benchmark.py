@@ -15,11 +15,11 @@ benchmark_logger.addHandler(file_handler)
 
 # Data loading function. Loads data from file, extracts a specified subset
 # and loads it into mongo at BenchmarkData.data
-def load_data(preprocessing_function, perc_ds = 1):
-    client = MongoClient('mongodb://localhost:27017')
+def load_data(preprocessing_function, perc_ds = 1, ip = 'localhost', port = 27017):
+    client = MongoClient(f'mongodb://{ip}:{port}')
     db = client.BenchmarkData
     collection = db.data
-
+    
     # Load dataset
     dataset = preprocessing_function()
 
@@ -29,6 +29,10 @@ def load_data(preprocessing_function, perc_ds = 1):
 
     # Loading on db
     collection.drop()
+    
+    client.admin.command('enableSharding', db.name)
+    client.admin.command('shardCollection', db.name + '.' + collection.name, key={'_id': "hashed"})
+
     for i, j in enumerate(test_dataset):
         document = {'_id': i, 'items': j}
         collection.insert_one(document)
@@ -80,7 +84,30 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True):
 
 
 
-
+def online_retail():
+    file = './Datasets/Online Retail/Online Retail.csv'
+    dataset = []
+    with open(file, 'r') as f:
+        csv_reader = csv.DictReader(f, delimiter=',')
+        
+        items = []
+        invoice_no = ''
+        for line in csv_reader:
+            if line['InvoiceNo'].startswith('C'):
+                continue
+            if line['InvoiceNo'] != invoice_no:
+                if len(items) > 0:
+                    document = items
+                    dataset.append(document)
+                items = []
+            invoice_no = line['InvoiceNo']
+            stock_code = line['StockCode']
+            items.append(stock_code)
+            
+        # Insert the last document
+        document = items
+        dataset.append(document)
+    return dataset
 
 # Function to load and preprocess data
 def tripadvisor_review():
@@ -104,7 +131,7 @@ def tripadvisor_review():
 # Code to execute when the file is executed directly
 if __name__ == '__main__':
     # Example benchmark with half the dataset, automatic partitioning and support 0.5
-    data = load_data(tripadvisor_review, perc_ds = .5)
+    data = load_data(online_retail, perc_ds = .5, ip = 'localhost', port = 60000)
     benchmark(data, support = .5)
 
 
@@ -112,7 +139,7 @@ def gridsearch(data_sizes, partitions, supports):
 
     # Iterate over every required data percentage
     for i in data_sizes:
-        data = load_data(tripadvisor_review, perc_ds = i)
+        data = load_data(tripadvisor_review, perc_ds = i, port = '60000')
         # Iterate over partitions and supports
         for j in partitions:
             for k in supports:

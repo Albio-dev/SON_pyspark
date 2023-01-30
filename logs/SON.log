@@ -1,1 +1,249 @@
-2023-01-30 18:35:37,212:INFO:Run with dataset BenchmarkData.data
+2023-01-30 18:46:22,209:INFO:Run with dataset BenchmarkData.data
+2023-01-30 18:46:38,013:DEBUG:Connecting to mongodb://127.0.0.1/BenchmarkData.data:27017
+2023-01-30 18:46:38,014:DEBUG:Core on this worker: 6
+2023-01-30 18:46:39,594:INFO:Dataset size: 0
+2023-01-30 18:46:39,642:INFO:Automatically created 1 partitions
+2023-01-30 18:46:39,642:DEBUG:Forced 1 partitions
+2023-01-30 18:46:39,755:INFO:Partitions after forcing: 1
+2023-01-30 18:46:39,758:INFO:Support set to 0.5
+2023-01-30 18:46:39,758:INFO:Created SON instance with: partitions=1, support=0.5, chunk support=0.5
+2023-01-30 18:46:42,736:DEBUG:Extracted itemsets: []
+2023-01-30 18:46:46,429:DEBUG:Found itemsets: []
+2023-01-30 18:46:46,429:INFO:Resulting itemsets: []
+2023-01-30 18:46:46,436:INFO:Support set to 0.5
+2023-01-30 18:46:46,439:INFO:Created SON instance with: partitions=1, support=0.5, chunk support=0.5
+2023-01-30 18:46:48,681:DEBUG:Extracted itemsets: ['beaches', 'religious', 'parks', ('religious', 'parks'), ('beaches', 'religious'), ('beaches', 'parks'), ('beaches', 'religious', 'parks')]
+2023-01-30 18:46:52,752:DEBUG:Found itemsets: [('beaches', 489), ('religious', 385), ('parks', 490), (('religious', 'parks'), 385), (('beaches', 'religious'), 384), (('beaches', 'parks'), 489), (('beaches', 'religious', 'parks'), 384)]
+2023-01-30 18:46:52,752:INFO:Resulting itemsets: [('beaches', 'religious', 'parks')]
+2023-01-30 18:46:52,754:INFO:Run with dataset BenchmarkData.data
+2023-01-30 18:46:52,897:DEBUG:Connecting to mongodb://127.0.0.1/BenchmarkData.data:27017
+2023-01-30 18:46:52,898:DEBUG:Core on this worker: 6
+2023-01-30 18:46:53,077:INFO:Dataset size: 0
+2023-01-30 18:46:53,129:INFO:Automatically created 1 partitions
+2023-01-30 18:46:53,129:DEBUG:Forced 1 partitions
+2023-01-30 18:46:53,241:INFO:Partitions after forcing: 1
+2023-01-30 18:46:53,242:INFO:Support set to 0.9
+2023-01-30 18:46:53,243:INFO:Created SON instance with: partitions=1, support=0.9, chunk support=0.9
+2023-01-30 18:46:55,937:DEBUG:Extracted itemsets: []
+2023-01-30 18:46:59,948:DEBUG:Found itemsets: []
+2023-01-30 18:46:59,948:INFO:Resulting itemsets: []
+2023-01-30 18:46:59,952:INFO:Support set to 0.9
+2023-01-30 18:46:59,953:INFO:Created SON instance with: partitions=1, support=0.9, chunk support=0.9
+2023-01-30 18:47:02,281:DEBUG:Extracted itemsets: ['beaches', 'parks', ('beaches', 'parks')]
+2023-01-30 18:47:05,999:DEBUG:Found itemsets: [('beaches', 489), ('parks', 490), (('beaches', 'parks'), 489)]
+2023-01-30 18:47:06,004:INFO:Resulting itemsets: [('beaches', 'parks')]
+2023-01-30 18:47:06,009:INFO:Run with dataset BenchmarkData.data
+2023-01-30 18:47:06,058:DEBUG:Connecting to mongodb://127.0.0.1/BenchmarkData.data:27017
+2023-01-30 18:47:06,059:DEBUG:Core on this worker: 6
+2023-01-30 18:47:06,128:INFO:Dataset size: 0
+2023-01-30 18:47:06,145:INFO:Automatically created 1 partitions
+2023-01-30 18:47:06,145:DEBUG:Forced 2 partitions
+2023-01-30 18:47:06,205:INFO:Partitions after forcing: 2
+2023-01-30 18:47:06,206:INFO:Support set to 0.5
+2023-01-30 18:47:06,206:INFO:Created SON instance with: partitions=2, support=0.5, chunk support=0.25
+2023-01-30 18:47:10,336:DEBUG:Extracted itemsets: []
+2023-01-30 18:47:17,318:DEBUG:Found itemsets: []
+2023-01-30 18:47:17,318:INFO:Resulting itemsets: []
+2023-01-30 18:47:17,322:INFO:Support set to 0.5
+2023-01-30 18:47:17,323:INFO:Created SON instance with: partitions=2, support=0.5, chunk support=0.25
+2023-01-30 18:47:21,574:DEBUG:Extracted itemsets: ['religious', 'parks', ('religious', 'parks'), ('beaches', 'religious', 'parks'), 'beaches', ('beaches', 'religious'), ('beaches', 'parks')]
+2023-01-30 18:47:28,700:DEBUG:Found itemsets: [('religious', 385), ('parks', 490), (('religious', 'parks'), 385), (('beaches', 'religious', 'parks'), 384), ('beaches', 489), (('beaches', 'religious'), 384), (('beaches', 'parks'), 489)]
+2023-01-30 18:47:28,700:INFO:Resulting itemsets: [('beaches', 'religious', 'parks')]
+2023-01-30 18:47:28,703:INFO:Run with dataset BenchmarkData.data
+2023-01-30 18:47:28,743:DEBUG:Connecting to mongodb://127.0.0.1/BenchmarkData.data:27017
+2023-01-30 18:47:28,744:DEBUG:Core on this worker: 6
+2023-01-30 18:47:28,817:INFO:Dataset size: 0
+2023-01-30 18:47:28,831:INFO:Automatically created 1 partitions
+2023-01-30 18:47:28,831:DEBUG:Forced 2 partitions
+2023-01-30 18:47:28,865:INFO:Partitions after forcing: 2
+2023-01-30 18:47:28,865:INFO:Support set to 0.9
+2023-01-30 18:47:28,865:INFO:Created SON instance with: partitions=2, support=0.9, chunk support=0.45
+2023-01-30 18:47:33,017:DEBUG:Extracted itemsets: []
+2023-01-30 18:47:40,033:DEBUG:Found itemsets: []
+2023-01-30 18:47:40,033:INFO:Resulting itemsets: []
+2023-01-30 18:47:40,037:INFO:Support set to 0.9
+2023-01-30 18:47:40,037:INFO:Created SON instance with: partitions=2, support=0.9, chunk support=0.45
+2023-01-30 18:47:44,531:DEBUG:Extracted itemsets: ['religious', 'parks', ('religious', 'parks'), ('beaches', 'religious', 'parks'), 'beaches', ('beaches', 'religious'), ('beaches', 'parks')]
+2023-01-30 18:47:51,914:DEBUG:Found itemsets: [('parks', 490), ('beaches', 489), (('beaches', 'parks'), 489)]
+2023-01-30 18:47:51,914:INFO:Resulting itemsets: [('beaches', 'parks')]
+2023-01-30 18:47:51,917:INFO:Run with dataset BenchmarkData.data
+2023-01-30 18:47:51,957:DEBUG:Connecting to mongodb://127.0.0.1/BenchmarkData.data:27017
+2023-01-30 18:47:51,958:DEBUG:Core on this worker: 6
+2023-01-30 18:47:52,047:INFO:Dataset size: 0
+2023-01-30 18:47:52,061:INFO:Automatically created 1 partitions
+2023-01-30 18:47:52,061:INFO:Support set to 0.5
+2023-01-30 18:47:52,061:INFO:Created SON instance with: partitions=1, support=0.5, chunk support=0.5
+2023-01-30 18:47:54,415:DEBUG:Extracted itemsets: []
+2023-01-30 18:47:58,780:DEBUG:Found itemsets: []
+2023-01-30 18:47:58,780:INFO:Resulting itemsets: []
+2023-01-30 18:47:58,784:INFO:Support set to 0.5
+2023-01-30 18:47:58,784:INFO:Created SON instance with: partitions=6, support=0.5, chunk support=0.08333333333333333
+2023-01-30 18:48:14,561:DEBUG:Extracted itemsets: ['religious', ('religious', 'parks'), ('beaches', 'bars', 'parks'), ('religious', 'parks', 'resorts'), ('beaches', 'religious'), ('beaches', 'parks'), 'parks', ('beaches', 'resorts'), ('bars', 'parks'), ('beaches', 'religious', 'parks'), 'resorts', ('beaches', 'bars'), ('beaches', 'parks', 'resorts'), ('religious', 'resorts'), ('beaches', 'religious', 'resorts'), 'bars', ('beaches', 'religious', 'parks', 'resorts'), 'beaches', ('parks', 'resorts')]
+2023-01-30 18:48:38,286:DEBUG:Found itemsets: [('religious', 385), (('religious', 'parks'), 385), (('beaches', 'religious'), 384), (('beaches', 'parks'), 489), ('parks', 490), (('beaches', 'religious', 'parks'), 384), ('beaches', 489)]
+2023-01-30 18:48:38,286:INFO:Resulting itemsets: [('beaches', 'religious', 'parks')]
+2023-01-30 18:48:38,288:INFO:Run with dataset BenchmarkData.data
+2023-01-30 18:48:38,339:DEBUG:Connecting to mongodb://127.0.0.1/BenchmarkData.data:27017
+2023-01-30 18:48:38,340:DEBUG:Core on this worker: 6
+2023-01-30 18:48:38,425:INFO:Dataset size: 0
+2023-01-30 18:48:38,441:INFO:Automatically created 1 partitions
+2023-01-30 18:48:38,441:INFO:Support set to 0.9
+2023-01-30 18:48:38,441:INFO:Created SON instance with: partitions=1, support=0.9, chunk support=0.9
+2023-01-30 18:48:41,094:DEBUG:Extracted itemsets: []
+2023-01-30 18:48:46,023:DEBUG:Found itemsets: []
+2023-01-30 18:48:46,023:INFO:Resulting itemsets: []
+2023-01-30 18:48:46,027:INFO:Support set to 0.9
+2023-01-30 18:48:46,028:INFO:Created SON instance with: partitions=6, support=0.9, chunk support=0.15
+2023-01-30 18:48:59,690:DEBUG:Extracted itemsets: ['religious', ('religious', 'parks'), ('beaches', 'religious'), ('beaches', 'parks'), 'parks', ('beaches', 'religious', 'parks'), ('beaches', 'resorts'), 'resorts', ('beaches', 'parks', 'resorts'), 'beaches', ('parks', 'resorts')]
+2023-01-30 18:49:25,565:DEBUG:Found itemsets: [(('beaches', 'parks'), 489), ('parks', 490), ('beaches', 489)]
+2023-01-30 18:49:25,565:INFO:Resulting itemsets: [('beaches', 'parks')]
+2023-01-30 18:49:36,499:INFO:Run with dataset BenchmarkData.data
+2023-01-30 18:49:36,540:DEBUG:Connecting to mongodb://127.0.0.1/BenchmarkData.data:27017
+2023-01-30 18:49:36,540:DEBUG:Core on this worker: 6
+2023-01-30 18:49:36,610:INFO:Dataset size: 0
+2023-01-30 18:49:36,627:INFO:Automatically created 1 partitions
+2023-01-30 18:49:36,627:DEBUG:Forced 1 partitions
+2023-01-30 18:49:36,663:INFO:Partitions after forcing: 1
+2023-01-30 18:49:36,663:INFO:Support set to 0.5
+2023-01-30 18:49:36,663:INFO:Created SON instance with: partitions=1, support=0.5, chunk support=0.5
+2023-01-30 18:49:39,155:DEBUG:Extracted itemsets: []
+2023-01-30 18:49:43,241:DEBUG:Found itemsets: []
+2023-01-30 18:49:43,241:INFO:Resulting itemsets: []
+2023-01-30 18:49:43,247:INFO:Support set to 0.5
+2023-01-30 18:49:43,248:INFO:Created SON instance with: partitions=1, support=0.5, chunk support=0.5
+2023-01-30 18:49:45,464:DEBUG:Extracted itemsets: ['beaches', 'religious', 'parks', ('religious', 'parks'), ('beaches', 'religious'), ('beaches', 'parks'), ('beaches', 'religious', 'parks')]
+2023-01-30 18:49:49,302:DEBUG:Found itemsets: [('beaches', 976), ('religious', 775), ('parks', 980), (('religious', 'parks'), 775), (('beaches', 'religious'), 771), (('beaches', 'parks'), 976), (('beaches', 'religious', 'parks'), 771)]
+2023-01-30 18:49:49,302:INFO:Resulting itemsets: [('beaches', 'religious', 'parks')]
+2023-01-30 18:49:49,305:INFO:Run with dataset BenchmarkData.data
+2023-01-30 18:49:49,345:DEBUG:Connecting to mongodb://127.0.0.1/BenchmarkData.data:27017
+2023-01-30 18:49:49,345:DEBUG:Core on this worker: 6
+2023-01-30 18:49:49,400:INFO:Dataset size: 0
+2023-01-30 18:49:49,413:INFO:Automatically created 1 partitions
+2023-01-30 18:49:49,413:DEBUG:Forced 1 partitions
+2023-01-30 18:49:49,440:INFO:Partitions after forcing: 1
+2023-01-30 18:49:49,440:INFO:Support set to 0.9
+2023-01-30 18:49:49,441:INFO:Created SON instance with: partitions=1, support=0.9, chunk support=0.9
+2023-01-30 18:49:52,092:DEBUG:Extracted itemsets: []
+2023-01-30 18:49:56,171:DEBUG:Found itemsets: []
+2023-01-30 18:49:56,171:INFO:Resulting itemsets: []
+2023-01-30 18:49:56,178:INFO:Support set to 0.9
+2023-01-30 18:49:56,180:INFO:Created SON instance with: partitions=1, support=0.9, chunk support=0.9
+2023-01-30 18:49:58,408:DEBUG:Extracted itemsets: ['beaches', 'parks', ('beaches', 'parks')]
+2023-01-30 18:50:02,516:DEBUG:Found itemsets: [('beaches', 976), ('parks', 980), (('beaches', 'parks'), 976)]
+2023-01-30 18:50:02,516:INFO:Resulting itemsets: [('beaches', 'parks')]
+2023-01-30 18:50:02,520:INFO:Run with dataset BenchmarkData.data
+2023-01-30 18:50:02,555:DEBUG:Connecting to mongodb://127.0.0.1/BenchmarkData.data:27017
+2023-01-30 18:50:02,555:DEBUG:Core on this worker: 6
+2023-01-30 18:50:02,613:INFO:Dataset size: 0
+2023-01-30 18:50:02,625:INFO:Automatically created 1 partitions
+2023-01-30 18:50:02,625:DEBUG:Forced 2 partitions
+2023-01-30 18:50:02,654:INFO:Partitions after forcing: 2
+2023-01-30 18:50:02,654:INFO:Support set to 0.5
+2023-01-30 18:50:02,655:INFO:Created SON instance with: partitions=2, support=0.5, chunk support=0.25
+2023-01-30 18:50:07,475:DEBUG:Extracted itemsets: []
+2023-01-30 18:50:17,607:DEBUG:Found itemsets: []
+2023-01-30 18:50:17,607:INFO:Resulting itemsets: []
+2023-01-30 18:50:17,611:INFO:Support set to 0.5
+2023-01-30 18:50:17,612:INFO:Created SON instance with: partitions=2, support=0.5, chunk support=0.25
+2023-01-30 18:50:22,625:DEBUG:Extracted itemsets: ['religious', 'parks', ('religious', 'parks'), ('beaches', 'religious', 'parks'), 'beaches', ('beaches', 'religious'), ('beaches', 'parks')]
+2023-01-30 18:50:30,360:DEBUG:Found itemsets: [('religious', 775), ('parks', 980), (('religious', 'parks'), 775), (('beaches', 'religious', 'parks'), 771), ('beaches', 976), (('beaches', 'religious'), 771), (('beaches', 'parks'), 976)]
+2023-01-30 18:50:30,360:INFO:Resulting itemsets: [('beaches', 'religious', 'parks')]
+2023-01-30 18:50:30,363:INFO:Run with dataset BenchmarkData.data
+2023-01-30 18:50:30,397:DEBUG:Connecting to mongodb://127.0.0.1/BenchmarkData.data:27017
+2023-01-30 18:50:30,398:DEBUG:Core on this worker: 6
+2023-01-30 18:50:30,450:INFO:Dataset size: 0
+2023-01-30 18:50:30,461:INFO:Automatically created 1 partitions
+2023-01-30 18:50:30,462:DEBUG:Forced 2 partitions
+2023-01-30 18:50:30,488:INFO:Partitions after forcing: 2
+2023-01-30 18:50:30,488:INFO:Support set to 0.9
+2023-01-30 18:50:30,488:INFO:Created SON instance with: partitions=2, support=0.9, chunk support=0.45
+2023-01-30 18:50:35,012:DEBUG:Extracted itemsets: []
+2023-01-30 18:50:43,507:DEBUG:Found itemsets: []
+2023-01-30 18:50:43,509:INFO:Resulting itemsets: []
+2023-01-30 18:50:43,514:INFO:Support set to 0.9
+2023-01-30 18:50:43,516:INFO:Created SON instance with: partitions=2, support=0.9, chunk support=0.45
+2023-01-30 18:50:48,995:DEBUG:Extracted itemsets: ['religious', 'parks', ('religious', 'parks'), ('beaches', 'religious', 'parks'), 'beaches', ('beaches', 'religious'), ('beaches', 'parks')]
+2023-01-30 18:50:57,499:DEBUG:Found itemsets: [('parks', 980), ('beaches', 976), (('beaches', 'parks'), 976)]
+2023-01-30 18:50:57,499:INFO:Resulting itemsets: [('beaches', 'parks')]
+2023-01-30 18:50:57,504:INFO:Run with dataset BenchmarkData.data
+2023-01-30 18:50:57,537:DEBUG:Connecting to mongodb://127.0.0.1/BenchmarkData.data:27017
+2023-01-30 18:50:57,537:DEBUG:Core on this worker: 6
+2023-01-30 18:50:57,591:INFO:Dataset size: 0
+2023-01-30 18:50:57,602:INFO:Automatically created 1 partitions
+2023-01-30 18:50:57,603:INFO:Support set to 0.5
+2023-01-30 18:50:57,603:INFO:Created SON instance with: partitions=1, support=0.5, chunk support=0.5
+2023-01-30 18:51:00,201:DEBUG:Extracted itemsets: []
+2023-01-30 18:51:04,817:DEBUG:Found itemsets: []
+2023-01-30 18:51:04,817:INFO:Resulting itemsets: []
+2023-01-30 18:51:04,821:INFO:Support set to 0.5
+2023-01-30 18:51:04,822:INFO:Created SON instance with: partitions=6, support=0.5, chunk support=0.08333333333333333
+2023-01-30 18:51:19,184:DEBUG:Extracted itemsets: ['religious', ('religious', 'parks'), ('religious', 'parks', 'resorts'), ('beaches', 'religious'), ('beaches', 'parks'), 'parks', ('beaches', 'resorts'), ('beaches', 'religious', 'parks'), 'resorts', ('beaches', 'parks', 'resorts'), ('religious', 'resorts'), ('beaches', 'religious', 'resorts'), ('beaches', 'religious', 'parks', 'resorts'), 'beaches', ('parks', 'resorts')]
+2023-01-30 18:51:42,900:DEBUG:Found itemsets: [('religious', 775), (('religious', 'parks'), 775), (('beaches', 'religious'), 771), (('beaches', 'parks'), 976), ('parks', 980), (('beaches', 'religious', 'parks'), 771), ('beaches', 976)]
+2023-01-30 18:51:42,900:INFO:Resulting itemsets: [('beaches', 'religious', 'parks')]
+2023-01-30 18:51:42,904:INFO:Run with dataset BenchmarkData.data
+2023-01-30 18:51:42,961:DEBUG:Connecting to mongodb://127.0.0.1/BenchmarkData.data:27017
+2023-01-30 18:51:42,961:DEBUG:Core on this worker: 6
+2023-01-30 18:51:43,028:INFO:Dataset size: 0
+2023-01-30 18:51:43,040:INFO:Automatically created 1 partitions
+2023-01-30 18:51:43,041:INFO:Support set to 0.9
+2023-01-30 18:51:43,041:INFO:Created SON instance with: partitions=1, support=0.9, chunk support=0.9
+2023-01-30 18:51:45,374:DEBUG:Extracted itemsets: []
+2023-01-30 18:51:49,058:DEBUG:Found itemsets: []
+2023-01-30 18:51:49,058:INFO:Resulting itemsets: []
+2023-01-30 18:51:49,063:INFO:Support set to 0.9
+2023-01-30 18:51:49,064:INFO:Created SON instance with: partitions=6, support=0.9, chunk support=0.15
+2023-01-30 18:52:02,155:DEBUG:Extracted itemsets: ['religious', ('religious', 'parks'), ('beaches', 'religious'), ('beaches', 'parks'), 'parks', ('beaches', 'religious', 'parks'), ('beaches', 'resorts'), 'resorts', ('beaches', 'parks', 'resorts'), 'beaches', ('parks', 'resorts')]
+2023-01-30 18:52:23,631:DEBUG:Found itemsets: [(('beaches', 'parks'), 976), ('parks', 980), ('beaches', 976)]
+2023-01-30 18:52:23,631:INFO:Resulting itemsets: [('beaches', 'parks')]
+2023-01-30 18:58:02,789:INFO:Run with dataset TravelReviews.reviews
+2023-01-30 19:02:58,223:INFO:Run with dataset TravelReviews.reviews
+2023-01-30 19:04:21,269:INFO:Run with dataset TravelReviews.reviews
+2023-01-30 19:05:37,762:INFO:Run with dataset TravelReviews.reviews
+2023-01-30 19:06:27,989:INFO:Run with dataset TravelReviews.reviews
+2023-01-30 19:06:45,058:DEBUG:Connecting to mongodb://127.0.0.1:27017/TravelReviews.reviews
+2023-01-30 19:06:45,059:DEBUG:Core on this worker: 6
+2023-01-30 19:07:08,364:INFO:Run with dataset TravelReviews.reviews
+2023-01-30 19:08:21,225:INFO:Run with dataset TravelReviews.reviews
+2023-01-30 19:13:21,332:INFO:Run with dataset TravelReviews.reviews
+2023-01-30 19:13:37,696:DEBUG:Connecting to mongodb://127.0.0.1:27017/TravelReviews.reviews
+2023-01-30 19:13:37,697:DEBUG:Core on this worker: 6
+2023-01-30 19:17:12,252:INFO:Run with dataset TravelReviews.reviews
+2023-01-30 19:17:29,998:DEBUG:Connecting to mongodb://127.0.0.1:27017/TravelReviews.reviews
+2023-01-30 19:17:29,999:DEBUG:Core on this worker: 6
+2023-01-30 19:17:31,717:INFO:Dataset size: 980
+2023-01-30 19:17:31,836:INFO:Automatically created 1 partitions
+2023-01-30 19:17:31,836:DEBUG:Forced 2 partitions
+2023-01-30 19:17:32,358:INFO:Partitions after forcing: 2
+2023-01-30 19:17:32,360:INFO:Created SON instance with: partitions=2, support=0.85, chunk support=0.425
+2023-01-30 19:17:37,199:DEBUG:Extracted itemsets: ['religious', 'parks', ('religious', 'parks'), ('beaches', 'religious', 'parks'), 'beaches', ('beaches', 'religious'), ('beaches', 'parks')]
+2023-01-30 19:17:44,937:DEBUG:Found itemsets: [('parks', 980), ('beaches', 976), (('beaches', 'parks'), 976)]
+2023-01-30 19:17:44,937:INFO:Resulting itemsets: [('beaches', 'parks')]
+2023-01-30 19:19:01,291:INFO:Run with dataset BenchmarkData.data
+2023-01-30 19:19:16,922:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-01-30 19:19:16,924:DEBUG:Core on this worker: 6
+2023-01-30 19:19:18,697:INFO:Dataset size: 980
+2023-01-30 19:19:18,827:INFO:Automatically created 1 partitions
+2023-01-30 19:19:18,830:INFO:Support set to 0.5
+2023-01-30 19:19:18,830:INFO:Created SON instance with: partitions=1, support=0.5, chunk support=0.5
+2023-01-30 19:19:22,345:DEBUG:Extracted itemsets: ['beaches', 'religious', 'parks', ('religious', 'parks'), ('beaches', 'religious'), ('beaches', 'parks'), ('beaches', 'religious', 'parks')]
+2023-01-30 19:19:26,785:DEBUG:Found itemsets: [('beaches', 976), ('religious', 775), ('parks', 980), (('religious', 'parks'), 775), (('beaches', 'religious'), 771), (('beaches', 'parks'), 976), (('beaches', 'religious', 'parks'), 771)]
+2023-01-30 19:19:26,785:INFO:Resulting itemsets: [('beaches', 'religious', 'parks')]
+2023-01-30 19:19:26,791:INFO:Support set to 0.5
+2023-01-30 19:19:26,796:INFO:Created SON instance with: partitions=6, support=0.5, chunk support=0.08333333333333333
+2023-01-30 19:19:40,483:DEBUG:Extracted itemsets: ['religious', ('religious', 'parks'), ('beaches', 'bars', 'parks'), ('religious', 'parks', 'resorts'), ('beaches', 'religious'), ('beaches', 'parks'), 'parks', ('beaches', 'resorts'), ('bars', 'parks'), ('beaches', 'religious', 'parks'), 'resorts', ('beaches', 'bars'), ('beaches', 'parks', 'resorts'), ('religious', 'resorts'), ('beaches', 'religious', 'resorts'), 'bars', ('beaches', 'religious', 'parks', 'resorts'), 'beaches', ('parks', 'resorts')]
+2023-01-30 19:20:02,580:DEBUG:Found itemsets: [('religious', 385), (('religious', 'parks'), 385), (('beaches', 'religious'), 384), (('beaches', 'parks'), 489), ('parks', 490), (('beaches', 'religious', 'parks'), 384), ('beaches', 489)]
+2023-01-30 19:20:02,580:INFO:Resulting itemsets: [('beaches', 'religious', 'parks')]
+2023-01-30 19:41:39,608:INFO:Run with dataset BenchmarkData.data
+2023-01-30 19:41:57,205:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-01-30 19:41:57,206:DEBUG:Core on this worker: 6
+2023-01-30 19:41:59,377:INFO:Dataset size: 980
+2023-01-30 19:41:59,504:INFO:Automatically created 1 partitions
+2023-01-30 19:41:59,506:INFO:Support set to 0.5
+2023-01-30 19:41:59,506:INFO:Created SON instance with: partitions=1, support=0.5, chunk support=0.5
+2023-01-30 19:42:03,894:DEBUG:Extracted itemsets: ['beaches', 'religious', 'parks', ('religious', 'parks'), ('beaches', 'religious'), ('beaches', 'parks'), ('beaches', 'religious', 'parks')]
+2023-01-30 19:42:07,825:DEBUG:Found itemsets: [('beaches', 976), ('religious', 775), ('parks', 980), (('religious', 'parks'), 775), (('beaches', 'religious'), 771), (('beaches', 'parks'), 976), (('beaches', 'religious', 'parks'), 771)]
+2023-01-30 19:42:07,825:INFO:Resulting itemsets: [('beaches', 'religious', 'parks')]
+2023-01-30 19:42:07,865:INFO:Support set to 0.5
+2023-01-30 19:42:07,867:INFO:Created SON instance with: partitions=6, support=0.5, chunk support=0.08333333333333333
+2023-01-30 19:42:27,414:DEBUG:Extracted itemsets: ['22423', '22720', '22084', '23298', '20725', '23245', '22469', '22457', '47566', '23203', '22867', '85123A', '22910', '84029E', '22632', '22633', '85099B', '22086', '22722', '23206', '23209']
+2023-01-30 19:42:51,370:DEBUG:Found itemsets: []
+2023-01-30 19:42:51,370:INFO:Resulting itemsets: []

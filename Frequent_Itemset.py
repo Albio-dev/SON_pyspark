@@ -26,7 +26,7 @@ def loadlogger():
 # forcePartitions: How many partitions force onto the dataset
 # logger: the logger object to use for logging 
 # db_addr: the address of the mongodb database
-def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr = '127.0.0.1'):
+def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr = '127.0.0.1', port = '27017', ):
     datasets = {0: 'TravelReviews.reviews', 1:'OnlineRetail.transactions', 'benchmark': 'BenchmarkData.data'}
     
     #from Scripts import import_travel_reviews
@@ -36,18 +36,20 @@ def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr =
         logger.info(f'Run with dataset {datasets[selectedDataset]}')
 
     spark = (SparkSession.builder
-        .config('spark.jars.packages', 'org.mongodb.spark:mongo-spark-connector_2.12:3.0.1')
-        .config("spark.mongodb.input.uri", f"mongodb://{db_addr}/{datasets[selectedDataset]}")
-        .config("spark.mongodb.output.uri", f"mongodb://{db_addr}/{datasets[selectedDataset]}")
+        .config('spark.jars.packages', 'org.mongodb.spark:mongo-spark-connector:10.0.2')
+        .config("spark.mongodb.read.connection.uri", f"mongodb://{db_addr}:{port}/{datasets[selectedDataset]}")
+        .config("spark.mongodb.write.connection.uri", f"mongodb://{db_addr}:{port}/{datasets[selectedDataset]}")
         # .config("spark.mongodb.input.partitioner", "MongoPaginateByCountPartitioner")
-        .config("spark.mongodb.input.partitionerOptions.partitionKey", "_id")
-        # .config("spark.mongodb.input.partitionerOptions.numberOfPartitions", "4")
+        #.config("spark.mongodb.input.partitionerOptions.partitionKey", "_id")
+        #.config("spark.mongodb.input.partitionerOptions.numberOfPartitions", "4")
+        #.config("partitioner.options.partition.size", "")          # The size (in MB) for each partition.
+        #.config("partitioner.options.samples.per.partition", "")   # The number of samples to take per partition.
         .getOrCreate()
         )
-    input_data = spark.read.format("mongo").load()
+    input_data = spark.read.format("mongodb").load()
 
     if logger is not None:
-        logger.debug(f'Connecting to {spark.conf.get("spark.mongodb.input.uri")}')
+        logger.debug(f'Connecting to {spark.conf.get("spark.mongodb.read.connection.uri")}')
         logger.debug(f'Core on this worker: {spark.sparkContext.defaultParallelism}')
         logger.info(f'Dataset size: {input_data.count()}')
         logger.info(f'Automatically created {input_data.rdd.getNumPartitions()} partitions')
@@ -100,7 +102,7 @@ if __name__ == '__main__':
     # Create the logger object
     logger = loadlogger()
     # Create the spark context and load data
-    data = loadspark(logger = logger)
+    data = loadspark(logger = logger, port = '27017')
 
     # Execute algorithm
     execute_SON(data)
