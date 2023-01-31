@@ -37,6 +37,8 @@ def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr =
         
 
     spark = (SparkSession.builder
+        # .appName("SON")
+        # .master("local[4]")
         .config('spark.jars.packages', 'org.mongodb.spark:mongo-spark-connector:10.0.2')
         .config("spark.mongodb.read.connection.uri", f"mongodb://{db_addr}:{port}/{datasets[selectedDataset]}")
         .config("spark.mongodb.write.connection.uri", f"mongodb://{db_addr}:{port}/{datasets[selectedDataset]}")
@@ -107,4 +109,4 @@ if __name__ == '__main__':
     data = loadspark(logger = logger, port = '27017')
 
     # Execute algorithm
-    execute_SON(data)
+    execute_SON(data, 0.3)
