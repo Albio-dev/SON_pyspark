@@ -1,55 +1,48 @@
-2023-01-31 16:47:22,196:INFO:Run with dataset TravelReviews.reviews
-2023-01-31 16:47:34,908:DEBUG:Connecting to mongodb://127.0.0.1:27017/TravelReviews.reviews
-2023-01-31 16:47:34,909:DEBUG:Core on this worker: 4
-2023-01-31 16:47:52,282:INFO:Dataset size: 3000000
-2023-01-31 16:47:52,608:INFO:Automatically created 5 partitions
-2023-01-31 16:47:52,608:DEBUG:Forced 2 partitions
-2023-01-31 16:48:09,991:INFO:Partitions after forcing: 2
-2023-01-31 16:48:10,011:INFO:Created SON instance with: partitions=2, support=0.3, chunk support=0.15
-2023-01-31 16:50:21,729:DEBUG:Extracted itemsets: ['clubs', 'museums', 'theaters', 'bars', 'religious', 'restaurants', 'parks', 'galleries', 'beaches', 'resorts']
-2023-01-31 16:51:03,673:DEBUG:Found itemsets: [('clubs', 1128959), ('museums', 1129635), ('theaters', 1128876), ('bars', 1128747), ('religious', 1128443), ('restaurants', 1128772), ('parks', 1127851), ('galleries', 1129298), ('beaches', 1129295), ('resorts', 1128849)]
-2023-01-31 16:51:03,679:INFO:Resulting itemsets: [('clubs',), ('museums',), ('theaters',), ('bars',), ('religious',), ('restaurants',), ('parks',), ('galleries',), ('beaches',), ('resorts',)]
-2023-01-31 16:51:29,215:INFO:Run with dataset TravelReviews.reviews
-2023-01-31 16:51:40,643:DEBUG:Connecting to mongodb://127.0.0.1:27017/TravelReviews.reviews
-2023-01-31 16:51:40,644:DEBUG:Core on this worker: 4
-2023-01-31 16:51:51,176:INFO:Dataset size: 3000000
-2023-01-31 16:51:51,527:INFO:Automatically created 5 partitions
-2023-01-31 16:51:51,527:DEBUG:Forced 2 partitions
-2023-01-31 16:51:51,528:INFO:Partitions after forcing: 5
-2023-01-31 16:51:51,534:INFO:Created SON instance with: partitions=5, support=0.3, chunk support=0.06
-2023-01-31 16:56:43,597:DEBUG:Extracted itemsets: ['clubs', 'theaters', 'religious', ('clubs', 'restaurants'), ('clubs', 'theaters'), ('restaurants', 'galleries'), ('beaches', 'galleries'), ('clubs', 'resorts'), ('clubs', 'galleries'), ('bars', 'parks'), ('museums', 'resorts'), ('theaters', 'bars'), ('museums', 'galleries'), ('museums', 'religious'), ('theaters', 'galleries'), ('restaurants', 'parks'), ('beaches', 'bars'), 'beaches', ('theaters', 'parks'), ('museums', 'parks'), ('clubs', 'museums'), ('beaches', 'parks'), ('religious', 'bars'), ('clubs', 'parks'), ('restaurants', 'religious'), 'galleries', 'museums', 'resorts', 'restaurants', 'bars', ('parks', 'resorts'), ('galleries', 'bars'), ('museums', 'restaurants'), ('galleries', 'resorts'), ('religious', 'resorts'), ('clubs', 'bars'), ('museums', 'beaches'), ('restaurants', 'resorts'), ('bars', 'resorts'), ('beaches', 'resorts'), ('clubs', 'religious'), ('beaches', 'religious'), ('clubs', 'beaches'), ('beaches', 'restaurants'), ('museums', 'bars'), ('religious', 'restaurants'), 'parks', ('theaters', 'beaches'), ('religious', 'parks'), ('theaters', 'restaurants'), ('restaurants', 'bars'), ('museums', 'theaters'), ('galleries', 'parks'), ('religious', 'galleries'), ('theaters', 'resorts'), ('theaters', 'religious')]
-2023-01-31 16:58:35,950:DEBUG:Found itemsets: [('clubs', 1128959), ('theaters', 1128876), ('religious', 1128443), ('beaches', 1129295), ('galleries', 1129298), ('museums', 1129635), ('resorts', 1128849), ('restaurants', 1128772), ('bars', 1128747), ('parks', 1127851)]
-2023-01-31 16:58:35,957:INFO:Resulting itemsets: [('clubs',), ('theaters',), ('religious',), ('beaches',), ('galleries',), ('museums',), ('resorts',), ('restaurants',), ('bars',), ('parks',)]
-2023-01-31 17:10:59,792:INFO:Run with dataset TravelReviews.reviews
-2023-01-31 17:11:13,304:DEBUG:Connecting to mongodb://127.0.0.1:27017/TravelReviews.reviews
-2023-01-31 17:11:13,305:DEBUG:Core on this worker: 4
-2023-01-31 17:11:26,480:INFO:Dataset size: 3000000
-2023-01-31 17:11:26,786:INFO:Automatically created 5 partitions
-2023-01-31 17:11:26,786:DEBUG:Forced 2 partitions
-2023-01-31 17:11:42,752:INFO:Partitions after forcing: 1
-2023-01-31 17:11:42,759:INFO:Created SON instance with: partitions=1, support=0.3, chunk support=0.3
-2023-01-31 17:15:07,411:DEBUG:Extracted itemsets: ['clubs', 'galleries', 'museums', 'beaches', 'resorts', 'theaters', 'religious', 'restaurants', 'bars', 'parks']
-2023-01-31 17:16:13,823:DEBUG:Found itemsets: [('clubs', 1128959), ('galleries', 1129298), ('museums', 1129635), ('beaches', 1129295), ('resorts', 1128849), ('theaters', 1128876), ('religious', 1128443), ('restaurants', 1128772), ('bars', 1128747), ('parks', 1127851)]
-2023-01-31 17:16:13,829:INFO:Resulting itemsets: [('clubs',), ('galleries',), ('museums',), ('beaches',), ('resorts',), ('theaters',), ('religious',), ('restaurants',), ('bars',), ('parks',)]
-2023-01-31 17:17:18,288:INFO:Run with dataset TravelReviews.reviews
-2023-01-31 17:17:29,836:DEBUG:Connecting to mongodb://127.0.0.1:27017/TravelReviews.reviews
-2023-01-31 17:17:29,837:DEBUG:Core on this worker: 4
-2023-01-31 17:17:41,193:INFO:Dataset size: 3000000
-2023-01-31 17:17:41,520:INFO:Automatically created 5 partitions
-2023-01-31 17:17:41,521:DEBUG:Forced 2 partitions
-2023-01-31 17:17:58,014:INFO:Partitions after forcing: 4
-2023-01-31 17:17:58,020:INFO:Created SON instance with: partitions=4, support=0.3, chunk support=0.075
-2023-01-31 17:21:54,707:DEBUG:Extracted itemsets: ['clubs', 'museums', 'theaters', ('clubs', 'restaurants'), ('theaters', 'parks'), ('theaters', 'restaurants'), ('museums', 'parks'), ('clubs', 'religious'), ('museums', 'restaurants'), ('galleries', 'resorts'), ('theaters', 'bars'), ('clubs', 'bars'), ('clubs', 'parks'), ('museums', 'religious'), ('museums', 'bars'), ('theaters', 'religious'), 'beaches', ('theaters', 'beaches'), ('restaurants', 'galleries'), ('parks', 'resorts'), ('bars', 'resorts'), ('beaches', 'religious'), ('beaches', 'parks'), ('religious', 'resorts'), ('clubs', 'beaches'), ('museums', 'beaches'), ('beaches', 'restaurants'), ('religious', 'galleries'), ('restaurants', 'resorts'), ('beaches', 'bars'), 'bars', 'restaurants', 'religious', 'parks', ('clubs', 'theaters'), ('religious', 'parks'), ('restaurants', 'bars'), ('beaches', 'galleries'), ('museums', 'theaters'), ('beaches', 'resorts'), ('clubs', 'museums'), ('bars', 'parks'), ('religious', 'bars'), ('religious', 'restaurants'), ('restaurants', 'parks'), ('restaurants', 'religious'), 'galleries', 'resorts', ('clubs', 'resorts'), ('clubs', 'galleries'), ('galleries', 'parks'), ('galleries', 'bars'), ('museums', 'resorts'), ('museums', 'galleries'), ('theaters', 'galleries'), ('theaters', 'resorts')]
-2023-01-31 17:23:20,360:DEBUG:Found itemsets: [('clubs', 1128959), ('museums', 1129635), ('theaters', 1128876), ('beaches', 1129295), ('bars', 1128747), ('restaurants', 1128772), ('religious', 1128443), ('parks', 1127851), ('galleries', 1129298), ('resorts', 1128849)]
-2023-01-31 17:23:20,367:INFO:Resulting itemsets: [('clubs',), ('museums',), ('theaters',), ('beaches',), ('bars',), ('restaurants',), ('religious',), ('parks',), ('galleries',), ('resorts',)]
-2023-01-31 17:24:01,654:INFO:Run with dataset TravelReviews.reviews
-2023-01-31 17:24:12,392:DEBUG:Connecting to mongodb://127.0.0.1:27017/TravelReviews.reviews
-2023-01-31 17:24:12,394:DEBUG:Core on this worker: 4
-2023-01-31 17:24:23,939:INFO:Dataset size: 3000000
-2023-01-31 17:24:24,170:INFO:Automatically created 5 partitions
-2023-01-31 17:24:24,170:DEBUG:Forced 2 partitions
-2023-01-31 17:24:39,621:INFO:Partitions after forcing: 2
-2023-01-31 17:24:39,627:INFO:Created SON instance with: partitions=2, support=0.3, chunk support=0.15
-2023-01-31 17:26:27,443:DEBUG:Extracted itemsets: ['clubs', 'museums', 'theaters', 'bars', 'religious', 'restaurants', 'parks', 'galleries', 'beaches', 'resorts']
-2023-01-31 17:27:04,425:DEBUG:Found itemsets: [('clubs', 1128959), ('museums', 1129635), ('theaters', 1128876), ('bars', 1128747), ('religious', 1128443), ('restaurants', 1128772), ('parks', 1127851), ('galleries', 1129298), ('beaches', 1129295), ('resorts', 1128849)]
-2023-01-31 17:27:04,432:INFO:Resulting itemsets: [('clubs',), ('museums',), ('theaters',), ('bars',), ('religious',), ('restaurants',), ('parks',), ('galleries',), ('beaches',), ('resorts',)]
+2023-02-01 10:45:55,508:INFO:Run with dataset TravelReviews.reviews
+2023-02-01 10:46:04,740:DEBUG:Connecting to mongodb://127.0.0.1:27017/TravelReviews.reviews
+2023-02-01 10:46:04,741:DEBUG:Core on this worker: 4
+2023-02-01 10:46:16,155:INFO:Dataset size: 3000000
+2023-02-01 10:46:16,386:INFO:Automatically created 5 partitions
+2023-02-01 10:46:16,390:INFO:Created SON instance with: partitions=5, support=0.3, chunk support=0.06
+2023-02-01 10:51:09,240:DEBUG:Extracted itemsets: ['clubs', 'theaters', 'religious', ('clubs', 'restaurants'), ('clubs', 'theaters'), ('restaurants', 'galleries'), ('beaches', 'galleries'), ('clubs', 'resorts'), ('clubs', 'galleries'), ('bars', 'parks'), ('museums', 'resorts'), ('theaters', 'bars'), ('museums', 'galleries'), ('museums', 'religious'), ('theaters', 'galleries'), ('restaurants', 'parks'), ('beaches', 'bars'), 'beaches', ('theaters', 'parks'), ('museums', 'parks'), ('clubs', 'museums'), ('beaches', 'parks'), ('religious', 'bars'), ('clubs', 'parks'), ('restaurants', 'religious'), 'galleries', 'museums', 'resorts', 'restaurants', 'bars', ('parks', 'resorts'), ('galleries', 'bars'), ('museums', 'restaurants'), ('galleries', 'resorts'), ('religious', 'resorts'), ('clubs', 'bars'), ('museums', 'beaches'), ('restaurants', 'resorts'), ('bars', 'resorts'), ('beaches', 'resorts'), ('clubs', 'religious'), ('beaches', 'religious'), ('clubs', 'beaches'), ('beaches', 'restaurants'), ('museums', 'bars'), ('religious', 'restaurants'), 'parks', ('theaters', 'beaches'), ('religious', 'parks'), ('theaters', 'restaurants'), ('restaurants', 'bars'), ('museums', 'theaters'), ('galleries', 'parks'), ('religious', 'galleries'), ('theaters', 'resorts'), ('theaters', 'religious')]
+2023-02-01 10:52:54,750:DEBUG:Found itemsets: [('clubs', 1128959), ('theaters', 1128876), ('religious', 1128443), ('beaches', 1129295), ('galleries', 1129298), ('museums', 1129635), ('resorts', 1128849), ('restaurants', 1128772), ('bars', 1128747), ('parks', 1127851)]
+2023-02-01 10:52:54,750:INFO:Resulting itemsets: [('clubs',), ('theaters',), ('religious',), ('beaches',), ('galleries',), ('museums',), ('resorts',), ('restaurants',), ('bars',), ('parks',)]
+2023-02-01 10:53:46,058:INFO:Run with dataset TravelReviews.reviews
+2023-02-01 10:53:59,115:DEBUG:Connecting to mongodb://127.0.0.1:27017/TravelReviews.reviews
+2023-02-01 10:53:59,118:DEBUG:Core on this worker: 2
+2023-02-01 10:54:11,330:INFO:Dataset size: 3000000
+2023-02-01 10:54:11,719:INFO:Automatically created 5 partitions
+2023-02-01 10:54:11,727:INFO:Created SON instance with: partitions=5, support=0.3, chunk support=0.06
+2023-02-01 10:59:54,242:DEBUG:Extracted itemsets: ['clubs', 'theaters', 'religious', ('clubs', 'restaurants'), ('clubs', 'theaters'), ('restaurants', 'galleries'), ('beaches', 'galleries'), ('clubs', 'resorts'), ('clubs', 'galleries'), ('bars', 'parks'), ('museums', 'resorts'), ('theaters', 'bars'), ('museums', 'galleries'), ('museums', 'religious'), ('theaters', 'galleries'), ('restaurants', 'parks'), ('beaches', 'bars'), 'beaches', ('theaters', 'parks'), ('museums', 'parks'), ('clubs', 'museums'), ('beaches', 'parks'), ('religious', 'bars'), ('clubs', 'parks'), ('restaurants', 'religious'), 'galleries', 'museums', 'resorts', 'restaurants', 'bars', ('parks', 'resorts'), ('galleries', 'bars'), ('museums', 'restaurants'), ('galleries', 'resorts'), ('religious', 'resorts'), ('clubs', 'bars'), ('museums', 'beaches'), ('restaurants', 'resorts'), ('bars', 'resorts'), ('beaches', 'resorts'), ('clubs', 'religious'), ('beaches', 'religious'), ('clubs', 'beaches'), ('beaches', 'restaurants'), ('museums', 'bars'), ('religious', 'restaurants'), 'parks', ('theaters', 'beaches'), ('religious', 'parks'), ('theaters', 'restaurants'), ('restaurants', 'bars'), ('museums', 'theaters'), ('galleries', 'parks'), ('religious', 'galleries'), ('theaters', 'resorts'), ('theaters', 'religious')]
+2023-02-01 11:01:57,265:DEBUG:Found itemsets: [('clubs', 1128959), ('theaters', 1128876), ('religious', 1128443), ('beaches', 1129295), ('galleries', 1129298), ('museums', 1129635), ('resorts', 1128849), ('restaurants', 1128772), ('bars', 1128747), ('parks', 1127851)]
+2023-02-01 11:01:57,265:INFO:Resulting itemsets: [('clubs',), ('theaters',), ('religious',), ('beaches',), ('galleries',), ('museums',), ('resorts',), ('restaurants',), ('bars',), ('parks',)]
+2023-02-01 11:08:13,372:INFO:Run with dataset BenchmarkData.data
+2023-02-01 11:08:23,454:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-01 11:08:23,455:DEBUG:Core on this worker: 4
+2023-02-01 11:08:25,725:INFO:Dataset size: 11032
+2023-02-01 11:08:25,912:INFO:Automatically created 1 partitions
+2023-02-01 11:08:25,915:INFO:Support set to 0.5
+2023-02-01 11:08:25,916:INFO:Created SON instance with: partitions=1, support=0.5, chunk support=0.5
+2023-02-01 11:08:58,714:DEBUG:Extracted itemsets: []
+2023-02-01 11:08:59,816:DEBUG:Found itemsets: []
+2023-02-01 11:08:59,816:INFO:Resulting itemsets: []
+2023-02-01 11:08:59,869:INFO:Support set to 0.5
+2023-02-01 11:08:59,874:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
+2023-02-01 11:09:12,042:DEBUG:Extracted itemsets: ['22720', '85123A', '47566']
+2023-02-01 11:09:12,741:DEBUG:Found itemsets: []
+2023-02-01 11:09:12,741:INFO:Resulting itemsets: []
+2023-02-01 11:11:53,480:INFO:Run with dataset BenchmarkData.data
+2023-02-01 11:12:02,230:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-01 11:12:02,233:DEBUG:Core on this worker: 4
+2023-02-01 11:12:09,106:INFO:Dataset size: 1500000
+2023-02-01 11:12:09,332:INFO:Automatically created 4 partitions
+2023-02-01 11:12:09,338:INFO:Support set to 0.5
+2023-02-01 11:12:09,339:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
+2023-02-01 11:14:52,229:DEBUG:Extracted itemsets: ['clubs', 'museums', 'theaters', ('clubs', 'restaurants'), ('theaters', 'parks'), ('theaters', 'restaurants'), ('museums', 'parks'), ('clubs', 'religious'), ('museums', 'restaurants'), ('galleries', 'resorts'), ('theaters', 'bars'), ('clubs', 'bars'), ('clubs', 'parks'), ('museums', 'religious'), ('museums', 'bars'), ('theaters', 'religious'), 'beaches', ('theaters', 'beaches'), ('restaurants', 'galleries'), ('parks', 'resorts'), ('bars', 'resorts'), ('beaches', 'religious'), ('beaches', 'parks'), ('religious', 'resorts'), ('clubs', 'beaches'), ('museums', 'beaches'), ('beaches', 'restaurants'), ('religious', 'galleries'), ('restaurants', 'resorts'), ('beaches', 'bars'), 'religious', 'restaurants', 'bars', 'parks', ('clubs', 'theaters'), ('religious', 'parks'), ('restaurants', 'bars'), ('beaches', 'galleries'), ('museums', 'theaters'), ('beaches', 'resorts'), ('clubs', 'museums'), ('bars', 'parks'), ('religious', 'bars'), ('restaurants', 'religious'), ('restaurants', 'parks'), ('religious', 'restaurants'), 'galleries', 'resorts', ('clubs', 'resorts'), ('clubs', 'galleries'), ('galleries', 'parks'), ('galleries', 'bars'), ('museums', 'resorts'), ('museums', 'galleries'), ('theaters', 'galleries'), ('theaters', 'resorts')]
+2023-02-01 11:15:50,074:DEBUG:Found itemsets: []
+2023-02-01 11:15:50,080:INFO:Resulting itemsets: []
+2023-02-01 11:15:51,671:INFO:Support set to 0.5
+2023-02-01 11:15:51,675:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
+2023-02-01 11:17:27,881:DEBUG:Extracted itemsets: ['clubs', 'museums', 'theaters', ('clubs', 'restaurants'), ('theaters', 'parks'), ('theaters', 'restaurants'), ('museums', 'parks'), ('clubs', 'religious'), ('museums', 'restaurants'), ('galleries', 'resorts'), ('theaters', 'bars'), ('clubs', 'bars'), ('clubs', 'parks'), ('museums', 'religious'), ('museums', 'bars'), ('theaters', 'religious'), 'beaches', ('theaters', 'beaches'), ('restaurants', 'galleries'), ('parks', 'resorts'), ('bars', 'resorts'), ('beaches', 'religious'), ('beaches', 'parks'), ('religious', 'resorts'), ('clubs', 'beaches'), ('museums', 'beaches'), ('beaches', 'restaurants'), ('religious', 'galleries'), ('restaurants', 'resorts'), ('beaches', 'bars'), 'religious', 'restaurants', 'bars', 'parks', ('clubs', 'theaters'), ('religious', 'parks'), ('restaurants', 'bars'), ('beaches', 'galleries'), ('museums', 'theaters'), ('beaches', 'resorts'), ('clubs', 'museums'), ('bars', 'parks'), ('religious', 'bars'), ('restaurants', 'religious'), ('restaurants', 'parks'), ('religious', 'restaurants'), 'galleries', 'resorts', ('clubs', 'resorts'), ('clubs', 'galleries'), ('galleries', 'parks'), ('galleries', 'bars'), ('museums', 'resorts'), ('museums', 'galleries'), ('theaters', 'galleries'), ('theaters', 'resorts')]
+2023-02-01 11:18:00,113:DEBUG:Found itemsets: []
+2023-02-01 11:18:00,113:INFO:Resulting itemsets: []

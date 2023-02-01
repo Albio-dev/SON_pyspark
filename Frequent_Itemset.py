@@ -106,7 +106,7 @@ if __name__ == '__main__':
     # Create the logger object
     logger = loadlogger()
     # Create the spark context and load data
-    data = loadspark(logger = logger, port = '27017')
+    data = loadspark(logger = logger, port = '27017', forcePartitions=None)
 
     # Execute algorithm
     execute_SON(data, 0.3)

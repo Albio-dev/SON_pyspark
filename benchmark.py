@@ -30,8 +30,8 @@ def load_data(preprocessing_function, perc_ds = 1, ip = 'localhost', port = 2701
     # Loading on db
     collection.drop()
     
-    client.admin.command('enableSharding', db.name)
-    client.admin.command('shardCollection', db.name + '.' + collection.name, key={'_id': "hashed"})
+    # client.admin.command('enableSharding', db.name)
+    # client.admin.command('shardCollection', db.name + '.' + collection.name, key={'_id': "hashed"})
 
     collection.insert_many([{'items': i} for i in test_dataset])
     client.close()
@@ -110,27 +110,38 @@ def online_retail():
 
 # Function to load and preprocess data
 def tripadvisor_review():
-    file = './Datasets/Travel Reviews/tripadvisor_review.csv'
-    dataset = []
-    # Open the file and read it
-    with open(file, 'r') as f:
-        csv_reader = csv.DictReader(f, delimiter=',')
+    client = MongoClient('mongodb://localhost:27017')
+    db = client.TravelReviews
+    collection = db.reviews
 
-        for line in csv_reader:
-            # Create a document with the following structure:
-            # {"_id": n, "good_scores": ["A", "B", "C", ...]}
-            # With n identifying the user and A, B, C, ... the good scores that the user gave
-            # We arbitrarily consider that a score of 2.5 or more is a good score
-            good_score_limit = 2.5
-            dataset.append([i for i, j in list(line.items())[1:] if float(j) >= good_score_limit])
+    # Load dataset
+    dataset = []
+    for document in collection.find():
+        dataset.append(document['items'])
 
     return dataset
+    # file = './Datasets/Travel Reviews/tripadvisor_review.csv'
+    # dataset = []
+    # # Open the file and read it
+    # with open(file, 'r') as f:
+    #     csv_reader = csv.DictReader(f, delimiter=',')
+
+    #     for line in csv_reader:
+    #         # Create a document with the following structure:
+    #         # {"_id": n, "good_scores": ["A", "B", "C", ...]}
+    #         # With n identifying the user and A, B, C, ... the good scores that the user gave
+    #         # We arbitrarily consider that a score of 2.5 or more is a good score
+    #         good_score_limit = 2.5
+    #         dataset.append([i for i, j in list(line.items())[1:] if float(j) >= good_score_limit])
+
+    # return dataset
 
 
 # Code to execute when the file is executed directly
 if __name__ == '__main__':
     # Example benchmark with half the dataset, automatic partitioning and support 0.5
-    data = load_data(online_retail, perc_ds = .5, ip = 'localhost', port = 60000)
+    # data = load_data(online_retail, perc_ds = .5, ip = 'localhost', port = 60000)
+    data = load_data(tripadvisor_review, perc_ds = .5, ip = 'localhost')
     benchmark(data, support = .5)
 
 
@@ -138,7 +149,8 @@ def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_pa
 
     # Iterate over every required data percentage
     for i in data_sizes:
-        data = load_data(online_retail, perc_ds = i, port = '60000')
+        # data = load_data(online_retail, perc_ds = i, port = '60000')
+        data = load_data(tripadvisor_review, perc_ds = i)
         # Iterate over partitions and supports
         
         
