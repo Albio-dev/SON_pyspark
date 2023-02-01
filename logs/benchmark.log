@@ -8,3 +8,23 @@
 2023-02-01 11:11:53,480:Apriori execution time: 6.819938898086548s
 2023-02-01 11:15:50,080:DB SON execution time: 220.74237489700317s
 2023-02-01 11:18:00,113:Local SON execution time: 128.44222950935364s
+2023-02-01 11:33:01,045:Loaded dataset. Using 1500000 samples
+2023-02-01 11:33:01,474:Benchmark with support: 0.5, partitions: None, partition_size: None, samples_per_partition: None
+2023-02-01 11:33:08,241:Apriori execution time: 6.766429424285889s
+2023-02-01 11:33:08,241:Started loading DB data...
+2023-02-01 11:33:26,343:Data loaded.
+2023-02-01 11:36:48,360:DB SON execution time: 202.01670837402344s
+2023-02-01 11:36:48,360:Started loading LOCAL data...
+2023-02-01 11:36:50,010:Data loaded.
+2023-02-01 11:39:07,630:Local SON execution time: 137.61376976966858s
+2023-02-01 11:39:17,149:DB FI execution time: 9.444330930709839s
+2023-02-01 11:49:47,447:Loaded dataset. Using 1500000 samples
+2023-02-01 11:49:47,976:Benchmark with support: 0.9, partitions: None, partition_size: None, samples_per_partition: None
+2023-02-01 11:49:56,045:Apriori execution time: 8.068018674850464s
+2023-02-01 11:49:56,045:Started loading DB data...
+2023-02-01 11:50:18,823:Data loaded.
+2023-02-01 11:52:12,244:DB SON execution time: 113.42068362236023s
+2023-02-01 11:52:12,244:Started loading LOCAL data...
+2023-02-01 11:52:13,721:Data loaded.
+2023-02-01 11:52:55,889:Local SON execution time: 42.16829490661621s
+2023-02-01 11:53:08,319:DB FI execution time: 12.26360535621643s

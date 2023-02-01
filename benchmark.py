@@ -157,7 +157,7 @@ if __name__ == '__main__':
     # Example benchmark with half the dataset, automatic partitioning and support 0.5
     # data = load_data(online_retail, perc_ds = .5, ip = 'localhost', port = 60000)
     data = load_data(tripadvisor_review, perc_ds = .5, ip = 'localhost')
-    benchmark(data, support = .5)
+    benchmark(data, support = .9)
 
 
 def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_partition):
