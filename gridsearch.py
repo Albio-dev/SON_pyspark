@@ -5,6 +5,6 @@ partitions = [1, 5, None]
 supports = [.9]
 
 partition_sizes = [None, 1, 10]
-samples_per_partition = [None, 20, 50]
+samples_per_partition = [None, 50]
 
 benchmark.gridsearch(data_sizes=data_sizes, partitions=partitions, supports = supports, partition_sizes=partition_sizes, samples_per_partition=samples_per_partition)

@@ -5,6 +5,7 @@ import Frequent_Itemset
 from pymongo import MongoClient
 import logging
 from pyspark import SparkContext
+from pyspark.sql import SparkSession
 
 benchmark_logger = logging.getLogger('benchmark')
 benchmark_logger.setLevel(logging.INFO)
@@ -30,8 +31,8 @@ def load_data(preprocessing_function, perc_ds = 1, ip = 'localhost', port = 2701
     # Loading on db
     collection.drop()
     
-    client.admin.command('enableSharding', db.name)
-    client.admin.command('shardCollection', db.name + '.' + collection.name, key={'_id': "hashed"})
+    #client.admin.command('enableSharding', db.name)
+    #client.admin.command('shardCollection', db.name + '.' + collection.name, key={'_id': "hashed"})
 
     collection.insert_many([{'items': i} for i in test_dataset])
     client.close()
@@ -76,6 +77,16 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     start_time = time.time()
     SON_result = Frequent_Itemset.execute_SON(data, support, logger)
     benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
+
+    # Automatic frequent itemsets
+    # DB
+    ss = SparkSession.getActiveSession()
+    input_data = ss.read.format("mongodb").load()
+    start_time = time.time()
+    auto_result = input_data.freqItems(('items',), support=support)
+    benchmark_logger.info(f'DB FI execution time: {time.time() - start_time}s')
+    
+
     
     '''
     # Check whether results are equal
@@ -142,7 +153,7 @@ def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_pa
 
     # Iterate over every required data percentage
     for i in data_sizes:
-        data = load_data(online_retail, perc_ds = i, port = '60000')
+        data = load_data(online_retail, perc_ds = i, port = '27017')
         # Iterate over partitions and supports
         
         
