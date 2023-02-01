@@ -5,6 +5,7 @@ import Frequent_Itemset
 from pymongo import MongoClient
 import logging
 from pyspark import SparkContext
+from pyspark.sql import SparkSession
 
 benchmark_logger = logging.getLogger('benchmark')
 benchmark_logger.setLevel(logging.INFO)
@@ -59,7 +60,9 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     # Load spark session with specified parameters
     # selectedDataset: dataset to use
     # forcePartitions: how many partitions to use. None for automatic
+    benchmark_logger.info(f'Started loading DB data...')
     data = Frequent_Itemset.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, partition_size=partition_size, samples_per_partition=samples_per_partition)
+    benchmark_logger.info(f'Data loaded.')
     # Run and time SON
     start_time = time.time()
     SON_result = Frequent_Itemset.execute_SON(data, support, logger)
@@ -68,10 +71,22 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     
     #spark = SparkContext(appName='benchmark')
     spark = data.context
+    benchmark_logger.info(f'Started loading LOCAL data...')
     data = spark.parallelize(dataset, partitions)
+    benchmark_logger.info(f'Data loaded.')
     start_time = time.time()
     SON_result = Frequent_Itemset.execute_SON(data, support, logger)
     benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
+
+    # Automatic frequent itemsets
+    # DB
+    ss = SparkSession.getActiveSession()
+    input_data = ss.read.format("mongodb").load()
+    start_time = time.time()
+    auto_result = input_data.freqItems(('items',), support=support)
+    benchmark_logger.info(f'DB FI execution time: {time.time() - start_time}s')
+    
+
     
     '''
     # Check whether results are equal
