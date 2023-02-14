@@ -179,11 +179,16 @@ def apriori(data, support):
 	In order to do so we made a script for the specific purpose of being able to programatically change parameters and 
 	subsample datasets.
 	Also, we implemented a gridsearch to test many parameters. We also added a logging feature to our project to better follow executions and ease debug.
-	
+	We compared our implementation, both based on DB and in memory, to a method $FreqItems$ provided by $pyspark.sql$. 
+	This function uses a modified version of FP-Tree to be more parallelizeable. This function proved itself to be absurdly fast, at the expense of false positives.
+	Both a  `simple' dataset and a `harder' one were used to compare performances.
+
+	\subsection{Datasets}
+
+	\subsection{Results}
 	% Setups (CPU, MEMORY, MONGO)
+	These tests were performed on an 8 core $i5-8250U @1.6GHz$, with 16 GB DDR4 memory $@2400MHz$
 	
-	\subsection{Dataset Sizes}
-	\subsection{Partitions count}
 	
 	\section{Conclusions}
 	After the benchmarks it is clear that apriori is blazingly fast and the only reasons one should instead use SON is when data doesen't fit in memory or many compute units are available.

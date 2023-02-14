@@ -1,78 +1,237 @@
-2023-02-01 10:45:55,508:INFO:Run with dataset TravelReviews.reviews
-2023-02-01 10:46:04,740:DEBUG:Connecting to mongodb://127.0.0.1:27017/TravelReviews.reviews
-2023-02-01 10:46:04,741:DEBUG:Core on this worker: 4
-2023-02-01 10:46:16,155:INFO:Dataset size: 3000000
-2023-02-01 10:46:16,386:INFO:Automatically created 5 partitions
-2023-02-01 10:46:16,390:INFO:Created SON instance with: partitions=5, support=0.3, chunk support=0.06
-2023-02-01 10:51:09,240:DEBUG:Extracted itemsets: ['clubs', 'theaters', 'religious', ('clubs', 'restaurants'), ('clubs', 'theaters'), ('restaurants', 'galleries'), ('beaches', 'galleries'), ('clubs', 'resorts'), ('clubs', 'galleries'), ('bars', 'parks'), ('museums', 'resorts'), ('theaters', 'bars'), ('museums', 'galleries'), ('museums', 'religious'), ('theaters', 'galleries'), ('restaurants', 'parks'), ('beaches', 'bars'), 'beaches', ('theaters', 'parks'), ('museums', 'parks'), ('clubs', 'museums'), ('beaches', 'parks'), ('religious', 'bars'), ('clubs', 'parks'), ('restaurants', 'religious'), 'galleries', 'museums', 'resorts', 'restaurants', 'bars', ('parks', 'resorts'), ('galleries', 'bars'), ('museums', 'restaurants'), ('galleries', 'resorts'), ('religious', 'resorts'), ('clubs', 'bars'), ('museums', 'beaches'), ('restaurants', 'resorts'), ('bars', 'resorts'), ('beaches', 'resorts'), ('clubs', 'religious'), ('beaches', 'religious'), ('clubs', 'beaches'), ('beaches', 'restaurants'), ('museums', 'bars'), ('religious', 'restaurants'), 'parks', ('theaters', 'beaches'), ('religious', 'parks'), ('theaters', 'restaurants'), ('restaurants', 'bars'), ('museums', 'theaters'), ('galleries', 'parks'), ('religious', 'galleries'), ('theaters', 'resorts'), ('theaters', 'religious')]
-2023-02-01 10:52:54,750:DEBUG:Found itemsets: [('clubs', 1128959), ('theaters', 1128876), ('religious', 1128443), ('beaches', 1129295), ('galleries', 1129298), ('museums', 1129635), ('resorts', 1128849), ('restaurants', 1128772), ('bars', 1128747), ('parks', 1127851)]
-2023-02-01 10:52:54,750:INFO:Resulting itemsets: [('clubs',), ('theaters',), ('religious',), ('beaches',), ('galleries',), ('museums',), ('resorts',), ('restaurants',), ('bars',), ('parks',)]
-2023-02-01 10:53:46,058:INFO:Run with dataset TravelReviews.reviews
-2023-02-01 10:53:59,115:DEBUG:Connecting to mongodb://127.0.0.1:27017/TravelReviews.reviews
-2023-02-01 10:53:59,118:DEBUG:Core on this worker: 2
-2023-02-01 10:54:11,330:INFO:Dataset size: 3000000
-2023-02-01 10:54:11,719:INFO:Automatically created 5 partitions
-2023-02-01 10:54:11,727:INFO:Created SON instance with: partitions=5, support=0.3, chunk support=0.06
-2023-02-01 10:59:54,242:DEBUG:Extracted itemsets: ['clubs', 'theaters', 'religious', ('clubs', 'restaurants'), ('clubs', 'theaters'), ('restaurants', 'galleries'), ('beaches', 'galleries'), ('clubs', 'resorts'), ('clubs', 'galleries'), ('bars', 'parks'), ('museums', 'resorts'), ('theaters', 'bars'), ('museums', 'galleries'), ('museums', 'religious'), ('theaters', 'galleries'), ('restaurants', 'parks'), ('beaches', 'bars'), 'beaches', ('theaters', 'parks'), ('museums', 'parks'), ('clubs', 'museums'), ('beaches', 'parks'), ('religious', 'bars'), ('clubs', 'parks'), ('restaurants', 'religious'), 'galleries', 'museums', 'resorts', 'restaurants', 'bars', ('parks', 'resorts'), ('galleries', 'bars'), ('museums', 'restaurants'), ('galleries', 'resorts'), ('religious', 'resorts'), ('clubs', 'bars'), ('museums', 'beaches'), ('restaurants', 'resorts'), ('bars', 'resorts'), ('beaches', 'resorts'), ('clubs', 'religious'), ('beaches', 'religious'), ('clubs', 'beaches'), ('beaches', 'restaurants'), ('museums', 'bars'), ('religious', 'restaurants'), 'parks', ('theaters', 'beaches'), ('religious', 'parks'), ('theaters', 'restaurants'), ('restaurants', 'bars'), ('museums', 'theaters'), ('galleries', 'parks'), ('religious', 'galleries'), ('theaters', 'resorts'), ('theaters', 'religious')]
-2023-02-01 11:01:57,265:DEBUG:Found itemsets: [('clubs', 1128959), ('theaters', 1128876), ('religious', 1128443), ('beaches', 1129295), ('galleries', 1129298), ('museums', 1129635), ('resorts', 1128849), ('restaurants', 1128772), ('bars', 1128747), ('parks', 1127851)]
-2023-02-01 11:01:57,265:INFO:Resulting itemsets: [('clubs',), ('theaters',), ('religious',), ('beaches',), ('galleries',), ('museums',), ('resorts',), ('restaurants',), ('bars',), ('parks',)]
-2023-02-01 11:08:13,372:INFO:Run with dataset BenchmarkData.data
-2023-02-01 11:08:23,454:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
-2023-02-01 11:08:23,455:DEBUG:Core on this worker: 4
-2023-02-01 11:08:25,725:INFO:Dataset size: 11032
-2023-02-01 11:08:25,912:INFO:Automatically created 1 partitions
-2023-02-01 11:08:25,915:INFO:Support set to 0.5
-2023-02-01 11:08:25,916:INFO:Created SON instance with: partitions=1, support=0.5, chunk support=0.5
-2023-02-01 11:08:58,714:DEBUG:Extracted itemsets: []
-2023-02-01 11:08:59,816:DEBUG:Found itemsets: []
-2023-02-01 11:08:59,816:INFO:Resulting itemsets: []
-2023-02-01 11:08:59,869:INFO:Support set to 0.5
-2023-02-01 11:08:59,874:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
-2023-02-01 11:09:12,042:DEBUG:Extracted itemsets: ['22720', '85123A', '47566']
-2023-02-01 11:09:12,741:DEBUG:Found itemsets: []
-2023-02-01 11:09:12,741:INFO:Resulting itemsets: []
-2023-02-01 11:11:53,480:INFO:Run with dataset BenchmarkData.data
-2023-02-01 11:12:02,230:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
-2023-02-01 11:12:02,233:DEBUG:Core on this worker: 4
-2023-02-01 11:12:09,106:INFO:Dataset size: 1500000
-2023-02-01 11:12:09,332:INFO:Automatically created 4 partitions
-2023-02-01 11:12:09,338:INFO:Support set to 0.5
-2023-02-01 11:12:09,339:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
-2023-02-01 11:14:52,229:DEBUG:Extracted itemsets: ['clubs', 'museums', 'theaters', ('clubs', 'restaurants'), ('theaters', 'parks'), ('theaters', 'restaurants'), ('museums', 'parks'), ('clubs', 'religious'), ('museums', 'restaurants'), ('galleries', 'resorts'), ('theaters', 'bars'), ('clubs', 'bars'), ('clubs', 'parks'), ('museums', 'religious'), ('museums', 'bars'), ('theaters', 'religious'), 'beaches', ('theaters', 'beaches'), ('restaurants', 'galleries'), ('parks', 'resorts'), ('bars', 'resorts'), ('beaches', 'religious'), ('beaches', 'parks'), ('religious', 'resorts'), ('clubs', 'beaches'), ('museums', 'beaches'), ('beaches', 'restaurants'), ('religious', 'galleries'), ('restaurants', 'resorts'), ('beaches', 'bars'), 'religious', 'restaurants', 'bars', 'parks', ('clubs', 'theaters'), ('religious', 'parks'), ('restaurants', 'bars'), ('beaches', 'galleries'), ('museums', 'theaters'), ('beaches', 'resorts'), ('clubs', 'museums'), ('bars', 'parks'), ('religious', 'bars'), ('restaurants', 'religious'), ('restaurants', 'parks'), ('religious', 'restaurants'), 'galleries', 'resorts', ('clubs', 'resorts'), ('clubs', 'galleries'), ('galleries', 'parks'), ('galleries', 'bars'), ('museums', 'resorts'), ('museums', 'galleries'), ('theaters', 'galleries'), ('theaters', 'resorts')]
-2023-02-01 11:15:50,074:DEBUG:Found itemsets: []
-2023-02-01 11:15:50,080:INFO:Resulting itemsets: []
-2023-02-01 11:15:51,671:INFO:Support set to 0.5
-2023-02-01 11:15:51,675:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
-2023-02-01 11:17:27,881:DEBUG:Extracted itemsets: ['clubs', 'museums', 'theaters', ('clubs', 'restaurants'), ('theaters', 'parks'), ('theaters', 'restaurants'), ('museums', 'parks'), ('clubs', 'religious'), ('museums', 'restaurants'), ('galleries', 'resorts'), ('theaters', 'bars'), ('clubs', 'bars'), ('clubs', 'parks'), ('museums', 'religious'), ('museums', 'bars'), ('theaters', 'religious'), 'beaches', ('theaters', 'beaches'), ('restaurants', 'galleries'), ('parks', 'resorts'), ('bars', 'resorts'), ('beaches', 'religious'), ('beaches', 'parks'), ('religious', 'resorts'), ('clubs', 'beaches'), ('museums', 'beaches'), ('beaches', 'restaurants'), ('religious', 'galleries'), ('restaurants', 'resorts'), ('beaches', 'bars'), 'religious', 'restaurants', 'bars', 'parks', ('clubs', 'theaters'), ('religious', 'parks'), ('restaurants', 'bars'), ('beaches', 'galleries'), ('museums', 'theaters'), ('beaches', 'resorts'), ('clubs', 'museums'), ('bars', 'parks'), ('religious', 'bars'), ('restaurants', 'religious'), ('restaurants', 'parks'), ('religious', 'restaurants'), 'galleries', 'resorts', ('clubs', 'resorts'), ('clubs', 'galleries'), ('galleries', 'parks'), ('galleries', 'bars'), ('museums', 'resorts'), ('museums', 'galleries'), ('theaters', 'galleries'), ('theaters', 'resorts')]
-2023-02-01 11:18:00,113:DEBUG:Found itemsets: []
-2023-02-01 11:18:00,113:INFO:Resulting itemsets: []
-2023-02-01 11:33:08,241:INFO:Run with dataset BenchmarkData.data
-2023-02-01 11:33:18,716:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
-2023-02-01 11:33:18,717:DEBUG:Core on this worker: 4
-2023-02-01 11:33:26,031:INFO:Dataset size: 1500000
-2023-02-01 11:33:26,339:INFO:Automatically created 4 partitions
-2023-02-01 11:33:26,343:INFO:Support set to 0.5
-2023-02-01 11:33:26,344:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
-2023-02-01 11:35:55,639:DEBUG:Extracted itemsets: ['clubs', 'museums', 'theaters', ('clubs', 'restaurants'), ('theaters', 'parks'), ('theaters', 'restaurants'), ('museums', 'parks'), ('clubs', 'religious'), ('museums', 'restaurants'), ('galleries', 'resorts'), ('theaters', 'bars'), ('clubs', 'bars'), ('clubs', 'parks'), ('museums', 'religious'), ('museums', 'bars'), ('theaters', 'religious'), 'beaches', ('theaters', 'beaches'), ('restaurants', 'galleries'), ('parks', 'resorts'), ('bars', 'resorts'), ('beaches', 'religious'), ('beaches', 'parks'), ('religious', 'resorts'), ('clubs', 'beaches'), ('museums', 'beaches'), ('beaches', 'restaurants'), ('religious', 'galleries'), ('restaurants', 'resorts'), ('beaches', 'bars'), 'religious', 'restaurants', 'bars', 'parks', ('clubs', 'theaters'), ('religious', 'parks'), ('restaurants', 'bars'), ('beaches', 'galleries'), ('museums', 'theaters'), ('beaches', 'resorts'), ('clubs', 'museums'), ('bars', 'parks'), ('religious', 'bars'), ('restaurants', 'religious'), ('restaurants', 'parks'), 'galleries', 'resorts', ('clubs', 'resorts'), ('clubs', 'galleries'), ('galleries', 'parks'), ('galleries', 'bars'), ('museums', 'resorts'), ('museums', 'galleries'), ('theaters', 'galleries'), ('theaters', 'resorts')]
-2023-02-01 11:36:48,359:DEBUG:Found itemsets: []
-2023-02-01 11:36:48,359:INFO:Resulting itemsets: []
-2023-02-01 11:36:50,017:INFO:Support set to 0.5
-2023-02-01 11:36:50,021:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
-2023-02-01 11:38:31,379:DEBUG:Extracted itemsets: ['clubs', 'museums', 'theaters', ('clubs', 'restaurants'), ('theaters', 'parks'), ('theaters', 'restaurants'), ('museums', 'parks'), ('clubs', 'religious'), ('museums', 'restaurants'), ('galleries', 'resorts'), ('theaters', 'bars'), ('clubs', 'bars'), ('clubs', 'parks'), ('museums', 'religious'), ('museums', 'bars'), ('theaters', 'religious'), 'beaches', ('theaters', 'beaches'), ('restaurants', 'galleries'), ('parks', 'resorts'), ('bars', 'resorts'), ('beaches', 'religious'), ('beaches', 'parks'), ('religious', 'resorts'), ('clubs', 'beaches'), ('museums', 'beaches'), ('beaches', 'restaurants'), ('religious', 'galleries'), ('restaurants', 'resorts'), ('beaches', 'bars'), 'religious', 'restaurants', 'bars', 'parks', ('clubs', 'theaters'), ('religious', 'parks'), ('restaurants', 'bars'), ('beaches', 'galleries'), ('museums', 'theaters'), ('beaches', 'resorts'), ('clubs', 'museums'), ('bars', 'parks'), ('religious', 'bars'), ('restaurants', 'religious'), ('restaurants', 'parks'), ('religious', 'restaurants'), 'galleries', 'resorts', ('clubs', 'resorts'), ('clubs', 'galleries'), ('galleries', 'parks'), ('galleries', 'bars'), ('museums', 'resorts'), ('museums', 'galleries'), ('theaters', 'galleries'), ('theaters', 'resorts')]
-2023-02-01 11:39:07,630:DEBUG:Found itemsets: []
-2023-02-01 11:39:07,630:INFO:Resulting itemsets: []
-2023-02-01 11:49:56,045:INFO:Run with dataset BenchmarkData.data
-2023-02-01 11:50:09,652:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
-2023-02-01 11:50:09,653:DEBUG:Core on this worker: 4
-2023-02-01 11:50:18,447:INFO:Dataset size: 1500000
-2023-02-01 11:50:18,814:INFO:Automatically created 4 partitions
-2023-02-01 11:50:18,823:INFO:Support set to 0.9
-2023-02-01 11:50:18,825:INFO:Created SON instance with: partitions=4, support=0.9, chunk support=0.225
-2023-02-01 11:51:43,560:DEBUG:Extracted itemsets: ['clubs', 'museums', 'theaters', 'beaches', 'religious', 'restaurants', 'bars', 'parks', 'galleries', 'resorts']
-2023-02-01 11:52:12,244:DEBUG:Found itemsets: []
-2023-02-01 11:52:12,244:INFO:Resulting itemsets: []
-2023-02-01 11:52:13,721:INFO:Support set to 0.9
-2023-02-01 11:52:13,725:INFO:Created SON instance with: partitions=4, support=0.9, chunk support=0.225
-2023-02-01 11:52:45,973:DEBUG:Extracted itemsets: ['clubs', 'museums', 'theaters', 'beaches', 'religious', 'restaurants', 'bars', 'parks', 'galleries', 'resorts']
-2023-02-01 11:52:55,889:DEBUG:Found itemsets: []
-2023-02-01 11:52:55,889:INFO:Resulting itemsets: []
+2023-02-14 14:14:31,043:INFO:Run with dataset BenchmarkData.data
+2023-02-14 14:14:48,160:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 14:14:48,160:DEBUG:Core on this worker: 8
+2023-02-14 14:14:49,932:INFO:Dataset size: 363
+2023-02-14 14:14:50,087:INFO:Automatically created 1 partitions
+2023-02-14 14:14:50,111:INFO:Support set to 0.1
+2023-02-14 14:14:50,112:INFO:Created SON instance with: partitions=1, support=0.1, chunk support=0.1
+2023-02-14 14:15:08,978:INFO:Support set to 0.1
+2023-02-14 14:15:08,983:INFO:Created SON instance with: partitions=8, support=0.1, chunk support=0.0125
+2023-02-14 14:38:27,799:INFO:Run with dataset BenchmarkData.data
+2023-02-14 14:38:55,015:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 14:38:55,016:DEBUG:Core on this worker: 8
+2023-02-14 14:38:56,807:INFO:Dataset size: 1815
+2023-02-14 14:38:56,930:INFO:Automatically created 1 partitions
+2023-02-14 14:38:56,952:INFO:Support set to 0.1
+2023-02-14 14:38:56,953:INFO:Created SON instance with: partitions=1, support=0.1, chunk support=0.1
+2023-02-14 14:47:54,773:INFO:Run with dataset BenchmarkData.data
+2023-02-14 14:48:10,579:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 14:48:10,580:DEBUG:Core on this worker: 8
+2023-02-14 14:48:13,878:INFO:Dataset size: 1815
+2023-02-14 14:48:14,100:INFO:Automatically created 1 partitions
+2023-02-14 14:48:14,100:DEBUG:Forced 8 partitions
+2023-02-14 14:48:16,626:INFO:Partitions after forcing: 8
+2023-02-14 14:48:16,666:INFO:Support set to 0.1
+2023-02-14 14:48:16,667:INFO:Created SON instance with: partitions=8, support=0.1, chunk support=0.0125
+2023-02-14 15:12:05,349:INFO:Run with dataset BenchmarkData.data
+2023-02-14 15:12:14,542:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 15:12:14,543:DEBUG:Core on this worker: 8
+2023-02-14 15:12:16,154:INFO:Dataset size: 3631
+2023-02-14 15:12:16,259:INFO:Automatically created 1 partitions
+2023-02-14 15:12:16,333:INFO:Support set to 0.1
+2023-02-14 15:12:16,338:INFO:Created SON instance with: partitions=8, support=0.1, chunk support=0.0125
+2023-02-14 15:14:54,854:INFO:Run with dataset BenchmarkData.data
+2023-02-14 15:15:04,657:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 15:15:04,657:DEBUG:Core on this worker: 8
+2023-02-14 15:15:06,261:INFO:Dataset size: 3631
+2023-02-14 15:15:06,377:INFO:Automatically created 1 partitions
+2023-02-14 15:15:06,396:INFO:Support set to 0.1
+2023-02-14 15:15:06,396:INFO:Created SON instance with: partitions=1, support=0.1, chunk support=0.1
+2023-02-14 15:26:11,074:INFO:Support set to 0.1
+2023-02-14 15:26:11,077:INFO:Created SON instance with: partitions=8, support=0.1, chunk support=0.0125
+2023-02-14 15:29:34,498:INFO:Run with dataset BenchmarkData.data
+2023-02-14 15:29:44,690:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 15:29:44,691:DEBUG:Core on this worker: 8
+2023-02-14 15:29:47,339:INFO:Dataset size: 300000
+2023-02-14 15:29:47,441:INFO:Automatically created 1 partitions
+2023-02-14 15:29:47,441:DEBUG:Forced 1 partitions
+2023-02-14 15:29:51,630:INFO:Partitions after forcing: 1
+2023-02-14 15:29:51,650:INFO:Support set to 0.5
+2023-02-14 15:29:51,651:INFO:Created SON instance with: partitions=1, support=0.5, chunk support=0.5
+2023-02-14 15:30:01,232:INFO:Support set to 0.5
+2023-02-14 15:30:01,235:INFO:Created SON instance with: partitions=1, support=0.5, chunk support=0.5
+2023-02-14 15:30:09,915:INFO:Run with dataset BenchmarkData.data
+2023-02-14 15:30:09,968:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 15:30:09,969:DEBUG:Core on this worker: 8
+2023-02-14 15:30:10,765:INFO:Dataset size: 300000
+2023-02-14 15:30:10,811:INFO:Automatically created 1 partitions
+2023-02-14 15:30:10,811:DEBUG:Forced 4 partitions
+2023-02-14 15:30:14,372:INFO:Partitions after forcing: 4
+2023-02-14 15:30:14,382:INFO:Support set to 0.5
+2023-02-14 15:30:14,382:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
+2023-02-14 15:30:47,625:INFO:Support set to 0.5
+2023-02-14 15:30:47,626:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
+2023-02-14 15:31:20,341:INFO:Run with dataset BenchmarkData.data
+2023-02-14 15:31:20,379:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 15:31:20,380:DEBUG:Core on this worker: 8
+2023-02-14 15:31:21,218:INFO:Dataset size: 300000
+2023-02-14 15:31:21,247:INFO:Automatically created 1 partitions
+2023-02-14 15:31:21,247:DEBUG:Forced 8 partitions
+2023-02-14 15:31:24,593:INFO:Partitions after forcing: 8
+2023-02-14 15:31:24,600:INFO:Support set to 0.5
+2023-02-14 15:31:24,600:INFO:Created SON instance with: partitions=8, support=0.5, chunk support=0.0625
+2023-02-14 15:32:08,916:INFO:Support set to 0.5
+2023-02-14 15:32:08,917:INFO:Created SON instance with: partitions=8, support=0.5, chunk support=0.0625
+2023-02-14 15:46:51,676:INFO:Run with dataset BenchmarkData.data
+2023-02-14 15:47:02,769:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 15:47:02,769:DEBUG:Core on this worker: 8
+2023-02-14 15:47:04,360:INFO:Dataset size: 3631
+2023-02-14 15:47:04,461:INFO:Automatically created 1 partitions
+2023-02-14 15:47:04,461:DEBUG:Forced 1 partitions
+2023-02-14 15:47:05,587:INFO:Partitions after forcing: 1
+2023-02-14 15:47:05,601:INFO:Support set to 0.5
+2023-02-14 15:47:05,601:INFO:Created SON instance with: partitions=1, support=0.5, chunk support=0.5
+2023-02-14 15:58:06,246:INFO:Support set to 0.5
+2023-02-14 15:58:06,249:INFO:Created SON instance with: partitions=1, support=0.5, chunk support=0.5
+2023-02-14 16:09:04,360:INFO:Run with dataset BenchmarkData.data
+2023-02-14 16:09:04,399:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 16:09:04,399:DEBUG:Core on this worker: 8
+2023-02-14 16:09:04,507:INFO:Dataset size: 3631
+2023-02-14 16:09:04,541:INFO:Automatically created 1 partitions
+2023-02-14 16:09:04,541:DEBUG:Forced 4 partitions
+2023-02-14 16:09:05,118:INFO:Partitions after forcing: 4
+2023-02-14 16:09:05,126:INFO:Support set to 0.5
+2023-02-14 16:09:05,127:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
+2023-02-14 16:10:50,276:INFO:Support set to 0.5
+2023-02-14 16:10:50,277:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
+2023-02-14 16:12:36,272:INFO:Run with dataset BenchmarkData.data
+2023-02-14 16:12:36,303:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 16:12:36,303:DEBUG:Core on this worker: 8
+2023-02-14 16:12:36,413:INFO:Dataset size: 3631
+2023-02-14 16:12:36,444:INFO:Automatically created 1 partitions
+2023-02-14 16:12:36,444:DEBUG:Forced 8 partitions
+2023-02-14 16:12:37,015:INFO:Partitions after forcing: 8
+2023-02-14 16:12:37,023:INFO:Support set to 0.5
+2023-02-14 16:12:37,023:INFO:Created SON instance with: partitions=8, support=0.5, chunk support=0.0625
+2023-02-14 16:13:54,114:INFO:Support set to 0.5
+2023-02-14 16:13:54,114:INFO:Created SON instance with: partitions=8, support=0.5, chunk support=0.0625
+2023-02-14 16:19:21,260:INFO:Run with dataset BenchmarkData.data
+2023-02-14 16:19:29,824:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 16:19:29,825:DEBUG:Core on this worker: 8
+2023-02-14 16:19:31,421:INFO:Dataset size: 3631
+2023-02-14 16:19:31,533:INFO:Automatically created 1 partitions
+2023-02-14 16:19:31,533:DEBUG:Forced 4 partitions
+2023-02-14 16:19:32,808:INFO:Partitions after forcing: 4
+2023-02-14 16:19:32,823:INFO:Support set to 0.5
+2023-02-14 16:19:32,824:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
+2023-02-14 16:21:16,683:INFO:Support set to 0.5
+2023-02-14 16:21:16,686:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
+2023-02-14 16:23:14,676:INFO:Run with dataset BenchmarkData.data
+2023-02-14 16:23:14,728:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 16:23:14,729:DEBUG:Core on this worker: 8
+2023-02-14 16:23:14,846:INFO:Dataset size: 3631
+2023-02-14 16:23:14,884:INFO:Automatically created 1 partitions
+2023-02-14 16:23:14,884:DEBUG:Forced 8 partitions
+2023-02-14 16:23:15,444:INFO:Partitions after forcing: 8
+2023-02-14 16:23:15,458:INFO:Support set to 0.5
+2023-02-14 16:23:15,458:INFO:Created SON instance with: partitions=8, support=0.5, chunk support=0.0625
+2023-02-14 16:24:31,009:INFO:Support set to 0.5
+2023-02-14 16:24:31,009:INFO:Created SON instance with: partitions=8, support=0.5, chunk support=0.0625
+2023-02-14 16:25:45,452:INFO:Run with dataset BenchmarkData.data
+2023-02-14 16:25:45,508:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 16:25:45,508:DEBUG:Core on this worker: 8
+2023-02-14 16:25:45,766:INFO:Dataset size: 18156
+2023-02-14 16:25:45,794:INFO:Automatically created 1 partitions
+2023-02-14 16:25:45,794:DEBUG:Forced 4 partitions
+2023-02-14 16:25:47,990:INFO:Partitions after forcing: 4
+2023-02-14 16:25:47,998:INFO:Support set to 0.5
+2023-02-14 16:25:47,998:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
+2023-02-14 17:08:40,904:INFO:Run with dataset BenchmarkData.data
+2023-02-14 17:08:58,820:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 17:08:58,821:DEBUG:Core on this worker: 8
+2023-02-14 17:09:01,302:INFO:Dataset size: 3631
+2023-02-14 17:09:01,477:INFO:Automatically created 1 partitions
+2023-02-14 17:09:01,478:DEBUG:Forced 4 partitions
+2023-02-14 17:09:03,788:INFO:Partitions after forcing: 4
+2023-02-14 17:09:03,816:INFO:Support set to 0.5
+2023-02-14 17:09:03,817:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
+2023-02-14 17:11:25,043:INFO:Support set to 0.5
+2023-02-14 17:11:25,048:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
+2023-02-14 17:13:25,097:INFO:Run with dataset BenchmarkData.data
+2023-02-14 17:13:25,137:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 17:13:25,137:DEBUG:Core on this worker: 8
+2023-02-14 17:13:25,337:INFO:Dataset size: 3631
+2023-02-14 17:13:25,402:INFO:Automatically created 1 partitions
+2023-02-14 17:13:25,402:DEBUG:Forced 8 partitions
+2023-02-14 17:13:26,037:INFO:Partitions after forcing: 8
+2023-02-14 17:13:26,047:INFO:Support set to 0.5
+2023-02-14 17:13:26,047:INFO:Created SON instance with: partitions=8, support=0.5, chunk support=0.0625
+2023-02-14 17:14:58,599:INFO:Support set to 0.5
+2023-02-14 17:14:58,599:INFO:Created SON instance with: partitions=8, support=0.5, chunk support=0.0625
+2023-02-14 17:16:22,002:INFO:Run with dataset BenchmarkData.data
+2023-02-14 17:16:22,064:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 17:16:22,064:DEBUG:Core on this worker: 8
+2023-02-14 17:16:22,404:INFO:Dataset size: 18156
+2023-02-14 17:16:22,441:INFO:Automatically created 1 partitions
+2023-02-14 17:16:22,441:DEBUG:Forced 4 partitions
+2023-02-14 17:16:24,803:INFO:Partitions after forcing: 4
+2023-02-14 17:16:24,810:INFO:Support set to 0.5
+2023-02-14 17:16:24,811:INFO:Created SON instance with: partitions=4, support=0.5, chunk support=0.125
+2023-02-14 17:44:56,010:INFO:Run with dataset BenchmarkData.data
+2023-02-14 17:45:07,056:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 17:45:07,057:DEBUG:Core on this worker: 8
+2023-02-14 17:45:09,593:INFO:Dataset size: 18156
+2023-02-14 17:45:09,733:INFO:Automatically created 1 partitions
+2023-02-14 17:45:09,755:INFO:Support set to 0.1
+2023-02-14 17:45:09,756:INFO:Created SON instance with: partitions=1, support=0.1, chunk support=0.1
+2023-02-14 17:50:00,899:INFO:Run with dataset BenchmarkData.data
+2023-02-14 17:50:13,484:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 17:50:13,485:DEBUG:Core on this worker: 8
+2023-02-14 17:50:15,941:INFO:Dataset size: 18156
+2023-02-14 17:50:16,074:INFO:Automatically created 1 partitions
+2023-02-14 17:50:16,074:DEBUG:Forced 8 partitions
+2023-02-14 17:50:20,240:INFO:Partitions after forcing: 8
+2023-02-14 17:50:20,261:INFO:Support set to 0.1
+2023-02-14 17:50:20,262:INFO:Created SON instance with: partitions=8, support=0.1, chunk support=0.0125
+2023-02-14 17:53:14,495:INFO:Run with dataset BenchmarkData.data
+2023-02-14 17:53:26,162:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 17:53:26,162:DEBUG:Core on this worker: 8
+2023-02-14 17:53:28,613:INFO:Dataset size: 18156
+2023-02-14 17:53:28,868:INFO:Automatically created 1 partitions
+2023-02-14 17:53:28,868:DEBUG:Forced 16 partitions
+2023-02-14 17:53:33,100:INFO:Partitions after forcing: 16
+2023-02-14 17:53:33,120:INFO:Support set to 0.1
+2023-02-14 17:53:33,120:INFO:Created SON instance with: partitions=16, support=0.1, chunk support=0.00625
+2023-02-14 18:18:51,392:INFO:Support set to 0.1
+2023-02-14 18:18:51,398:INFO:Created SON instance with: partitions=16, support=0.1, chunk support=0.00625
+2023-02-14 18:36:35,350:INFO:Run with dataset BenchmarkData.data
+2023-02-14 18:36:52,040:INFO:Run with dataset BenchmarkData.data
+2023-02-14 18:37:04,373:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 18:37:04,374:DEBUG:Core on this worker: 8
+2023-02-14 18:37:06,146:INFO:Dataset size: 1815
+2023-02-14 18:37:06,291:INFO:Automatically created 1 partitions
+2023-02-14 18:37:06,291:DEBUG:Forced 16 partitions
+2023-02-14 18:37:07,523:INFO:Partitions after forcing: 16
+2023-02-14 18:37:07,543:INFO:Support set to 0.1
+2023-02-14 18:37:07,543:INFO:Created SON instance with: partitions=16, support=0.1, chunk support=0.00625
+2023-02-14 18:40:03,463:INFO:Run with dataset BenchmarkData.data
+2023-02-14 18:40:18,249:INFO:Run with dataset BenchmarkData.data
+2023-02-14 18:40:31,977:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 18:40:31,978:DEBUG:Core on this worker: 8
+2023-02-14 18:40:35,263:INFO:Dataset size: 1815
+2023-02-14 18:40:35,527:INFO:Automatically created 1 partitions
+2023-02-14 18:40:35,527:DEBUG:Forced 8 partitions
+2023-02-14 18:40:37,449:INFO:Partitions after forcing: 8
+2023-02-14 18:40:37,481:INFO:Support set to 0.2
+2023-02-14 18:40:37,481:INFO:Created SON instance with: partitions=8, support=0.2, chunk support=0.025
+2023-02-14 18:43:28,046:INFO:Run with dataset BenchmarkData.data
+2023-02-14 18:43:41,958:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 18:43:41,959:DEBUG:Core on this worker: 8
+2023-02-14 18:43:44,590:INFO:Dataset size: 1815
+2023-02-14 18:43:44,726:INFO:Automatically created 1 partitions
+2023-02-14 18:43:44,727:DEBUG:Forced 8 partitions
+2023-02-14 18:43:46,612:INFO:Partitions after forcing: 8
+2023-02-14 18:43:46,645:INFO:Support set to 0.2
+2023-02-14 18:43:46,645:INFO:Created SON instance with: partitions=8, support=0.2, chunk support=0.025
+2023-02-14 18:46:11,616:INFO:Run with dataset BenchmarkData.data
+2023-02-14 18:46:21,026:INFO:Run with dataset BenchmarkData.data
+2023-02-14 18:46:32,619:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-14 18:46:32,620:DEBUG:Core on this worker: 8
+2023-02-14 18:46:34,406:INFO:Dataset size: 1815
+2023-02-14 18:46:34,548:INFO:Automatically created 1 partitions
+2023-02-14 18:46:34,548:DEBUG:Forced 8 partitions
+2023-02-14 18:46:35,931:INFO:Partitions after forcing: 8
+2023-02-14 18:46:35,955:INFO:Support set to 0.2
+2023-02-14 18:46:35,955:INFO:Created SON instance with: partitions=8, support=0.2, chunk support=0.025
+2023-02-14 18:47:27,391:INFO:Support set to 0.2
+2023-02-14 18:47:27,396:INFO:Created SON instance with: partitions=8, support=0.2, chunk support=0.025

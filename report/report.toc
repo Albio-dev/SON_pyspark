@@ -1,13 +1,13 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
-\contentsline {section}{\numberline {2}SON}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}SON Algorithm}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Our Implementation}{2}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}First Map}{2}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}First Reduce}{2}{subsubsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.3}Second Map}{3}{subsubsection.2.2.3}%
-\contentsline {subsubsection}{\numberline {2.2.4}Second Reduce}{3}{subsubsection.2.2.4}%
-\contentsline {section}{\numberline {3}apriori}{4}{section.3}%
-\contentsline {section}{\numberline {4}benchmark}{4}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Dataset Sizes}{5}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Partitions count}{5}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Conclusions}{5}{section.5}%
+\contentsline {section}{\numberline {2}SON}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}SON Algorithm}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Our Implementation}{3}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}First Map}{3}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}First Reduce}{3}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Second Map}{4}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Second Reduce}{4}{subsubsection.2.2.4}%
+\contentsline {section}{\numberline {3}apriori}{5}{section.3}%
+\contentsline {section}{\numberline {4}benchmark}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Datasets}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Results}{6}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Conclusions}{6}{section.5}%
