@@ -1,30 +1,223 @@
-2023-02-01 11:07:42,624:Loaded dataset. Using 11032 samples
-2023-02-01 11:07:42,632:Benchmark with support: 0.5, partitions: None, partition_size: None, samples_per_partition: None
-2023-02-01 11:08:13,371:Apriori execution time: 30.738927602767944s
-2023-02-01 11:08:59,816:DB SON execution time: 33.90099883079529s
-2023-02-01 11:09:12,741:Local SON execution time: 12.872602939605713s
-2023-02-01 11:11:46,238:Loaded dataset. Using 1500000 samples
-2023-02-01 11:11:46,659:Benchmark with support: 0.5, partitions: None, partition_size: None, samples_per_partition: None
-2023-02-01 11:11:53,480:Apriori execution time: 6.819938898086548s
-2023-02-01 11:15:50,080:DB SON execution time: 220.74237489700317s
-2023-02-01 11:18:00,113:Local SON execution time: 128.44222950935364s
-2023-02-01 11:33:01,045:Loaded dataset. Using 1500000 samples
-2023-02-01 11:33:01,474:Benchmark with support: 0.5, partitions: None, partition_size: None, samples_per_partition: None
-2023-02-01 11:33:08,241:Apriori execution time: 6.766429424285889s
-2023-02-01 11:33:08,241:Started loading DB data...
-2023-02-01 11:33:26,343:Data loaded.
-2023-02-01 11:36:48,360:DB SON execution time: 202.01670837402344s
-2023-02-01 11:36:48,360:Started loading LOCAL data...
-2023-02-01 11:36:50,010:Data loaded.
-2023-02-01 11:39:07,630:Local SON execution time: 137.61376976966858s
-2023-02-01 11:39:17,149:DB FI execution time: 9.444330930709839s
-2023-02-01 11:49:47,447:Loaded dataset. Using 1500000 samples
-2023-02-01 11:49:47,976:Benchmark with support: 0.9, partitions: None, partition_size: None, samples_per_partition: None
-2023-02-01 11:49:56,045:Apriori execution time: 8.068018674850464s
-2023-02-01 11:49:56,045:Started loading DB data...
-2023-02-01 11:50:18,823:Data loaded.
-2023-02-01 11:52:12,244:DB SON execution time: 113.42068362236023s
-2023-02-01 11:52:12,244:Started loading LOCAL data...
-2023-02-01 11:52:13,721:Data loaded.
-2023-02-01 11:52:55,889:Local SON execution time: 42.16829490661621s
-2023-02-01 11:53:08,319:DB FI execution time: 12.26360535621643s
+2023-02-14 14:33:50,191:Loaded dataset. Using 1815 samples
+2023-02-14 14:33:50,273:Benchmark with support: 0.1, partitions: None, partition_size: None, samples_per_partition: None
+2023-02-14 14:38:27,798:Apriori result: []
+2023-02-14 14:38:27,798:Apriori execution time: 277.52453112602234s
+2023-02-14 14:38:27,798:Started loading DB data...
+2023-02-14 14:38:56,952:Data loaded.
+2023-02-14 14:42:55,120:SON result: []
+2023-02-14 14:42:55,120:DB SON execution time: 238.16784834861755s
+2023-02-14 14:42:55,174:Data loaded.
+2023-02-14 14:42:55,789:Auto result: [Row(items_freqItems=[])]
+2023-02-14 14:42:55,789:DB FI execution time: 0.6143569946289062s
+2023-02-14 14:43:56,927:Loaded dataset. Using 1815 samples
+2023-02-14 14:43:56,978:Benchmark with support: 0.1, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-14 14:47:54,773:Apriori result: []
+2023-02-14 14:47:54,773:Apriori execution time: 237.79486393928528s
+2023-02-14 14:47:54,773:Started loading DB data...
+2023-02-14 14:48:16,666:Data loaded.
+2023-02-14 14:59:59,142:Loaded dataset. Using 3631 samples
+2023-02-14 14:59:59,190:Benchmark with support: 0.1, partitions: None, partition_size: None, samples_per_partition: None
+2023-02-14 15:12:05,348:Apriori result: []
+2023-02-14 15:12:05,348:Apriori execution time: 726.1577212810516s
+2023-02-14 15:12:16,276:Started loading LOCAL data...
+2023-02-14 15:12:16,333:Data loaded.
+2023-02-14 15:13:33,904:SON result: []
+2023-02-14 15:13:33,904:Local SON execution time: 77.57070708274841s
+2023-02-14 15:13:33,964:Data loaded.
+2023-02-14 15:13:35,101:Auto result: [Row(items_freqItems=[['YCHfirvAdL9g2ejWP0sQZA', 'vDR814eDA1avykj_EADjFw', '3Q2p2Aej5Mt4cxOZU5KGTQ', '7XOwOBRmv9F2oamD1hC1EA', 'YfdH8QOFyWewE7MhvQDrXw', 'Fu2C08hxVIqMybOwvth_mQ']])]
+2023-02-14 15:13:35,101:DB FI execution time: 1.1369566917419434s
+2023-02-14 15:14:54,804:Loaded dataset. Using 3631 samples
+2023-02-14 15:14:54,853:Benchmark with support: 0.1, partitions: None, partition_size: None, samples_per_partition: None
+2023-02-14 15:14:54,853:Started loading DB data...
+2023-02-14 15:15:06,396:Data loaded.
+2023-02-14 15:26:11,019:SON result: []
+2023-02-14 15:26:11,019:DB SON execution time: 664.6229503154755s
+2023-02-14 15:26:11,019:Started loading LOCAL data...
+2023-02-14 15:26:11,074:Data loaded.
+2023-02-14 15:27:35,777:SON result: []
+2023-02-14 15:27:35,777:Local SON execution time: 84.70316696166992s
+2023-02-14 15:27:35,834:Data loaded.
+2023-02-14 15:27:36,594:Auto result: [Row(items_freqItems=[['YCHfirvAdL9g2ejWP0sQZA', 'vDR814eDA1avykj_EADjFw', '3Q2p2Aej5Mt4cxOZU5KGTQ', '7XOwOBRmv9F2oamD1hC1EA', 'YfdH8QOFyWewE7MhvQDrXw', 'Fu2C08hxVIqMybOwvth_mQ']])]
+2023-02-14 15:27:36,594:DB FI execution time: 0.759594202041626s
+2023-02-14 15:29:33,984:Loaded dataset. Using 300000 samples
+2023-02-14 15:29:34,498:Benchmark with support: 0.5, partitions: 1, partition_size: None, samples_per_partition: None
+2023-02-14 15:29:34,498:Started loading DB data...
+2023-02-14 15:29:51,650:Data loaded.
+2023-02-14 15:30:01,011:SON result: []
+2023-02-14 15:30:01,011:DB SON execution time: 9.360606908798218s
+2023-02-14 15:30:01,011:Started loading LOCAL data...
+2023-02-14 15:30:01,231:Data loaded.
+2023-02-14 15:30:06,796:SON result: []
+2023-02-14 15:30:06,796:Local SON execution time: 5.563929557800293s
+2023-02-14 15:30:06,862:Data loaded.
+2023-02-14 15:30:09,914:Auto result: [Row(items_freqItems=[])]
+2023-02-14 15:30:09,915:DB FI execution time: 3.0531580448150635s
+2023-02-14 15:30:09,915:Benchmark with support: 0.5, partitions: 4, partition_size: None, samples_per_partition: None
+2023-02-14 15:30:09,915:Started loading DB data...
+2023-02-14 15:30:14,381:Data loaded.
+2023-02-14 15:30:47,400:SON result: []
+2023-02-14 15:30:47,400:DB SON execution time: 33.01784944534302s
+2023-02-14 15:30:47,401:Started loading LOCAL data...
+2023-02-14 15:30:47,625:Data loaded.
+2023-02-14 15:31:17,179:SON result: []
+2023-02-14 15:31:17,179:Local SON execution time: 29.554354429244995s
+2023-02-14 15:31:17,225:Data loaded.
+2023-02-14 15:31:20,341:Auto result: [Row(items_freqItems=[])]
+2023-02-14 15:31:20,341:DB FI execution time: 3.114764451980591s
+2023-02-14 15:31:20,341:Benchmark with support: 0.5, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-14 15:31:20,341:Started loading DB data...
+2023-02-14 15:31:24,600:Data loaded.
+2023-02-14 15:32:08,655:SON result: []
+2023-02-14 15:32:08,655:DB SON execution time: 44.05422019958496s
+2023-02-14 15:32:08,655:Started loading LOCAL data...
+2023-02-14 15:32:08,916:Data loaded.
+2023-02-14 15:32:47,716:SON result: []
+2023-02-14 15:32:47,716:Local SON execution time: 38.79967713356018s
+2023-02-14 15:32:47,762:Data loaded.
+2023-02-14 15:32:50,816:Auto result: [Row(items_freqItems=[])]
+2023-02-14 15:32:50,816:DB FI execution time: 3.053960084915161s
+2023-02-14 15:46:51,627:Loaded dataset. Using 3631 samples
+2023-02-14 15:46:51,675:Benchmark with support: 0.5, partitions: 1, partition_size: None, samples_per_partition: None
+2023-02-14 15:46:51,676:Started loading DB data...
+2023-02-14 15:47:05,601:Data loaded.
+2023-02-14 15:58:06,196:SON result: []
+2023-02-14 15:58:06,196:DB SON execution time: 660.594660282135s
+2023-02-14 15:58:06,197:Started loading LOCAL data...
+2023-02-14 15:58:06,246:Data loaded.
+2023-02-14 16:09:03,441:SON result: []
+2023-02-14 16:09:03,441:Local SON execution time: 657.1946465969086s
+2023-02-14 16:09:03,508:Data loaded.
+2023-02-14 16:09:04,359:Auto result: [Row(items_freqItems=[['YCHfirvAdL9g2ejWP0sQZA', 'vDR814eDA1avykj_EADjFw', '3Q2p2Aej5Mt4cxOZU5KGTQ', '7XOwOBRmv9F2oamD1hC1EA', 'YfdH8QOFyWewE7MhvQDrXw', 'Fu2C08hxVIqMybOwvth_mQ']])]
+2023-02-14 16:09:04,359:DB FI execution time: 0.8504106998443604s
+2023-02-14 16:09:04,360:Benchmark with support: 0.5, partitions: 4, partition_size: None, samples_per_partition: None
+2023-02-14 16:09:04,360:Started loading DB data...
+2023-02-14 16:09:05,126:Data loaded.
+2023-02-14 16:10:50,216:SON result: []
+2023-02-14 16:10:50,216:DB SON execution time: 105.09071755409241s
+2023-02-14 16:10:50,216:Started loading LOCAL data...
+2023-02-14 16:10:50,276:Data loaded.
+2023-02-14 16:12:35,663:SON result: []
+2023-02-14 16:12:35,663:Local SON execution time: 105.38671660423279s
+2023-02-14 16:12:35,717:Data loaded.
+2023-02-14 16:12:36,272:Auto result: [Row(items_freqItems=[['YCHfirvAdL9g2ejWP0sQZA', 'vDR814eDA1avykj_EADjFw', '3Q2p2Aej5Mt4cxOZU5KGTQ', '7XOwOBRmv9F2oamD1hC1EA', 'YfdH8QOFyWewE7MhvQDrXw', 'Fu2C08hxVIqMybOwvth_mQ']])]
+2023-02-14 16:12:36,272:DB FI execution time: 0.5552825927734375s
+2023-02-14 16:12:36,272:Benchmark with support: 0.5, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-14 16:12:36,272:Started loading DB data...
+2023-02-14 16:12:37,023:Data loaded.
+2023-02-14 16:13:54,055:SON result: []
+2023-02-14 16:13:54,055:DB SON execution time: 77.03151082992554s
+2023-02-14 16:13:54,055:Started loading LOCAL data...
+2023-02-14 16:13:54,114:Data loaded.
+2023-02-14 16:15:02,449:SON result: []
+2023-02-14 16:15:02,449:Local SON execution time: 68.3351469039917s
+2023-02-14 16:15:02,499:Data loaded.
+2023-02-14 16:15:02,942:Auto result: [Row(items_freqItems=[['YCHfirvAdL9g2ejWP0sQZA', 'vDR814eDA1avykj_EADjFw', '3Q2p2Aej5Mt4cxOZU5KGTQ', '7XOwOBRmv9F2oamD1hC1EA', 'YfdH8QOFyWewE7MhvQDrXw', 'Fu2C08hxVIqMybOwvth_mQ']])]
+2023-02-14 16:15:02,942:DB FI execution time: 0.44362568855285645s
+2023-02-14 16:19:21,212:Loaded dataset. Using 3631 samples
+2023-02-14 16:19:21,260:Benchmark with support: 0.5, partitions: 4, partition_size: None, samples_per_partition: None
+2023-02-14 16:19:21,260:Started loading DB data...
+2023-02-14 16:19:32,823:Data loaded.
+2023-02-14 16:21:16,622:SON result: []
+2023-02-14 16:21:16,622:DB SON execution time: 103.79975748062134s
+2023-02-14 16:21:16,622:Started loading LOCAL data...
+2023-02-14 16:21:16,682:Data loaded.
+2023-02-14 16:23:13,631:SON result: []
+2023-02-14 16:23:13,631:Local SON execution time: 116.94750714302063s
+2023-02-14 16:23:13,690:Data loaded.
+2023-02-14 16:23:14,674:Auto result: [Row(items_freqItems=[['YCHfirvAdL9g2ejWP0sQZA', 'vDR814eDA1avykj_EADjFw', '3Q2p2Aej5Mt4cxOZU5KGTQ', '7XOwOBRmv9F2oamD1hC1EA', 'YfdH8QOFyWewE7MhvQDrXw', 'Fu2C08hxVIqMybOwvth_mQ']])]
+2023-02-14 16:23:14,675:DB FI execution time: 0.9850308895111084s
+2023-02-14 16:23:14,675:Benchmark with support: 0.5, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-14 16:23:14,676:Started loading DB data...
+2023-02-14 16:23:15,457:Data loaded.
+2023-02-14 16:24:30,959:SON result: []
+2023-02-14 16:24:30,959:DB SON execution time: 75.50043535232544s
+2023-02-14 16:24:30,959:Started loading LOCAL data...
+2023-02-14 16:24:31,008:Data loaded.
+2023-02-14 16:25:41,879:SON result: []
+2023-02-14 16:25:41,879:Local SON execution time: 70.86967897415161s
+2023-02-14 16:25:41,926:Data loaded.
+2023-02-14 16:25:42,435:Auto result: [Row(items_freqItems=[['YCHfirvAdL9g2ejWP0sQZA', 'vDR814eDA1avykj_EADjFw', '3Q2p2Aej5Mt4cxOZU5KGTQ', '7XOwOBRmv9F2oamD1hC1EA', 'YfdH8QOFyWewE7MhvQDrXw', 'Fu2C08hxVIqMybOwvth_mQ']])]
+2023-02-14 16:25:42,436:DB FI execution time: 0.5106329917907715s
+2023-02-14 16:25:45,422:Loaded dataset. Using 18156 samples
+2023-02-14 16:25:45,452:Benchmark with support: 0.5, partitions: 4, partition_size: None, samples_per_partition: None
+2023-02-14 16:25:45,452:Started loading DB data...
+2023-02-14 16:25:47,997:Data loaded.
+2023-02-14 17:08:40,818:Loaded dataset. Using 3631 samples
+2023-02-14 17:08:40,903:Benchmark with support: 0.5, partitions: 4, partition_size: None, samples_per_partition: None
+2023-02-14 17:08:40,904:Started loading DB data...
+2023-02-14 17:09:03,816:Data loaded.
+2023-02-14 17:11:24,984:SON result: []
+2023-02-14 17:11:24,984:DB SON execution time: 141.16784000396729s
+2023-02-14 17:11:24,984:Started loading LOCAL data...
+2023-02-14 17:11:25,043:Data loaded.
+2023-02-14 17:13:24,011:SON result: []
+2023-02-14 17:13:24,011:Local SON execution time: 118.96730422973633s
+2023-02-14 17:13:24,089:Data loaded.
+2023-02-14 17:13:25,097:Auto result: [Row(items_freqItems=[['YCHfirvAdL9g2ejWP0sQZA', 'vDR814eDA1avykj_EADjFw', '3Q2p2Aej5Mt4cxOZU5KGTQ', '7XOwOBRmv9F2oamD1hC1EA', 'YfdH8QOFyWewE7MhvQDrXw', 'Fu2C08hxVIqMybOwvth_mQ']])]
+2023-02-14 17:13:25,097:DB FI execution time: 1.0068707466125488s
+2023-02-14 17:13:25,097:Benchmark with support: 0.5, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-14 17:13:25,097:Started loading DB data...
+2023-02-14 17:13:26,046:Data loaded.
+2023-02-14 17:14:58,530:SON result: []
+2023-02-14 17:14:58,531:DB SON execution time: 92.48444628715515s
+2023-02-14 17:14:58,531:Started loading LOCAL data...
+2023-02-14 17:14:58,598:Data loaded.
+2023-02-14 17:16:18,523:SON result: []
+2023-02-14 17:16:18,523:Local SON execution time: 79.92357897758484s
+2023-02-14 17:16:18,576:Data loaded.
+2023-02-14 17:16:19,027:Auto result: [Row(items_freqItems=[['YCHfirvAdL9g2ejWP0sQZA', 'vDR814eDA1avykj_EADjFw', '3Q2p2Aej5Mt4cxOZU5KGTQ', '7XOwOBRmv9F2oamD1hC1EA', 'YfdH8QOFyWewE7MhvQDrXw', 'Fu2C08hxVIqMybOwvth_mQ']])]
+2023-02-14 17:16:19,028:DB FI execution time: 0.45197510719299316s
+2023-02-14 17:16:21,972:Loaded dataset. Using 18156 samples
+2023-02-14 17:16:22,002:Benchmark with support: 0.5, partitions: 4, partition_size: None, samples_per_partition: None
+2023-02-14 17:16:22,002:Started loading DB data...
+2023-02-14 17:16:24,810:Data loaded.
+2023-02-14 17:44:55,979:Loaded dataset. Using 18156 samples
+2023-02-14 17:44:56,010:Benchmark with support: 0.1, partitions: None, partition_size: None, samples_per_partition: None
+2023-02-14 17:44:56,010:Started loading DB data...
+2023-02-14 17:45:09,755:Data loaded.
+2023-02-14 17:50:00,848:Loaded dataset. Using 18156 samples
+2023-02-14 17:50:00,898:Benchmark with support: 0.1, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-14 17:50:00,899:Started loading DB data...
+2023-02-14 17:50:20,261:Data loaded.
+2023-02-14 17:53:14,467:Loaded dataset. Using 18156 samples
+2023-02-14 17:53:14,495:Benchmark with support: 0.1, partitions: 16, partition_size: None, samples_per_partition: None
+2023-02-14 17:53:14,495:Started loading DB data...
+2023-02-14 17:53:33,119:Data loaded.
+2023-02-14 18:18:51,166:SON result: []
+2023-02-14 18:18:51,167:DB SON execution time: 1518.0466029644012s
+2023-02-14 18:18:51,167:Started loading LOCAL data...
+2023-02-14 18:18:51,392:Data loaded.
+2023-02-14 18:36:35,320:Loaded dataset. Using 18156 samples
+2023-02-14 18:36:35,350:Benchmark with support: 0.1, partitions: 16, partition_size: None, samples_per_partition: None
+2023-02-14 18:36:35,350:Started loading DB data...
+2023-02-14 18:36:51,984:Loaded dataset. Using 1815 samples
+2023-02-14 18:36:52,039:Benchmark with support: 0.1, partitions: 16, partition_size: None, samples_per_partition: None
+2023-02-14 18:36:52,039:Started loading DB data...
+2023-02-14 18:37:07,543:Data loaded.
+2023-02-14 18:40:03,411:Loaded dataset. Using 1815 samples
+2023-02-14 18:40:03,462:Benchmark with support: 0.1, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-14 18:40:03,463:Started loading DB data...
+2023-02-14 18:40:18,188:Loaded dataset. Using 1815 samples
+2023-02-14 18:40:18,248:Benchmark with support: 0.2, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-14 18:40:18,249:Started loading DB data...
+2023-02-14 18:40:37,480:Data loaded.
+2023-02-14 18:43:27,993:Loaded dataset. Using 1815 samples
+2023-02-14 18:43:28,046:Benchmark with support: 0.2, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-14 18:43:28,046:Started loading DB data...
+2023-02-14 18:43:46,645:Data loaded.
+2023-02-14 18:46:11,530:Loaded dataset. Using 1815 samples
+2023-02-14 18:46:11,615:Benchmark with support: 0.2, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-14 18:46:11,616:Started loading DB data...
+2023-02-14 18:46:20,960:Loaded dataset. Using 1815 samples
+2023-02-14 18:46:21,024:Benchmark with support: 0.2, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-14 18:46:21,025:Started loading DB data...
+2023-02-14 18:46:35,954:Data loaded.
+2023-02-14 18:47:27,355:SON result: []
+2023-02-14 18:47:27,355:DB SON execution time: 51.4006552696228s
+2023-02-14 18:47:27,355:Started loading LOCAL data...
+2023-02-14 18:47:27,391:Data loaded.
+2023-02-14 18:48:28,561:SON result: []
+2023-02-14 18:48:28,561:Local SON execution time: 61.17000436782837s
+2023-02-14 18:48:28,646:Data loaded.
+2023-02-14 18:48:29,468:Auto result: [Row(items_freqItems=[['IpGCkkI9GIHixg22etXwrA', 'yYqYNLx68myCOKh6oOTpaA', 'EZ0s91SoRvZHwFByFdfpjA', 'EZ0s91SoRvZHwFByFdfpjA', 'EnoPmr1gGNayKYIYSo7pvA'], ['XW0sI_JTYDYPwrHLOLYQPA', 'CXWhSRudoYczxQBsKHSLNA', 'w4H9KbUATEpwMdWdEKlvpw', 'R0y5IO1MNwcAScmJMowN-g', 'cMek0znt-hd77vItCifitw', 'sxTvgQ7khAw56Lxenz7ZNg', 'Vd24R1OnKzw8WjHLrrDTtw', 'lGzPpQOqULUjYsVTh7pXwg', 'tD8jeSWfwTCP9R92QmGxhQ', 'cBBHBLz7dhDdrhgohbGZmQ', '-3Tgw9br9O68emgrgFj48Q', 'K8ZE-biKcFS6rdb332bRUw', 'H7ovh9ZQWxjcX_R8RaCBxg', 'mMp1Gy28MEsZgZzGAo7diw', '6wB4-Qeb6lMK6799IitdLQ', 'LaNC8-1OyFAZZH1HU-z9BA', 'Znid_azpcHmdRMHGicmkWA', 'ZPpKE6prGI2aU8WBs6e_rg', 'H7ovh9ZQWxjcX_R8RaCBxg', 'IgSrBreFy_b2L_AN3axa9w', '832aotsPvYX_cxknEg2p2g', 'hebk5ZclwNsk4je1j_uVQQ', 'wy-FrNKJvBBBXa4-6Z950A', 'PeKqZ414yF7WuKfqbpOlAg', 'sn-X1lbJx6vejrKYT2DPeA', 'yJn_2TtUmKfo4rtwkBKpOQ', 'qVrbv-z4dDtAVUjLtSgJqg', 'JqZYNIVBS0FYpTsJDlaHGg', 'WsYny0rvcJPUXpuKeEYcjA', 'N_uzlWBUMV4_NOq4KJvQXA', 'sBSizGLzyxRjvR-vbt-Oxg', 'eV6wMkE_VIJDUrRTHOnTVQ', 'Od5pi48HASfjIfRidFW2IQ', 'xIVgzGK5X-CJ48AEnsTwLg', 'bdx8L6O9-DaQ9lZ5MqblHA', 'RQTtZ4BLYCHGUISOZrFrIg', 'Em22JzTGXbMOkuXyM1P4RA', 'rVWon2JfT_FN8FpgZo8Pdg', 'uvkN1gf9VyVArxB-8qAaoQ', 'HP9uq8QA61P8fm40lwHcQA', 'Zt4ZTjzBB2PAMuSNvsI_hQ', '2Fhn9QvBYxt_NtMIiXXwdw', 'rYYSuDAi6tQhUVRv_sl1IA', 'sWLXpqNLhIBi_4QOPwKPog', 'xaACh6NlTLfulHLDfgAj0g', 'j2O9oVXPnehNTUF3tmVeTw', 'zRBrksyLFp_XGHusSu-3xg', '2JQQPOEdIjx7jOCn55pcvA', 'HF2LzC5aBIr5r1IDcoUWHw', 's5WLV6XqkOQr9c1TqDcTpw', 'iI9h8ez2rZ89blAv_y1MDQ', 'RhbIvuZEsz1-ohS1mdgRlQ', 'pM-TX3B3TtH_SyS1xjkaiw', 'rk6zUoGb5an3AUNy-H8Onw', 'WN5yZHvfCzyc6LDFoGMQVg', 'qZRkEfGiSrTnuiFj9A-lig', 'XCJ7LH6OlRRwUQeLrHKr4Q', 'fesmBxZyYQSElqWD11F4bQ', 'keBv05MsMFBd0Hu98vXThQ', 'az9Ups94S6JXVT-QyVgGhg', 'XCJ7LH6OlRRwUQeLrHKr4Q', 'N3bpA04dSyzH-13kxOdf8A', '0qcoLKEqG22qRLSxtbZBKA', 'KZW0c_75fvmZ5_9iHeJAkg', 'FEwPxhjdVKxSPVQQAHX2gg', 'wCkSFgI-FYe7uMmQjsMogA', 'p3W1aXg6m8ml3hvc8Cnefg', 'amz1IwXU5KTSRBx23UUO9g', '3kEhIazVH8LZl9aiWHPmEA', '4gFSkjmeqHCVZAxVyqT43Q', '_fYg0gxUBGdzJDYLnJwrTQ', 'fBSjMqX53ohXitroJAptkQ'], ['tXHQMF8LeTjN5j-tZTAdtQ', 'QeZmjeEefdJ3bdbAeIHfWA', 'L8P5OWO1Jh4B2HLa1Fnbng', 'DCSe39OVjUfz6Bn28xjnPQ', '56fP-02ya5JdCcL--IpifA', '9AtjXTV47KvP2KOvn6BAGA', 'PLdNNcecADe4Mt9V9d9J4g']])]
+2023-02-14 18:48:29,468:DB FI execution time: 0.8218014240264893s

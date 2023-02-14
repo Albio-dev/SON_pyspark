@@ -9,11 +9,9 @@ ToDo SON:
 - [X] 4. sommare le occorrenze di ogni basket e calcolare il supporto totale
 
 ToDo progetto:
- - [ ] Far funzionare le funzioni con tuple chiave-valore
  - [X] Controllare la composizione e la suddivisione delle partizioni (che non si rompa con partizioni vuote)(che venga partizionato automaticamente)
  - [X] Distribuire il calcolo della dimensione di ogni partizione (no basket_sizes)
- - [ ] Fare una compilazione degli item in numeri
  - [X] Fare il benchmark tra apriori sequenziale e SON
- - [ ] Provare altri dataset
- - [ ] Confrontare con la funzione di spark (DataFrame.freqItems)
+ - [X] Provare altri dataset
+ - [X] Confrontare con la funzione di spark (DataFrame.freqItems)
  - [ ] Stilare il report

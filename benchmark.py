@@ -48,10 +48,10 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     benchmark_logger.info(f'Benchmark with support: {support}, partitions: {partitions}, partition_size: {partition_size}, samples_per_partition: {samples_per_partition}')
 
     # Run and time apriori
-    # start_time = time.time()
-    # apriori_result = apriori.apriori(dataset, support)
-    # benchmark_logger.info(f'Apriori result: {apriori_result}')
-    # benchmark_logger.info(f'Apriori execution time: {time.time() - start_time}s')
+    #start_time = time.time()
+    #apriori_result = apriori.apriori(dataset, support)
+    #benchmark_logger.info(f'Apriori result: {apriori_result}')
+    #benchmark_logger.info(f'Apriori execution time: {time.time() - start_time}s')
 
     # Use logging if so specified
     if logging:
@@ -72,24 +72,24 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
 
     
     #spark = SparkContext(appName='benchmark')
-    # spark = data.context
-    # benchmark_logger.info(f'Started loading LOCAL data...')
-    # data = spark.parallelize(dataset, partitions)
-    # benchmark_logger.info(f'Data loaded.')
-    # start_time = time.time()
-    # SON_result = Frequent_Itemset.execute_SON(data, support, logger).collect()
-    # benchmark_logger.info(f'SON result: {SON_result}')
-    # benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
+    spark = data.context
+    benchmark_logger.info(f'Started loading LOCAL data...')
+    data = spark.parallelize(dataset, partitions)
+    benchmark_logger.info(f'Data loaded.')
+    start_time = time.time()
+    SON_result = Frequent_Itemset.execute_SON(data, support, logger).collect()
+    benchmark_logger.info(f'SON result: {SON_result}')
+    benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
 
     # Automatic frequent itemsets
     # DB
-    # ss = SparkSession.getActiveSession()
-    # input_data = ss.read.format("mongodb").load()
-    # benchmark_logger.info(f'Data loaded.')
-    # start_time = time.time()
-    # auto_result = input_data.freqItems(('items',), support=support).collect()
-    # benchmark_logger.info(f'Auto result: {auto_result}')
-    # benchmark_logger.info(f'DB FI execution time: {time.time() - start_time}s')
+    ss = SparkSession.getActiveSession()
+    input_data = ss.read.format("mongodb").load()
+    benchmark_logger.info(f'Data loaded.')
+    start_time = time.time()
+    auto_result = input_data.freqItems(('items',), support=support).collect()
+    benchmark_logger.info(f'Auto result: {auto_result}')
+    benchmark_logger.info(f'DB FI execution time: {time.time() - start_time}s')
 
     
     '''
@@ -129,6 +129,7 @@ def online_retail():
 
 # Function to load and preprocess data
 def tripadvisor_review():
+    '''
     client = MongoClient('mongodb://localhost:27017')
     db = client.TravelReviews
     collection = db.reviews
@@ -138,30 +139,43 @@ def tripadvisor_review():
     for document in collection.find():
         dataset.append(document['items'])
 
+    return dataset'''
+    file = './Datasets/Travel Reviews/tripadvisor_review.csv'
+    dataset = []
+    # Open the file and read it
+    with open(file, 'r') as f:
+        csv_reader = csv.DictReader(f, delimiter=',')
+
+        for line in csv_reader:
+            # Create a document with the following structure:
+            # {"_id": n, "good_scores": ["A", "B", "C", ...]}
+            # With n identifying the user and A, B, C, ... the good scores that the user gave
+            # We arbitrarily consider that a score of 2.5 or more is a good score
+            good_score_limit = 2.5
+            dataset.append([i for i, j in list(line.items())[1:] if float(j) >= good_score_limit])
+
     return dataset
-    # file = './Datasets/Travel Reviews/tripadvisor_review.csv'
-    # dataset = []
-    # # Open the file and read it
-    # with open(file, 'r') as f:
-    #     csv_reader = csv.DictReader(f, delimiter=',')
 
-    #     for line in csv_reader:
-    #         # Create a document with the following structure:
-    #         # {"_id": n, "good_scores": ["A", "B", "C", ...]}
-    #         # With n identifying the user and A, B, C, ... the good scores that the user gave
-    #         # We arbitrarily consider that a score of 2.5 or more is a good score
-    #         good_score_limit = 2.5
-    #         dataset.append([i for i, j in list(line.items())[1:] if float(j) >= good_score_limit])
+def user_business():
+    
+    data = {}
 
-    # return dataset
+    with open("./Datasets/user_business/user_business.csv", "r") as f:
+        for i in f.readlines():
+            user, business = i.strip().split(',')
+            try:
+                data[business].append(user)
+            except:
+                data[business] = [user]
 
+    return list(data.values())
 
 # Code to execute when the file is executed directly
 if __name__ == '__main__':
     # Example benchmark with half the dataset, automatic partitioning and support 0.5
     # data = load_data(online_retail, perc_ds = .5, ip = 'localhost', port = 60000)
-    data = load_data(tripadvisor_review, perc_ds = 1, ip = 'localhost')
-    benchmark(data, support = .1)
+    data = load_data(user_business, perc_ds = .05, ip = 'localhost')
+    benchmark(data, support = .2, partitions = 8)
 
 
 def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_partition):
@@ -169,7 +183,7 @@ def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_pa
     # Iterate over every required data percentage
     for i in data_sizes:
         # data = load_data(online_retail, perc_ds = i, port = '60000')
-        data = load_data(tripadvisor_review, perc_ds = i)
+        data = load_data(user_business, perc_ds = i)
         # Iterate over partitions and supports
         
         
