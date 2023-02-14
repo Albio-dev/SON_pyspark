@@ -34,7 +34,6 @@ def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr =
 
     if logger is not None:
         logger.info(f'Run with dataset {datasets[selectedDataset]}')
-        
 
     spark = (SparkSession.builder
         # .appName("SON")
@@ -109,4 +108,4 @@ if __name__ == '__main__':
     data = loadspark(logger = logger, port = '27017', forcePartitions=None)
 
     # Execute algorithm
-    execute_SON(data, 0.3)
+    print(execute_SON(data, 0.9))

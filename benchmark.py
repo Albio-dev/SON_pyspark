@@ -48,9 +48,10 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     benchmark_logger.info(f'Benchmark with support: {support}, partitions: {partitions}, partition_size: {partition_size}, samples_per_partition: {samples_per_partition}')
 
     # Run and time apriori
-    start_time = time.time()
-    apriori_result = apriori.apriori(dataset, support)
-    benchmark_logger.info(f'Apriori execution time: {time.time() - start_time}s')
+    # start_time = time.time()
+    # apriori_result = apriori.apriori(dataset, support)
+    # benchmark_logger.info(f'Apriori result: {apriori_result}')
+    # benchmark_logger.info(f'Apriori execution time: {time.time() - start_time}s')
 
     # Use logging if so specified
     if logging:
@@ -61,31 +62,34 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     # selectedDataset: dataset to use
     # forcePartitions: how many partitions to use. None for automatic
     benchmark_logger.info(f'Started loading DB data...')
-    data = Frequent_Itemset.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, partition_size=partition_size, samples_per_partition=samples_per_partition)
+    data = Frequent_Itemset.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, partition_size=partition_size, samples_per_partition=samples_per_partition).cache()
     benchmark_logger.info(f'Data loaded.')
     # Run and time SON
     start_time = time.time()
-    SON_result = Frequent_Itemset.execute_SON(data, support, logger)
+    SON_result = Frequent_Itemset.execute_SON(data, support, logger).collect()
+    benchmark_logger.info(f'SON result: {SON_result}')
     benchmark_logger.info(f'DB SON execution time: {time.time() - start_time}s')
 
     
     #spark = SparkContext(appName='benchmark')
-    spark = data.context
-    benchmark_logger.info(f'Started loading LOCAL data...')
-    data = spark.parallelize(dataset, partitions)
-    benchmark_logger.info(f'Data loaded.')
-    start_time = time.time()
-    SON_result = Frequent_Itemset.execute_SON(data, support, logger)
-    benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
+    # spark = data.context
+    # benchmark_logger.info(f'Started loading LOCAL data...')
+    # data = spark.parallelize(dataset, partitions)
+    # benchmark_logger.info(f'Data loaded.')
+    # start_time = time.time()
+    # SON_result = Frequent_Itemset.execute_SON(data, support, logger).collect()
+    # benchmark_logger.info(f'SON result: {SON_result}')
+    # benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
 
     # Automatic frequent itemsets
     # DB
-    ss = SparkSession.getActiveSession()
-    input_data = ss.read.format("mongodb").load()
-    start_time = time.time()
-    auto_result = input_data.freqItems(('items',), support=support)
-    benchmark_logger.info(f'DB FI execution time: {time.time() - start_time}s')
-    
+    # ss = SparkSession.getActiveSession()
+    # input_data = ss.read.format("mongodb").load()
+    # benchmark_logger.info(f'Data loaded.')
+    # start_time = time.time()
+    # auto_result = input_data.freqItems(('items',), support=support).collect()
+    # benchmark_logger.info(f'Auto result: {auto_result}')
+    # benchmark_logger.info(f'DB FI execution time: {time.time() - start_time}s')
 
     
     '''
@@ -156,8 +160,8 @@ def tripadvisor_review():
 if __name__ == '__main__':
     # Example benchmark with half the dataset, automatic partitioning and support 0.5
     # data = load_data(online_retail, perc_ds = .5, ip = 'localhost', port = 60000)
-    data = load_data(tripadvisor_review, perc_ds = .5, ip = 'localhost')
-    benchmark(data, support = .9)
+    data = load_data(tripadvisor_review, perc_ds = 1, ip = 'localhost')
+    benchmark(data, support = .1)
 
 
 def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_partition):
