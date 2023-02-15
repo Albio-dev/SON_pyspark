@@ -36,11 +36,12 @@ def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr =
         logger.info(f'Run with dataset {datasets[selectedDataset]}')
 
     spark = (SparkSession.builder
-        # .appName("SON")
         .master("local[*]")
         .config('spark.jars.packages', 'org.mongodb.spark:mongo-spark-connector:10.0.2')
         .config("spark.mongodb.read.connection.uri", f"mongodb://{db_addr}:{port}/{datasets[selectedDataset]}")
         .config("spark.mongodb.write.connection.uri", f"mongodb://{db_addr}:{port}/{datasets[selectedDataset]}")
+        .config('spark.executor.memory', '4g')
+        .config('spark.driver.memory', '4g')
         .getOrCreate()
         )
     if partition_size is not None:
@@ -67,23 +68,6 @@ def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr =
     data = input_data.rdd.mapPartitions(lambda x: [j.items for j in x])
     return data
 
-
-# Preprocessing: trasformare gli item in numeri
-#items = {i: items[i] for i in items if counts[items[i]] >= support}
-'''
-items = {}
-    index = 0
-    # List of counts for each item
-    # The i-th element of the list is the count of the i-th item
-    counts = []
-    for s in scores:
-        for i in s:
-            if i not in items:
-                items[i] = index
-                index += 1
-                counts.append(0)
-            counts[items[i]] += 1
-'''
 
 # SON execution function given the parameters
 # data: the data to use SON onto. A pyspark RDD is required

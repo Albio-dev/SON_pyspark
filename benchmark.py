@@ -48,10 +48,10 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     benchmark_logger.info(f'Benchmark with support: {support}, partitions: {partitions}, partition_size: {partition_size}, samples_per_partition: {samples_per_partition}')
 
     # Run and time apriori
-    #start_time = time.time()
-    #apriori_result = apriori.apriori(dataset, support)
-    #benchmark_logger.info(f'Apriori result: {apriori_result}')
-    #benchmark_logger.info(f'Apriori execution time: {time.time() - start_time}s')
+    start_time = time.time()
+    apriori_result = apriori.apriori(dataset, support)
+    benchmark_logger.info(f'Apriori result: {apriori_result}')
+    benchmark_logger.info(f'Apriori execution time: {time.time() - start_time}s')
 
     # Use logging if so specified
     if logging:
@@ -71,15 +71,6 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     benchmark_logger.info(f'DB SON execution time: {time.time() - start_time}s')
 
     
-    #spark = SparkContext(appName='benchmark')
-    spark = data.context
-    benchmark_logger.info(f'Started loading LOCAL data...')
-    data = spark.parallelize(dataset, partitions)
-    benchmark_logger.info(f'Data loaded.')
-    start_time = time.time()
-    SON_result = Frequent_Itemset.execute_SON(data, support, logger).collect()
-    benchmark_logger.info(f'SON result: {SON_result}')
-    benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
 
     # Automatic frequent itemsets
     # DB
@@ -90,15 +81,20 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     auto_result = input_data.freqItems(('items',), support=support).collect()
     benchmark_logger.info(f'Auto result: {auto_result}')
     benchmark_logger.info(f'DB FI execution time: {time.time() - start_time}s')
-
     
-    '''
-    # Check whether results are equal
-    if apriori_result == SON_result:
-        benchmark_logger.info(f'Functions results were equal')
-    else:
-        benchmark_logger.info(f'Functions results were not equal: apriori: {apriori_result}, SON: {SON_result}')
-    '''
+    data.context.stop()
+
+    spark = SparkContext(appName='benchmark')
+    #spark = data.context
+    benchmark_logger.info(f'Started loading LOCAL data...')
+    data = spark.parallelize(dataset, partitions)
+    benchmark_logger.info(f'Data loaded.')
+    start_time = time.time()
+    SON_result = Frequent_Itemset.execute_SON(data, support, logger).collect()
+    benchmark_logger.info(f'SON result: {SON_result}')
+    benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
+
+    spark.stop()
 
 
 
