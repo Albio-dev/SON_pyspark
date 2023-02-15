@@ -184,10 +184,16 @@ def apriori(data, support):
 	Both a  `simple' dataset and a `harder' one were used to compare performances.
 
 	\subsection{Datasets}
+	The first "easier" dataset is from UCI \href{https://archive.ics.uci.edu/ml/datasets/Travel+Reviews#}{(Travel Reviews)} and is composed of averages of scores that every user gave to some
+	categories of places on TripAdvisor. We rounded the scores to integer and kept only the ones above 3.\\
+	This way our dataset is in the form:\\
+	user\_id: category1, category2 \ldots\\
+
+	The second "harder" dataset is a collection of 
 
 	\subsection{Results}
 	% Setups (CPU, MEMORY, MONGO)
-	These tests were performed on an 8 core $i5-8250U @1.6GHz$, with 16 GB DDR4 memory $@2400MHz$
+	These tests were performed on an 8 core $i5-8250U @1.6GHz$, with 16 GB DDR4 memory $@2400MHz$, but both the driver and the executor were capped at 4 GB.
 	
 	
 	\section{Conclusions}

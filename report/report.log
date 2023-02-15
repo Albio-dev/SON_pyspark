@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.12)  14 FEB 2023 18:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.12)  15 FEB 2023 10:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -377,22 +377,27 @@ Overfull \hbox (39.0039pt too wide) in paragraph at lines 170--171
 [][][][][][][][][][][][][][][] 
  []
 
-[5 <./images//cartesian.PNG> <./images//counts.PNG> <./images//totals.PNG>] [6] (report.aux)
+[5 <./images//cartesian.PNG> <./images//counts.PNG> <./images//totals.PNG>]
+Underfull \hbox (badness 10000) in paragraph at lines 187--191
+
+ []
+
+[6] (report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: BE6C09AEBE94C8A3142692E81DD03322;1393.
  ) 
 Here is how much of TeX's memory you used:
- 11508 strings out of 476406
- 185966 string characters out of 2789567
+ 11509 strings out of 476406
+ 185982 string characters out of 2789567
  1883787 words of memory out of 3000000
- 31691 multiletter control sequences out of 15000+600000
+ 31692 multiletter control sequences out of 15000+600000
  516841 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,8n,77p,484b,1327s stack positions out of 10000i,1000n,20000p,200000b,80000s
 <C:/Users/albio/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/albio/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/albio/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/albio/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/albio/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/albio/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/albio/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/albio/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/albio/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/albio/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/albio/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (6 pages, 204855 bytes).
+Output written on report.pdf (6 pages, 205946 bytes).
 PDF statistics:
- 231 PDF objects out of 1000 (max. 8388607)
+ 232 PDF objects out of 1000 (max. 8388607)
  61 named destinations out of 1000 (max. 500000)
  140 words of extra memory for PDF output out of 10000 (max. 10000000)
 

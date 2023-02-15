@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1676396966 "c:/Users/albio/Desktop/Magistrale/(2022-2023) Big data/Progetto/Frequent_itemset_spark/report/report.tex" "report.pdf" "report" 1676396968 0
+["pdflatex"] 1676452864 "c:/Users/albio/Desktop/Magistrale/(2022-2023) Big data/Progetto/Frequent_itemset_spark/report/report.tex" "report.pdf" "report" 1676452867 0
   "C:/Users/albio/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1675760154 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/albio/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1673533255 23168606 69916b488e721286ff25c954b74da300 ""
   "C:/Users/albio/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmbx10.tfm" 1136765053 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -76,7 +76,7 @@
   "C:/Users/albio/AppData/Local/Programs/MiKTeX/tex/latex/refcount/refcount.sty" 1576433952 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "C:/Users/albio/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657797096 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "C:/Users/albio/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "c:/Users/albio/Desktop/Magistrale/(2022-2023) Big data/Progetto/Frequent_itemset_spark/report/report.tex" 1676396965 9887 7f2c1eb7c41a2fd19c9e031a50f6ddf4 ""
+  "c:/Users/albio/Desktop/Magistrale/(2022-2023) Big data/Progetto/Frequent_itemset_spark/report/report.tex" 1676452862 10570 62eff09f7609eac906b2e570fc675e65 ""
   "images//Baskets.PNG" 1674928111 22040 53f5ebcf3c73bbaa52551d499acc8a18 ""
   "images//Batch_fi.PNG" 1674929706 7106 2c80e660c84d8624dd613cafca0abea5 ""
   "images//candidates.PNG" 1674931642 3615 0b4d7a5720688416c0885e4fa2d7d112 ""
@@ -84,10 +84,10 @@
   "images//counts.PNG" 1674933597 10459 ce143a5c583926a8bf4f1ed823a145ae ""
   "images//grouped.PNG" 1674930672 4830 cece76bcf9c85aef9deee7233a9fc7d6 ""
   "images//totals.PNG" 1674933959 5366 ef9e9138b6caa9ef682dce3a02c9539e ""
-  "report.aux" 1676396968 3387 32056fd67a8c575b14c8eb3d78a4dc67 "pdflatex"
-  "report.out" 1676396968 1393 be6c09aebe94c8a3142692e81dd03322 "pdflatex"
-  "report.tex" 1676396965 9887 7f2c1eb7c41a2fd19c9e031a50f6ddf4 ""
-  "report.toc" 1676396968 980 d6cf3d38aa9dcc056732d3b85734d476 "pdflatex"
+  "report.aux" 1676452866 3387 32056fd67a8c575b14c8eb3d78a4dc67 "pdflatex"
+  "report.out" 1676452866 1393 be6c09aebe94c8a3142692e81dd03322 "pdflatex"
+  "report.tex" 1676452862 10570 62eff09f7609eac906b2e570fc675e65 ""
+  "report.toc" 1676452866 980 d6cf3d38aa9dcc056732d3b85734d476 "pdflatex"
   (generated)
   "report.aux"
   "report.log"
