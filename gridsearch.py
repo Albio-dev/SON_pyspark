@@ -1,6 +1,6 @@
 import benchmark
 
-data_sizes = [.01,.05,.1, .15, .2, .25, .3]
+data_sizes = [.01, .05, .1, .15, .2, .25, .3, .5, .8, 1]
 partitions = [8]
 supports = [.9]
 

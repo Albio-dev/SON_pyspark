@@ -49,6 +49,7 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
 
     # Run and time apriori
     start_time = time.time()
+    benchmark_logger.info(f'Starting Apriori execution')
     apriori_result = apriori.apriori(dataset, support)
     benchmark_logger.info(f'Apriori result: {apriori_result}')
     benchmark_logger.info(f'Apriori execution time: {time.time() - start_time}s')
@@ -61,9 +62,8 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     # Load spark session with specified parameters
     # selectedDataset: dataset to use
     # forcePartitions: how many partitions to use. None for automatic
-    benchmark_logger.info(f'Started loading DB data...')
+    benchmark_logger.info(f'Starting DB execution...')
     data = Frequent_Itemset.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, partition_size=partition_size, samples_per_partition=samples_per_partition).cache()
-    benchmark_logger.info(f'Data loaded.')
     # Run and time SON
     start_time = time.time()
     SON_result = Frequent_Itemset.execute_SON(data, support, logger).collect()
@@ -76,7 +76,7 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     # DB
     ss = SparkSession.getActiveSession()
     input_data = ss.read.format("mongodb").load()
-    benchmark_logger.info(f'Data loaded.')
+    benchmark_logger.info(f'Starting method execution.')
     start_time = time.time()
     auto_result = input_data.freqItems(('items',), support=support).collect()
     benchmark_logger.info(f'Auto result: {auto_result}')
@@ -86,9 +86,8 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
 
     spark = SparkContext(appName='benchmark')
     #spark = data.context
-    benchmark_logger.info(f'Started loading LOCAL data...')
+    benchmark_logger.info(f'Starting LOCAL execution...')
     data = spark.parallelize(dataset, partitions)
-    benchmark_logger.info(f'Data loaded.')
     start_time = time.time()
     SON_result = Frequent_Itemset.execute_SON(data, support, logger).collect()
     benchmark_logger.info(f'SON result: {SON_result}')
@@ -170,7 +169,7 @@ def user_business():
 if __name__ == '__main__':
     # Example benchmark with half the dataset, automatic partitioning and support 0.5
     # data = load_data(online_retail, perc_ds = .5, ip = 'localhost', port = 60000)
-    data = load_data(user_business, perc_ds = .05, ip = 'localhost')
+    data = load_data(online_retail, perc_ds = .05, ip = 'localhost')
     benchmark(data, support = .2, partitions = 8)
 
 
@@ -179,7 +178,7 @@ def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_pa
     # Iterate over every required data percentage
     for i in data_sizes:
         # data = load_data(online_retail, perc_ds = i, port = '60000')
-        data = load_data(user_business, perc_ds = i)
+        data = load_data(online_retail, perc_ds = i)
         # Iterate over partitions and supports
         
         

@@ -73,3 +73,338 @@
 2023-02-15 10:36:18,182:Local SON execution time: 37.666181802749634s
 2023-02-15 10:36:21,115:Loaded dataset. Using 3631 samples
 2023-02-15 10:36:21,167:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-15 10:49:27,112:Apriori result: []
+2023-02-15 10:49:27,113:Apriori execution time: 785.9450323581696s
+2023-02-15 10:49:27,113:Started loading DB data...
+2023-02-15 10:49:29,544:Data loaded.
+2023-02-15 10:51:03,905:SON result: []
+2023-02-15 10:51:03,906:DB SON execution time: 94.36088132858276s
+2023-02-15 10:51:03,978:Data loaded.
+2023-02-15 10:51:04,589:Auto result: [Row(items_freqItems=[['YCHfirvAdL9g2ejWP0sQZA', 'vDR814eDA1avykj_EADjFw', '3Q2p2Aej5Mt4cxOZU5KGTQ', '7XOwOBRmv9F2oamD1hC1EA', 'YfdH8QOFyWewE7MhvQDrXw', 'Fu2C08hxVIqMybOwvth_mQ']])]
+2023-02-15 10:51:04,589:DB FI execution time: 0.6119556427001953s
+2023-02-15 10:51:06,076:Started loading LOCAL data...
+2023-02-15 10:51:06,128:Data loaded.
+2023-02-15 10:52:31,311:SON result: []
+2023-02-15 10:52:31,311:Local SON execution time: 85.18379759788513s
+2023-02-15 10:52:34,719:Loaded dataset. Using 5446 samples
+2023-02-15 10:52:34,777:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+
+8 partitions
+2023-02-15 11:01:43,326:Loaded dataset. Using 30009 samples
+2023-02-15 11:01:43,493:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-15 11:01:43,493:Starting Apriori execution
+2023-02-15 11:01:43,615:Apriori result: []
+2023-02-15 11:01:43,616:Apriori execution time: 0.12366914749145508s
+2023-02-15 11:01:43,616:Starting DB execution...
+2023-02-15 11:02:42,205:SON result: []
+2023-02-15 11:02:42,205:DB SON execution time: 41.38446259498596s
+2023-02-15 11:02:42,297:Starting method execution.
+2023-02-15 11:02:43,339:Auto result: [Row(items_freqItems=[['museums', 'resorts']])]
+2023-02-15 11:02:43,340:DB FI execution time: 1.0432090759277344s
+2023-02-15 11:02:45,562:Starting LOCAL execution...
+2023-02-15 11:03:18,777:SON result: []
+2023-02-15 11:03:18,778:Local SON execution time: 33.172642946243286s
+2023-02-15 11:03:49,963:Loaded dataset. Using 150049 samples
+2023-02-15 11:03:50,135:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-15 11:03:50,135:Starting Apriori execution
+2023-02-15 11:03:50,623:Apriori result: []
+2023-02-15 11:03:50,624:Apriori execution time: 0.48865675926208496s
+2023-02-15 11:03:50,624:Starting DB execution...
+2023-02-15 11:04:40,921:SON result: []
+2023-02-15 11:04:40,921:DB SON execution time: 45.117862939834595s
+2023-02-15 11:04:40,992:Starting method execution.
+2023-02-15 11:04:42,876:Auto result: [Row(items_freqItems=[['restaurants', 'beaches', 'theaters']])]
+2023-02-15 11:04:42,877:DB FI execution time: 1.8835105895996094s
+2023-02-15 11:04:45,097:Starting LOCAL execution...
+2023-02-15 11:05:22,312:SON result: []
+2023-02-15 11:05:22,312:Local SON execution time: 37.157299280166626s
+2023-02-15 11:05:56,075:Loaded dataset. Using 300098 samples
+2023-02-15 11:05:56,264:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-15 11:05:56,265:Starting Apriori execution
+2023-02-15 11:05:57,423:Apriori result: []
+2023-02-15 11:05:57,423:Apriori execution time: 1.1579408645629883s
+2023-02-15 11:05:57,423:Starting DB execution...
+2023-02-15 11:07:05,633:SON result: []
+2023-02-15 11:07:05,633:DB SON execution time: 60.15884327888489s
+2023-02-15 11:07:05,697:Starting method execution.
+2023-02-15 11:07:09,668:Auto result: [Row(items_freqItems=[])]
+2023-02-15 11:07:09,668:DB FI execution time: 3.970405340194702s
+2023-02-15 11:07:12,234:Starting LOCAL execution...
+2023-02-15 11:08:00,247:SON result: []
+2023-02-15 11:08:00,247:Local SON execution time: 47.88882231712341s
+2023-02-15 11:08:33,407:Loaded dataset. Using 450147 samples
+2023-02-15 11:08:33,568:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-15 11:08:33,568:Starting Apriori execution
+2023-02-15 11:08:35,051:Apriori result: []
+2023-02-15 11:08:35,051:Apriori execution time: 1.4830632209777832s
+2023-02-15 11:08:35,051:Starting DB execution...
+2023-02-15 11:09:53,728:SON result: []
+2023-02-15 11:09:53,728:DB SON execution time: 68.23654007911682s
+2023-02-15 11:09:53,783:Starting method execution.
+2023-02-15 11:09:59,918:Auto result: [Row(items_freqItems=[['galleries', 'bars']])]
+2023-02-15 11:09:59,918:DB FI execution time: 6.135506629943848s
+2023-02-15 11:10:01,976:Starting LOCAL execution...
+2023-02-15 11:10:58,546:SON result: []
+2023-02-15 11:10:58,546:Local SON execution time: 56.37060880661011s
+2023-02-15 11:11:34,214:Loaded dataset. Using 600196 samples
+2023-02-15 11:11:34,373:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-15 11:11:34,373:Starting Apriori execution
+2023-02-15 11:11:36,318:Apriori result: []
+2023-02-15 11:11:36,318:Apriori execution time: 1.944559097290039s
+2023-02-15 11:11:36,318:Starting DB execution...
+2023-02-15 11:13:10,193:SON result: []
+2023-02-15 11:13:10,193:DB SON execution time: 80.35162472724915s
+2023-02-15 11:13:10,248:Starting method execution.
+2023-02-15 11:13:18,968:Auto result: [Row(items_freqItems=[])]
+2023-02-15 11:13:18,968:DB FI execution time: 8.720584154129028s
+2023-02-15 11:13:20,583:Starting LOCAL execution...
+2023-02-15 11:14:26,802:SON result: []
+2023-02-15 11:14:26,802:Local SON execution time: 65.97829937934875s
+2023-02-15 11:15:06,028:Loaded dataset. Using 750245 samples
+2023-02-15 11:15:06,212:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-15 11:15:06,212:Starting Apriori execution
+2023-02-15 11:15:08,597:Apriori result: []
+2023-02-15 11:15:08,597:Apriori execution time: 2.3856499195098877s
+2023-02-15 11:15:08,597:Starting DB execution...
+2023-02-15 11:16:54,595:SON result: []
+2023-02-15 11:16:54,595:DB SON execution time: 89.02715182304382s
+2023-02-15 11:16:54,647:Starting method execution.
+2023-02-15 11:17:04,838:Auto result: [Row(items_freqItems=[['galleries', 'clubs', 'bars', 'restaurants', 'resorts', 'beaches', 'religious']])]
+2023-02-15 11:17:04,838:DB FI execution time: 10.1903817653656s
+2023-02-15 11:17:07,058:Starting LOCAL execution...
+2023-02-15 11:18:23,246:SON result: []
+2023-02-15 11:18:23,247:Local SON execution time: 75.90807700157166s
+2023-02-15 11:19:04,153:Loaded dataset. Using 900294 samples
+2023-02-15 11:19:04,317:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-15 11:19:04,317:Starting Apriori execution
+2023-02-15 11:19:07,484:Apriori result: []
+2023-02-15 11:19:07,484:Apriori execution time: 3.167057514190674s
+2023-02-15 11:19:07,484:Starting DB execution...
+2023-02-15 11:21:03,701:SON result: []
+2023-02-15 11:21:03,701:DB SON execution time: 97.75842189788818s
+2023-02-15 11:21:03,769:Starting method execution.
+2023-02-15 11:21:15,394:Auto result: [Row(items_freqItems=[])]
+2023-02-15 11:21:15,394:DB FI execution time: 11.625312805175781s
+2023-02-15 11:21:17,092:Starting LOCAL execution...
+2023-02-15 11:22:43,159:SON result: []
+2023-02-15 11:22:43,159:Local SON execution time: 85.54762268066406s
+2023-02-15 11:24:27,325:Loaded dataset. Using 1500490 samples
+2023-02-15 11:24:27,423:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-15 11:24:27,423:Starting Apriori execution
+2023-02-15 11:24:32,436:Apriori result: []
+2023-02-15 11:24:32,437:Apriori execution time: 5.014580965042114s
+2023-02-15 11:24:32,437:Starting DB execution...
+2023-02-15 11:27:52,087:SON result: []
+2023-02-15 11:27:52,087:DB SON execution time: 163.37845420837402s
+2023-02-15 11:27:52,169:Starting method execution.
+2023-02-15 11:28:06,778:Auto result: [Row(items_freqItems=[])]
+2023-02-15 11:28:06,778:DB FI execution time: 14.608491659164429s
+2023-02-15 11:28:08,421:Starting LOCAL execution...
+2023-02-15 11:30:19,612:SON result: []
+2023-02-15 11:30:19,612:Local SON execution time: 130.6112458705902s
+2023-02-15 11:31:31,397:Loaded dataset. Using 2400784 samples
+2023-02-15 11:31:31,535:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-15 11:31:31,535:Starting Apriori execution
+2023-02-15 11:31:39,580:Apriori result: []
+2023-02-15 11:31:39,581:Apriori execution time: 8.046407699584961s
+2023-02-15 11:31:39,581:Starting DB execution...
+2023-02-15 11:35:30,817:SON result: []
+2023-02-15 11:35:30,817:DB SON execution time: 201.95387959480286s
+2023-02-15 11:35:30,889:Starting method execution.
+2023-02-15 11:35:48,967:Auto result: [Row(items_freqItems=[])]
+2023-02-15 11:35:48,967:DB FI execution time: 18.078359365463257s
+2023-02-15 11:35:51,181:Starting LOCAL execution...
+2023-02-15 11:39:01,055:SON result: []
+2023-02-15 11:39:01,055:Local SON execution time: 188.98190474510193s
+2023-02-15 11:40:20,345:Loaded dataset. Using 3000980 samples
+2023-02-15 11:40:20,516:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-15 11:40:20,516:Starting Apriori execution
+2023-02-15 11:40:30,483:Apriori result: []
+2023-02-15 11:40:30,483:Apriori execution time: 9.96708059310913s
+2023-02-15 11:40:30,483:Starting DB execution...
+2023-02-15 11:45:09,399:SON result: []
+2023-02-15 11:45:09,399:DB SON execution time: 248.8105273246765s
+2023-02-15 11:45:09,479:Starting method execution.
+2023-02-15 11:45:31,180:Auto result: [Row(items_freqItems=[])]
+2023-02-15 11:45:31,180:DB FI execution time: 21.701200008392334s
+2023-02-15 11:45:32,895:Starting LOCAL execution...
+2023-02-15 11:49:16,089:SON result: []
+2023-02-15 11:49:16,089:Local SON execution time: 222.02804112434387s
+
+16 partitions
+2023-02-15 11:50:37,123:Loaded dataset. Using 1500490 samples
+2023-02-15 11:50:37,239:Benchmark with support: 0.9, partitions: 16, partition_size: None, samples_per_partition: None
+2023-02-15 11:50:37,239:Starting Apriori execution
+2023-02-15 11:50:42,110:Apriori result: []
+2023-02-15 11:50:42,110:Apriori execution time: 4.870665788650513s
+2023-02-15 11:50:42,111:Starting DB execution...
+2023-02-15 11:54:09,484:SON result: []
+2023-02-15 11:54:09,484:DB SON execution time: 171.10008025169373s
+2023-02-15 11:54:09,562:Starting method execution.
+2023-02-15 11:54:26,887:Auto result: [Row(items_freqItems=[])]
+2023-02-15 11:54:26,887:DB FI execution time: 17.32396960258484s
+2023-02-15 11:54:28,843:Starting LOCAL execution...
+2023-02-15 11:57:03,292:SON result: []
+2023-02-15 11:57:03,292:Local SON execution time: 153.89693474769592s
+2023-02-15 11:58:14,017:Loaded dataset. Using 2400784 samples
+2023-02-15 11:58:14,193:Benchmark with support: 0.9, partitions: 16, partition_size: None, samples_per_partition: None
+2023-02-15 11:58:14,193:Starting Apriori execution
+2023-02-15 11:58:22,214:Apriori result: []
+2023-02-15 11:58:22,215:Apriori execution time: 8.021535396575928s
+2023-02-15 11:58:22,215:Starting DB execution...
+2023-02-15 12:02:57,133:SON result: []
+2023-02-15 12:02:57,134:DB SON execution time: 245.41154074668884s
+2023-02-15 12:02:57,194:Starting method execution.
+2023-02-15 12:03:16,224:Auto result: [Row(items_freqItems=[])]
+2023-02-15 12:03:16,224:DB FI execution time: 19.030857801437378s
+2023-02-15 12:03:18,451:Starting LOCAL execution...
+2023-02-15 12:06:49,977:SON result: []
+2023-02-15 12:06:49,977:Local SON execution time: 210.64154028892517s
+2023-02-15 18:47:38,455:Loaded dataset. Using 3000980 samples
+2023-02-15 18:47:39,097:Benchmark with support: 0.9, partitions: 16, partition_size: None, samples_per_partition: None
+2023-02-15 18:47:39,098:Starting Apriori execution
+2023-02-15 18:48:10,544:Apriori result: []
+2023-02-15 18:48:10,544:Apriori execution time: 31.445905685424805s
+2023-02-15 18:48:10,544:Starting DB execution...
+
+online retail dataset
+2023-02-16 09:39:45,235:Loaded dataset. Using 220 samples
+2023-02-16 09:39:45,252:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-16 09:39:45,252:Starting Apriori execution
+2023-02-16 09:39:45,494:Apriori result: []
+2023-02-16 09:39:45,495:Apriori execution time: 0.2423548698425293s
+2023-02-16 09:39:45,496:Starting DB execution...
+2023-02-16 09:41:02,649:SON result: []
+2023-02-16 09:41:02,650:DB SON execution time: 52.60351014137268s
+2023-02-16 09:41:02,701:Starting method execution.
+2023-02-16 09:41:03,199:Auto result: [Row(items_freqItems=[])]
+2023-02-16 09:41:03,199:DB FI execution time: 0.4966728687286377s
+2023-02-16 09:41:04,990:Starting LOCAL execution...
+2023-02-16 09:41:42,049:SON result: []
+2023-02-16 09:41:42,050:Local SON execution time: 37.05080056190491s
+2023-02-16 09:41:47,019:Loaded dataset. Using 1103 samples
+2023-02-16 09:41:47,043:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-16 09:41:47,043:Starting Apriori execution
+2023-02-16 09:41:50,241:Apriori result: []
+2023-02-16 09:41:50,241:Apriori execution time: 3.1974446773529053s
+2023-02-16 09:41:50,241:Starting DB execution...
+2023-02-16 09:42:49,056:SON result: []
+2023-02-16 09:42:49,056:DB SON execution time: 56.82769846916199s
+2023-02-16 09:42:49,113:Starting method execution.
+2023-02-16 09:42:49,422:Auto result: [Row(items_freqItems=[['21030', '22804', '84031B', '84031A', '85123A', '84029G', '21622', '22834', '21034', '15056P', '15056BL', '15056N', '20679', '22113', '22111']])]
+2023-02-16 09:42:49,423:DB FI execution time: 0.30916357040405273s
+2023-02-16 09:42:51,290:Starting LOCAL execution...
+2023-02-16 09:43:26,204:SON result: []
+2023-02-16 09:43:26,204:Local SON execution time: 34.90349197387695s
+2023-02-16 09:43:29,766:Loaded dataset. Using 2206 samples
+2023-02-16 09:43:29,786:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-16 09:43:29,786:Starting Apriori execution
+2023-02-16 09:43:36,117:Apriori result: []
+2023-02-16 09:43:36,117:Apriori execution time: 6.331060409545898s
+2023-02-16 09:43:36,117:Starting DB execution...
+2023-02-16 09:44:21,657:SON result: []
+2023-02-16 09:44:21,658:DB SON execution time: 43.69575595855713s
+2023-02-16 09:44:21,708:Starting method execution.
+2023-02-16 09:44:22,032:Auto result: [Row(items_freqItems=[])]
+2023-02-16 09:44:22,032:DB FI execution time: 0.32413434982299805s
+2023-02-16 09:44:23,915:Starting LOCAL execution...
+2023-02-16 09:44:59,319:SON result: []
+2023-02-16 09:44:59,319:Local SON execution time: 35.386404514312744s
+2023-02-16 09:45:02,669:Loaded dataset. Using 3309 samples
+2023-02-16 09:45:02,684:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-16 09:45:02,684:Starting Apriori execution
+2023-02-16 09:45:11,609:Apriori result: []
+2023-02-16 09:45:11,609:Apriori execution time: 8.92509913444519s
+2023-02-16 09:45:11,609:Starting DB execution...
+2023-02-16 09:45:52,360:SON result: []
+2023-02-16 09:45:52,360:DB SON execution time: 39.060402393341064s
+2023-02-16 09:45:52,400:Starting method execution.
+2023-02-16 09:45:52,720:Auto result: [Row(items_freqItems=[['22916', '22917', '22918', '22919', '22921', '22920', '84879', '21136', '22285', '22284', '22256', '22258', '21609', '21613', '22300', '22301', '22427', '21636', '22445', '22783']])]
+2023-02-16 09:45:52,721:DB FI execution time: 0.3204343318939209s
+2023-02-16 09:45:54,464:Starting LOCAL execution...
+2023-02-16 09:46:27,924:SON result: []
+2023-02-16 09:46:27,924:Local SON execution time: 33.441322565078735s
+2023-02-16 09:46:31,354:Loaded dataset. Using 4412 samples
+2023-02-16 09:46:31,368:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-16 09:46:31,369:Starting Apriori execution
+2023-02-16 09:46:43,911:Apriori result: []
+2023-02-16 09:46:43,911:Apriori execution time: 12.542602300643921s
+2023-02-16 09:46:43,912:Starting DB execution...
+2023-02-16 09:47:27,440:SON result: []
+2023-02-16 09:47:27,440:DB SON execution time: 41.8858802318573s
+2023-02-16 09:47:27,486:Starting method execution.
+2023-02-16 09:47:27,795:Auto result: [Row(items_freqItems=[])]
+2023-02-16 09:47:27,796:DB FI execution time: 0.31014299392700195s
+2023-02-16 09:47:29,539:Starting LOCAL execution...
+2023-02-16 09:48:03,008:SON result: []
+2023-02-16 09:48:03,008:Local SON execution time: 33.44790005683899s
+2023-02-16 09:48:06,434:Loaded dataset. Using 5516 samples
+2023-02-16 09:48:06,448:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-16 09:48:06,448:Starting Apriori execution
+2023-02-16 09:48:22,163:Apriori result: []
+2023-02-16 09:48:22,163:Apriori execution time: 15.7155179977417s
+2023-02-16 09:48:22,163:Starting DB execution...
+2023-02-16 09:49:03,963:SON result: []
+2023-02-16 09:49:03,963:DB SON execution time: 39.8853440284729s
+2023-02-16 09:49:04,010:Starting method execution.
+2023-02-16 09:49:04,480:Auto result: [Row(items_freqItems=[])]
+2023-02-16 09:49:04,481:DB FI execution time: 0.47016096115112305s
+2023-02-16 09:49:06,097:Starting LOCAL execution...
+2023-02-16 09:49:42,777:SON result: []
+2023-02-16 09:49:42,777:Local SON execution time: 36.65347480773926s
+2023-02-16 09:49:48,869:Loaded dataset. Using 6619 samples
+2023-02-16 09:49:48,889:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-16 09:49:48,889:Starting Apriori execution
+2023-02-16 09:50:15,290:Apriori result: []
+2023-02-16 09:50:15,290:Apriori execution time: 26.40035605430603s
+2023-02-16 09:50:15,290:Starting DB execution...
+2023-02-16 09:51:16,357:SON result: []
+2023-02-16 09:51:16,357:DB SON execution time: 58.931941509246826s
+2023-02-16 09:51:16,412:Starting method execution.
+2023-02-16 09:51:17,068:Auto result: [Row(items_freqItems=[['22423', '22699', '22697', '22698', '22366', '21430', '22630', '22662', '22629', '22382', '15056BL', '15056P', '15056N', '20679', '21166', '21181', '21770', '22993', '22722', '23179', '23178', '22494', '21260', '21906', '84971S', '23054', '23053', '23050', '23051', '23049', '23052', '22488']])]
+2023-02-16 09:51:17,068:DB FI execution time: 0.655247688293457s
+2023-02-16 09:51:18,735:Starting LOCAL execution...
+2023-02-16 09:52:03,877:SON result: []
+2023-02-16 09:52:03,877:Local SON execution time: 45.10913968086243s
+2023-02-16 09:52:08,237:Loaded dataset. Using 11032 samples
+2023-02-16 09:52:08,251:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-16 09:52:08,251:Starting Apriori execution
+2023-02-16 09:53:00,096:Apriori result: []
+2023-02-16 09:53:00,096:Apriori execution time: 51.84426975250244s
+2023-02-16 09:53:00,096:Starting DB execution...
+2023-02-16 09:54:07,845:SON result: []
+2023-02-16 09:54:07,845:DB SON execution time: 65.0288634300232s
+2023-02-16 09:54:07,937:Starting method execution.
+2023-02-16 09:54:08,966:Auto result: [Row(items_freqItems=[])]
+2023-02-16 09:54:08,967:DB FI execution time: 1.0302445888519287s
+2023-02-16 09:54:11,203:Starting LOCAL execution...
+2023-02-16 09:55:06,833:SON result: []
+2023-02-16 09:55:06,834:Local SON execution time: 55.571921586990356s
+2023-02-16 09:55:11,293:Loaded dataset. Using 17651 samples
+2023-02-16 09:55:11,305:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-16 09:55:11,305:Starting Apriori execution
+2023-02-16 09:56:27,471:Apriori result: []
+2023-02-16 09:56:27,471:Apriori execution time: 76.16618967056274s
+2023-02-16 09:56:27,471:Starting DB execution...
+2023-02-16 09:57:33,180:SON result: []
+2023-02-16 09:57:33,180:DB SON execution time: 62.58851647377014s
+2023-02-16 09:57:33,258:Starting method execution.
+2023-02-16 09:57:34,540:Auto result: [Row(items_freqItems=[['22890', '82483', '22890', '22350', '22741', '22809', '22423', '22349', '72817', '72818', '84836', '82486', '22960', '20751', '23401', '21623', '23078', '23484', '10135', '23500', '23378', '23376', '22952', '22998', '21411', '21407', '22909', '23321', '22469', '21561', '85150', '21181', '21903', '21166', '23254', '23256', '22418', '85035A', '23254', '85035C', '85035B', '21908', '21174', '85152', '22662', '22112', '22835', '21485', '22111', '23355', '72741', '20986', '23389', '23388', '22382', '23207', '84051', '21624', '21115', '22487', '23152', '23153', '23542', '23132', '23135', '72760B', '85124B', '21270']])]
+2023-02-16 09:57:34,541:DB FI execution time: 1.2836248874664307s
+2023-02-16 09:57:36,506:Starting LOCAL execution...
+2023-02-16 09:58:31,455:SON result: []
+2023-02-16 09:58:31,455:Local SON execution time: 54.8480019569397s
+2023-02-16 09:58:35,501:Loaded dataset. Using 22064 samples
+2023-02-16 09:58:35,512:Benchmark with support: 0.9, partitions: 8, partition_size: None, samples_per_partition: None
+2023-02-16 09:58:35,512:Starting Apriori execution
+2023-02-16 10:00:52,120:Apriori result: []
+2023-02-16 10:00:52,121:Apriori execution time: 136.60869359970093s
+2023-02-16 10:00:52,121:Starting DB execution...
+2023-02-16 10:02:42,729:SON result: []
+2023-02-16 10:02:42,730:DB SON execution time: 105.4470465183258s
+2023-02-16 10:02:42,826:Starting method execution.
+2023-02-16 10:02:45,502:Auto result: [Row(items_freqItems=[])]
+2023-02-16 10:02:45,502:DB FI execution time: 2.675840139389038s
+2023-02-16 10:02:47,506:Starting LOCAL execution...
+2023-02-16 10:04:07,574:SON result: []
+2023-02-16 10:04:07,574:Local SON execution time: 79.9051616191864s
