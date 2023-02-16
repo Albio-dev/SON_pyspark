@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1676569124 "f:/Albio Cloud/Scuola/Magistrale/(2022-2023) Big data/Progetto/Frequent_itemset_spark/report/report.tex" "report.pdf" "report" 1676569126 0
+["pdflatex"] 1676569370 "f:/Albio Cloud/Scuola/Magistrale/(2022-2023) Big data/Progetto/Frequent_itemset_spark/report/report.tex" "report.pdf" "report" 1676569372 0
   "C:/Users/Albio/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1676537918 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Albio/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1675590878 23157458 88523904eca5e13c50194ba1366b9ecb ""
   "P:/MiKTeX/fonts/tfm/public/cm/cmbx10.tfm" 1136765053 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -76,7 +76,7 @@
   "P:/MiKTeX/tex/latex/refcount/refcount.sty" 1576433952 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "P:/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657797096 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "P:/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "f:/Albio Cloud/Scuola/Magistrale/(2022-2023) Big data/Progetto/Frequent_itemset_spark/report/report.tex" 1676569124 12340 e29141c9aaf00004390a1533c2a57c6d ""
+  "f:/Albio Cloud/Scuola/Magistrale/(2022-2023) Big data/Progetto/Frequent_itemset_spark/report/report.tex" 1676569369 12434 841fe6e0b5fd02882ee116e37fb976d3 ""
   "images//Baskets.PNG" 1674928111 22040 53f5ebcf3c73bbaa52551d499acc8a18 ""
   "images//Batch_fi.PNG" 1674929706 7106 2c80e660c84d8624dd613cafca0abea5 ""
   "images//benchmarkeasy.png" 1676567462 52361 e87d589528bcc5ac88c67552b04d2be2 ""
@@ -86,10 +86,10 @@
   "images//counts.PNG" 1674933597 10459 ce143a5c583926a8bf4f1ed823a145ae ""
   "images//grouped.PNG" 1674930672 4830 cece76bcf9c85aef9deee7233a9fc7d6 ""
   "images//totals.PNG" 1674933959 5366 ef9e9138b6caa9ef682dce3a02c9539e ""
-  "report.aux" 1676569126 3781 8a535901b98b007ddad0edaa185f211d "pdflatex"
-  "report.out" 1676569126 1393 be6c09aebe94c8a3142692e81dd03322 "pdflatex"
-  "report.tex" 1676569124 12340 e29141c9aaf00004390a1533c2a57c6d ""
-  "report.toc" 1676569126 980 d6cf3d38aa9dcc056732d3b85734d476 "pdflatex"
+  "report.aux" 1676569371 3781 8a535901b98b007ddad0edaa185f211d "pdflatex"
+  "report.out" 1676569371 1393 be6c09aebe94c8a3142692e81dd03322 "pdflatex"
+  "report.tex" 1676569369 12434 841fe6e0b5fd02882ee116e37fb976d3 ""
+  "report.toc" 1676569371 980 d6cf3d38aa9dcc056732d3b85734d476 "pdflatex"
   (generated)
   "report.aux"
   "report.log"
