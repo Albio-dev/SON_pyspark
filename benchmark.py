@@ -31,9 +31,6 @@ def load_data(preprocessing_function, perc_ds = 1, ip = 'localhost', port = 2701
     # Loading on db
     collection.drop()
     
-    # client.admin.command('enableSharding', db.name)
-    # client.admin.command('shardCollection', db.name + '.' + collection.name, key={'_id': "hashed"})
-
     collection.insert_many([{'items': i} for i in test_dataset])
     client.close()
 
@@ -85,7 +82,6 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     data.context.stop()
 
     spark = SparkContext(appName='benchmark')
-    #spark = data.context
     benchmark_logger.info(f'Starting LOCAL execution...')
     data = spark.parallelize(dataset, partitions)
     start_time = time.time()
@@ -124,17 +120,6 @@ def online_retail():
 
 # Function to load and preprocess data
 def tripadvisor_review():
-    '''
-    client = MongoClient('mongodb://localhost:27017')
-    db = client.TravelReviews
-    collection = db.reviews
-
-    # Load dataset
-    dataset = []
-    for document in collection.find():
-        dataset.append(document['items'])
-
-    return dataset'''
     file = './Datasets/Travel Reviews/tripadvisor_review.csv'
     dataset = []
     # Open the file and read it
@@ -169,7 +154,7 @@ def user_business():
 if __name__ == '__main__':
     # Example benchmark with half the dataset, automatic partitioning and support 0.5
     # data = load_data(online_retail, perc_ds = .5, ip = 'localhost', port = 60000)
-    data = load_data(online_retail, perc_ds = .05, ip = 'localhost')
+    data = load_data(online_retail, perc_ds = .1, ip = 'localhost')
     benchmark(data, support = .2, partitions = 8)
 
 

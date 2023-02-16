@@ -14,4 +14,9 @@ ToDo progetto:
  - [X] Fare il benchmark tra apriori sequenziale e SON
  - [X] Provare altri dataset
  - [X] Confrontare con la funzione di spark (DataFrame.freqItems)
- - [ ] Stilare il report
+ - [X] Stilare il report
+
+ ToDo per consegnare:
+ - [ ] aggiustare il chunk support
+ - [ ] provare apriori da un'altra libreria
+ - [ ] revisionare il report
