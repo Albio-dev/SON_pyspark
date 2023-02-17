@@ -9,6 +9,9 @@ file = './Datasets/Travel Reviews/tripadvisor_review.csv'
 
 # Open the file and read it
 with open(file, 'r') as f:
+    documents = []
+    batch_size = 100000 # Number of documents to insert at a time
+    batch_count = 0 # Number of batches inserted so far
     csv_reader = csv.DictReader(f, delimiter=',')
 
     for line in csv_reader:
@@ -17,11 +20,16 @@ with open(file, 'r') as f:
         # With n identifying the user and A, B, C, ... the good scores that the user gave
         # We arbitrarily consider that a score of 2.5 or more is a good score
         good_score_limit = 2.5
-        document = {"_id": int(list(line.values())[0].split(' ')[1]),
-                    "items": [i for i, j in list(line.items())[1:] if float(j) >= good_score_limit]}
+        document = {"items": [i for i, j in list(line.items())[1:] if float(j) >= good_score_limit]}
         
-        # Insert the document in the collection
-        collection.insert_one(document)
+        documents.append(document)
+        batch_count += 1
+
+        # Insert the documents in batches (much faster than one at a time)
+        if batch_count == batch_size:
+            collection.insert_many(documents)
+            batch_count = 0
+            documents = []
 
 # Close the connection
 client.close()

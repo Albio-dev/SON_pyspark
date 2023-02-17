@@ -81,6 +81,7 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     
     data.context.stop()
 
+    # Executes SON locally
     spark = SparkContext(appName='benchmark')
     benchmark_logger.info(f'Starting LOCAL execution...')
     data = spark.parallelize(dataset, partitions)

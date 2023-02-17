@@ -15,13 +15,10 @@ class SON:
         # Reading input support
         self.support = support
 
-        logger.debug(f'Number of baskets in every partition: {data.mapPartitions(lambda x: [len(list(x))]).collect()}')
         logger.info(f'Created SON instance with: partitions={self.partitions}, support={self.support}')
 
 
-
     def candidate_frequent_itemsets(self):
-
         # Extract basket support from class (spark doesn't like instance attributes)
         data_size = self.data.count()
         print(f'Number of baskets: {data_size}')
@@ -30,10 +27,10 @@ class SON:
 
         # Extract frequent itemsets from every partition (mapreduce 1)
         candidate_frequent_itemsets = (baskets
-            .mapPartitions(lambda x: apriori(list(x), support, data_size))   # Applying apriori algorithm on every partition
-            .map(lambda x: (x, 1))                                      # Form key-value shape emitting (itemset, 1)
-            .groupByKey()                                               # Group every itemset
-            .map(lambda x: x[0])                                        # Keep only itemsets
+            .mapPartitions(lambda x: apriori(list(x), support, data_size))      # Applying apriori algorithm on every partition
+            .map(lambda x: (x, 1))                                              # Form key-value shape emitting (itemset, 1)
+            .groupByKey()                                                       # Group every itemset
+            .map(lambda x: x[0])                                                # Keep only itemsets
             ).collect()
         
         candidate_frequent_itemsets = baskets.context.broadcast(candidate_frequent_itemsets)

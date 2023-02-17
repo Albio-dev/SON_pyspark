@@ -7,8 +7,8 @@ client = MongoClient('mongodb://localhost:27017')
 db = client.TravelReviews
 collection = db.reviews
 
-# client.admin.command('enableSharding', db.name)
-# client.admin.command('shardCollection', db.name + '.' + collection.name, key={'_id': "hashed"})
+client.admin.command('enableSharding', db.name)
+client.admin.command('shardCollection', db.name + '.' + collection.name, key={'_id': "hashed"})
 
 file = './Datasets/Travel Reviews/tripadvisor_review.csv'
 
@@ -25,8 +25,7 @@ with open(file, 'r') as f:
         # With n identifying the user and A, B, C, ... the good scores that the user gave
         # We arbitrarily consider that a score of 2.5 or more is a good score
         good_score_limit = 2.5
-        document = {#"_id": int(list(line.values())[0].split(' ')[1]),
-                    "items": [i for i, j in list(line.items())[1:] if float(j) >= good_score_limit]}
+        document = {"items": [i for i, j in list(line.items())[1:] if float(j) >= good_score_limit]}
         
         documents.append(document)
         batch_count += 1
@@ -36,7 +35,6 @@ with open(file, 'r') as f:
             collection.insert_many(documents)
             batch_count = 0
             documents = []
-
 
 # Close the connection
 client.close()
