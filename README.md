@@ -17,6 +17,6 @@ ToDo progetto:
  - [X] Stilare il report
 
  ToDo per consegnare:
- - [ ] aggiustare il chunk support
+ - [X] aggiustare il chunk support
  - [ ] provare apriori da un'altra libreria
  - [ ] revisionare il report
