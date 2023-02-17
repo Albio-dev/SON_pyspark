@@ -1,9 +1,14 @@
 from Scripts.utils import count_frequencies
 
 # Apriori algorithm. Requires data as list and accepted support
-def apriori(data, support):
+def apriori(data, total_support, total_data_size):
     # Get actual batch size
     basket_size = len(data)
+    # Scale support
+    support = basket_size / total_data_size * total_support
+    # print(f'basket_size: {basket_size} - total_data_size: {total_data_size} - total_support: {total_support} - support: {support}')
+    # print(f'Apriori algorithm started with support {support}')
+
     # Prepare output structure
     frequent_itemsets = []
     # Extract item list

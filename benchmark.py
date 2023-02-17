@@ -14,6 +14,7 @@ formatter = logging.Formatter('%(asctime)s:%(message)s')
 file_handler.setFormatter(formatter)
 benchmark_logger.addHandler(file_handler)
 
+
 # Data loading function. Loads data from file, extracts a specified subset
 # and loads it into mongo at BenchmarkData.data
 def load_data(preprocessing_function, perc_ds = 1, ip = 'localhost', port = 27017):
@@ -36,6 +37,7 @@ def load_data(preprocessing_function, perc_ds = 1, ip = 'localhost', port = 2701
 
     benchmark_logger.info(f'Loaded dataset. Using {size} samples')
     return test_dataset
+
 
 # Executes apriori and then SON with the specified parameters
 # support: the support accepted in both apriori and SON
@@ -67,8 +69,6 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     benchmark_logger.info(f'SON result: {SON_result}')
     benchmark_logger.info(f'DB SON execution time: {time.time() - start_time}s')
 
-    
-
     # Automatic frequent itemsets
     # DB
     ss = SparkSession.getActiveSession()
@@ -90,7 +90,6 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
 
     spark.stop()
-
 
 
 def online_retail():
@@ -118,6 +117,7 @@ def online_retail():
         dataset.append(document)
     return dataset
 
+
 # Function to load and preprocess data
 def tripadvisor_review():
     file = './Datasets/Travel Reviews/tripadvisor_review.csv'
@@ -136,8 +136,8 @@ def tripadvisor_review():
 
     return dataset
 
-def user_business():
-    
+
+def user_business():    
     data = {}
 
     with open("./Datasets/user_business/user_business.csv", "r") as f:
@@ -150,12 +150,13 @@ def user_business():
 
     return list(data.values())
 
+
 # Code to execute when the file is executed directly
 if __name__ == '__main__':
     # Example benchmark with half the dataset, automatic partitioning and support 0.5
     # data = load_data(online_retail, perc_ds = .5, ip = 'localhost', port = 60000)
-    data = load_data(online_retail, perc_ds = .1, ip = 'localhost')
-    benchmark(data, support = .2, partitions = 8)
+    data = load_data(online_retail, perc_ds = .5, ip = 'localhost')
+    benchmark(data, support = .2)#, partitions = 8)
 
 
 def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_partition):
@@ -164,9 +165,8 @@ def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_pa
     for i in data_sizes:
         # data = load_data(online_retail, perc_ds = i, port = '60000')
         data = load_data(online_retail, perc_ds = i)
+
         # Iterate over partitions and supports
-        
-        
         for j in partitions:
             for n in partition_sizes:
                 for m in samples_per_partition:
