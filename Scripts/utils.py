@@ -1,10 +1,6 @@
 # Utility function to count occurrences of items in the first list inside elements of the second list
 # e.g.: ( [itemsets], [baskets] )
-def count_frequencies(data_chunk):
-    # Itemsets to check
-    itemsets = data_chunk[0]
-    # Batch to count in itemsets in
-    data = data_chunk[1]
+def count_frequencies(itemsets, data):
     values = []
     # For every itemset
     for i in itemsets:

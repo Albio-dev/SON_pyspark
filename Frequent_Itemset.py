@@ -28,9 +28,6 @@ def loadlogger():
 # db_addr: the address of the mongodb database
 def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr = '127.0.0.1', port = '27017', partition_size = None, samples_per_partition = None):
     datasets = {0: 'TravelReviews.reviews', 1:'OnlineRetail.transactions', 'benchmark': 'BenchmarkData.data'}
-    
-    #from Scripts import import_travel_reviews
-    #from Scripts import import_online_retail
 
     if logger is not None:
         logger.info(f'Run with dataset {datasets[selectedDataset]}')

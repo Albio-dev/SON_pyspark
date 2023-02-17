@@ -37,7 +37,7 @@ class SON:
 
         # Count the number of baskets containing every itemset (mapreduce 2)
         frequent_itemsets = (baskets
-            .mapPartitions(lambda x: count_frequencies([candidate_frequent_itemsets.value, list(x)]))   # Count the number of occurences of every itemset
+            .mapPartitions(lambda x: count_frequencies(candidate_frequent_itemsets.value, list(x)))     # Count the number of occurences of every itemset
             .reduceByKey(lambda x, y: x + y)                                                            # Sum the number of baskets containing every itemset
             .filter(lambda x: x[1] / data_size >= support)                                              # Filter itemsets with support >= input support
             )

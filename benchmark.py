@@ -49,7 +49,7 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     # Run and time apriori
     start_time = time.time()
     benchmark_logger.info(f'Starting Apriori execution')
-    apriori_result = apriori.apriori(dataset, support)
+    apriori_result = apriori.apriori(dataset, support, len(dataset))
     benchmark_logger.info(f'Apriori result: {apriori_result}')
     benchmark_logger.info(f'Apriori execution time: {time.time() - start_time}s')
 
@@ -128,9 +128,6 @@ def tripadvisor_review():
         csv_reader = csv.DictReader(f, delimiter=',')
 
         for line in csv_reader:
-            # Create a document with the following structure:
-            # {"_id": n, "good_scores": ["A", "B", "C", ...]}
-            # With n identifying the user and A, B, C, ... the good scores that the user gave
             # We arbitrarily consider that a score of 2.5 or more is a good score
             good_score_limit = 2.5
             dataset.append([i for i, j in list(line.items())[1:] if float(j) >= good_score_limit])
@@ -154,14 +151,11 @@ def user_business():
 
 # Code to execute when the file is executed directly
 if __name__ == '__main__':
-    # Example benchmark with half the dataset, automatic partitioning and support 0.5
-    # data = load_data(online_retail, perc_ds = .5, ip = 'localhost', port = 60000)
     data = load_data(online_retail, perc_ds = .5, ip = 'localhost')
-    benchmark(data, support = .2)#, partitions = 8)
+    benchmark(data, support = .2)
 
 
 def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_partition):
-
     # Iterate over every required data percentage
     for i in data_sizes:
         # data = load_data(online_retail, perc_ds = i, port = '60000')
