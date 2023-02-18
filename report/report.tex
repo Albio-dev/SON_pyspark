@@ -4,60 +4,94 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \graphicspath{ {./images/} }
 
-\title{SON implementation on Spark in python}
-\author{Carli Alberto VR473845\and Fraccaroli Leonardo VR??????}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true, 
+    language=Python,               
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{SON implementation with Spark in Python}
+\author{Carli Alberto VR473845\and Fraccaroli Leonardo VR474539}
 \date{}
 
 \begin{document}
 	\maketitle
 	\tableofcontents
-	\medskip
+	\newpage
 	\section{Introduction}
-	Finding frequent itemsets is frequently done in data mining domains to understand which items frequently appear together. The definition of "items" is beyond the scope of this work. Suffice to say that we treated them as binary variables, listed in a basket only when their value is True. In out project a basket is a list of items that appear together.\\
+	Finding frequent itemsets is frequently done in data mining domains to understand which items frequently appear together. The definition of ``items'' is beyond the scope of this work. Suffice to say that we treated them as binary variables, listed in a basket only when their value is True. In our project a \textbf{basket} is a list of items that appear together (for example products bought by a customer).\\
 	
 	This is an analysis that can be performed on almost any dataset, but is especially suited for domains like e-commerce. It is an interesting challenge to try and take the system to the extreme where the dataset is so large that it does not fit on any single machine's memory and it is more convenient to distribute analysis to multiple compute units.\\
 	
 	We tried to imagine ourselves into a big e-commerce company that stores transaction data on a distributed database and wants to periodically analyse data to understand which items are usually bought together. \\
-	The data is simply a list of items bought at any one time; as the distributed database we used MongoDB and thus we needed a version of parallel apriori. \\
-	We tried to parallelize apriori by using Spark on python and using the SON algorithm as proposed in chapter 6.4.4 of the \href{http://www.mmds.org/}{Mining Massive Datasets} book.
+	The data is simply a list of items bought at any time. To store the data in a distributed database we used MongoDB and thus we needed a version of parallel \textbf{Apriori} (an algorithm to find frequent itemsets on a single machine). \\
+	We parallelized Apriori by using Spark in Python and using the \textbf{SON} algorithm as proposed in chapter 6.4.4 of the \href{http://www.mmds.org/}{Mining Massive Datasets} book.
 	\newpage
 
 	\section{SON}
-	In this section we will dissect our implementation of SON through Spark on python, describing all the steps of computation and their result.\\
+	In this section we will dissect our implementation of SON through Spark, describing all the steps of computation and their result.\\
 	
 	\subsection{SON Algorithm}	
-	The algorithm as described in the book involves two phases of mapreduce as follows:
+	The algorithm, as described in the book, involves two phases of MapReduce as follows:
 	\begin{enumerate}
-	\item The map basically executes apriori on a batch of baskets, extracting all frequent itemsets. The required frequency (support) is reduced by a factor equal to the number of number of batches the data is partitioned in.\\
-	The reducer is an identity reducer and simply combine all the frequent itemsets from every basket in a single list. These are candidate frequent itemsets.
-	\item The map function takes a batch of the data and counts every occurrence of every itemset in the candidates list. The reducer adds up the counts from every batch and finally filters out the infrequent ones using the original support.
+	\item The mapper basically executes Apriori (or whatever algorithm to find frequent itemsets) on every batch of baskets, extracting all frequent itemsets for each batch. The required frequency (support) is reduced by a factor equal to the number of number of batches the data is partitioned in, using the following formula:
+	\[ batch\_support = basket\_size / total\_data\_size * total\_support \]
+	The reducer combines all the frequent itemsets from every batch in a single list. These are \textit{candidate frequent itemsets}.
+	\item The map function takes a batch of the data and counts every occurrence of every itemset in the candidates list.\\
+	The reducer adds up the counts from every batch and finally filters out the infrequent ones using the original support.
 	\end{enumerate}
-	The result of this is the list of frequent itemsets without false positives.
+	The result of these phases is the list of \textit{frequent itemsets} (without false positives).
 	
 	\subsection{Our Implementation}
-	Our implementation expects a $pyspark$ RDD\\
+	Our implementation expects a $pyspark$ RDD.
 	
 	\subsubsection{First Map}
-	The input data is in the form of a list of lists, where every internal list holds a set of strings, which are the items (fig: \ref{fig:input_data}).\\
+	The input data is in the form of a list of lists, where every internal list holds a set of strings, which are the items (fig: \ref{fig:input_data}).
 	
 	Apriori algorithm is applied to every batch, which returns a list of frequent itemsets (fig: \ref{fig:apriori}). This is done with the $mapPartitions$ function of $pyspark$: 
-	\begin{lstlisting}[language=Python]
+	\begin{lstlisting}[numbers=none]
 .mapPartitions(lambda x: apriori(list(x), support, data_size))
-	\end{lstlisting}	
-	We will discuss our implementation of apriori, in details, in section \ref{section:apriori}. We chose not to keep only the largest sets because we saw that there may be cases where the larger set is not globally supported, but the smaller ones are.\\
-	Then every itemset is "emitted" with a 1, to facilitate the reduce phase:
-	\begin{lstlisting}[language=Python]
+\end{lstlisting}
+	where \texttt{x} is a batch, \texttt{support} is the support for the entire dataset and \texttt{data\_size} is the total number of baskets in the entire dataset (they are needed in \texttt{apriori()} to calculate the batch support).
+	We will discuss our implementation of Apriori, in details, in section \ref{section:apriori}. We chose not to keep only the largest sets because we saw that there may be cases where the larger set is not globally supported, but the smaller ones are.\\
+	Then every itemset is ``emitted'' with a 1, to facilitate the reduce phase:
+	\begin{lstlisting}[numbers=none]
 .map(lambda x: (x, 1))
-	\end{lstlisting}
+\end{lstlisting}
 	
 	\subsubsection{First Reduce}
 	Now the result of the previous step is grouped by key (fig: \ref{fig:grouped}) and the list of counts discarded entirely:
-	\begin{lstlisting}[language=Python]
+	\begin{lstlisting}
 .groupByKey()
 .map(lambda x: x[0])
-	\end{lstlisting}
+\end{lstlisting}
 	The result is the list of all itemsets that appear at least once (fig: \ref{fig:candidate_fi}), which means that they are frequent in at least one batch.\\
 	Then the list is collected and broadcasted to all the nodes.
 	
@@ -91,28 +125,25 @@
          	\caption{Candidate frequent itemsets}
          	\label{fig:candidate_fi}
 		\end{subfigure}
-	
+	\caption{Results of first MapReduce phase}
 	\end{figure}
 	
 	\subsubsection{Second Map}
 	Now we need to count the occurrences of every itemset in the whole dataset.\\
 	We do it on every partition:
-	\begin{lstlisting}[language=Python]
+	\begin{lstlisting}[numbers=none]
 .mapPartitions(lambda x: count_frequencies(candidate_frequent_itemsets.value, list(x)))
-	\end{lstlisting}
+\end{lstlisting}
 	The result is a list of tuples where the first element is the itemset and the second is the count for every batch (fig: \ref{fig:counts}).
-	
 	
 	\subsubsection{Second Reduce}
 	Now the itemsets are reduced across partitions by summing counts (fig: \ref{fig:totals}) and then filtered:
-	\begin{lstlisting}[language=Python]
+	\begin{lstlisting}
 .reduceByKey(lambda x, y: x + y)
 .filter(lambda x: x[1] / data_size >= support)
-	\end{lstlisting}	
+\end{lstlisting}	
 	The result is the list of every itemset which is supported enough to be considered frequent. Our next step is to filter out all the smaller sets which are included in larger sets.
 	
-	
-		
 	\begin{figure}[h]
 		\centering
 		
@@ -133,55 +164,53 @@
 	
 	\newpage
 	
-	\section{apriori}
+	\section{Apriori}
 	\label{section:apriori}
 	
-	Apriori is the most used algorithm to find frequent itemsets in a dataset. The algorithm relies on the monotonicity of support by building candidates from smaller sets which are knowingly frequent. This is because it is impossible for an itemset to be frequent if every item it is composed of is frequent by itself.\\
+	Apriori is the most used algorithm to find frequent itemsets in a dataset. The algorithm relies on the monotonicity of support by building candidates from smaller sets which are knowingly frequent. This is because it is impossible for an itemset to be frequent if every item it is composed of is frequent by itself. The algorithm \ref{algo:apriori} shows the Apriori pseudocode.
 	
-	To benchmark SON execution we had to compare it to an implementation of apriori, which we made ourselves:
-	\begin{lstlisting}[language=Python]
-def apriori(data, support):
-    basket_size = len(data)
-    frequent_itemsets = []
-    items = list(set([k for j in data for k in j]))
-    temp = count_frequencies((items, data))
-    frequent_items = [i[0] for i in temp if i[1]/basket_size >= support]
-    new_frequent_itemsets = frequent_items
-    while new_frequent_itemsets != []:
-        frequent_itemsets += new_frequent_itemsets
-        new_candidate_itemsets = [(j, ) + (k, ) if isinstance(j, str) \
-        	else j + (k,) for j in new_frequent_itemsets \for
-        	k in frequent_items if k not in j]
-        new_candidate_itemsets = [tuple(j) for j in {frozenset(i) \
-        for i in new_candidate_itemsets}]
-        temp = count_frequencies((new_candidate_itemsets, data))
-        new_frequent_itemsets = [i[0] for i in temp \
-        if i[1]/basket_size >= support]
-    return frequent_itemsets	
-    \end{lstlisting}
-    This code first extracts the items from the data, keeps the frequent ones and then uses them to build all the candidate couples, counts them, filters out infrequent ones and then expands those couples to form triples and so on.
+	To benchmark SON execution we had to compare it to an implementation of Apriori, which we made ourselves (\textit{Scripts/apriori.py}).
 	
-	\section{benchmark}
-	We have ran some benchmarks to better understand how SON compares to apriori.\\
-	In order to do so we made a script for the specific purpose of being able to programatically change parameters and 
-	subsample datasets.
+\begin{algorithm}
+\caption{Apriori pseudocode}
+\label{algo:apriori}
+\begin{algorithmic}[1]
+\Function{apriori}{data, total\_support, total\_db\_size}
+	\State $L_1 \gets \{frequent \ 1-itemsets\}$
+    	\State $k \gets 2$
+    	\While{$L_{k-1}$ is not empty}
+    		\State create $C_k$ using $L_{k-1}$ (by adding singlets)
+    		\State count occurrences of each itemset of $C_k$ in $data$
+    		\State filter out non-frequent itemsets in $C_k$
+    		\State $L_k \gets C_k$
+    		\State $k \gets k+1$
+    	\EndWhile
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+    In our implementation of the Apriori pseudocode we first extract the items from the data, keep the frequent ones and then use them to build all the candidate couples, count them, filter out infrequent ones and then expand those couples to form triples and so on.
+	
+	\section{Benchmark}
+	We have ran some benchmarks to better understand how SON compares to Apriori.\\
+	In order to do so we made a script for the specific purpose of being able to programatically change parameters and 	subsample datasets.
 	Also, we implemented a gridsearch to test many parameters. We also added a logging feature to our project to better follow executions and ease debug.
-	We compared our implementation, both based on DB and in memory, to a method $FreqItems$ provided by $pyspark.sql$. 
-	This function uses a modified version of FP-Tree to be more parallelizeable. This function proved itself to be absurdly fast, at the expense of false positives.
+	We compared our implementation, both \textbf{based on DB} (using the \href{https://www.mongodb.com/docs/spark-connector/current/}{MongoDB Connector for Spark}, which is kind of a ``real world'' example) and \textbf{in memory} (having all the data locally), to a method $FreqItems$ provided by $pyspark.sql$. 
+	This function implements the algorithm proposed by \href{https://doi.org/10.1145/762471.762473}{Karp, Schenker, and Papadimitriou}, which uses a modified version of FP-Tree to be more parallelizeable. This function proved itself to be absurdly fast, at the expense of false positives.
 	Both a  `simple' dataset and a `harder' one were used to compare performances.
 
 	\subsection{Datasets}
-	The first "easier" dataset is from UCI \href{https://archive.ics.uci.edu/ml/datasets/Travel+Reviews#}{(Travel Reviews)} and is composed of averages of scores that every user gave to some
-	categories of places on TripAdvisor. We rounded the scores to integer and kept only the ones above 3.\\
-	This way our dataset is in the form:\\
-	user\_id: category1, category2 \ldots\\
-	It is considered "easy" because it is very sparse and the number of items is very low.\\
+	The first ``easier'' dataset is from UCI \href{https://archive.ics.uci.edu/ml/datasets/Travel+Reviews#}{(Travel Reviews)} and is composed of averages of scores that every user gave to some
+	categories of places on TripAdvisor. We arbitrarily kept only the ones with an average mark above 2.5.\\
+	This way our dataset is in the form:
+	\[ user\_id: category1, category2, \ldots \]
+	It is considered ``easy'' because it is very sparse and the number of items is very low.
 
-	The second "harder" dataset is a collection of transaction where some user bought some item in a transaction, again from UCI \href{https://archive.ics.uci.edu/ml/datasets/online+retail}{(Online Retail)}.
+	The second ``harder'' dataset is a collection of transactions where some user bought some items in a transaction, again from UCI \href{https://archive.ics.uci.edu/ml/datasets/online+retail}{(Online Retail)}.
 	We decided to form transactions on invoices, so we extracted the list of items bought together.
-	This way our dataset is in the form:\\
-	invoice\_no: item\_code, item\_code \ldots\\
-	It is considered "harder" because of the higher number of items.\\
+	This way our dataset is in the form:
+	\[ invoice\_no: item\_code1, item\_code2, \ldots \]
+	It is considered ``harder'' because of the higher number of items.
 
 	\subsection{Results}
 	% Setups (CPU, MEMORY, MONGO)
@@ -210,12 +239,12 @@ def apriori(data, support):
 
 	
 	\section{Conclusions}
-	The main advantage of SON, that we could appreciate in our single machine setup, was the ability to use all available core, distributing the load.\\
-	We have seen how easy it is connecting pyspark to a distributed database, eventually sharded.\\
+	The main advantage of SON, that we could appreciate in our single machine setup, was the ability to use all the available cores, distributing the load.\\
+	We also have seen how easy it is connecting pyspark to a distributed database, eventually sharded.
 
-	With the testing we have appreciated how SON execution time remains somewhat constant, while apriori execution time grows exponentially with the number of items.\\
+	With the testing we have appreciated how SON execution time remains somewhat constant, while Apriori execution time grows exponentially with the number of items.\\
 	Also, because of the way SON works, we expect it to work better on denser datasets and with a higher number of items, because the splitting of the datasets produces
-	smaller exponentiation in the number of candidates.\\
+	smaller exponentiation in the number of candidates.
 	
 	Finally, we have seen that even though the use case for SON is when the data doesen't fit in memory, there are some cases where it is still useful, like when the data is
 	already distributed in a database or when it's very dense and the number of items is high.\\
