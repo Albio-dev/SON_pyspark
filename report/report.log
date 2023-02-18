@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.2.5)  16 FEB 2023 18:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.2.5)  18 FEB 2023 10:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -290,123 +290,128 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--44
 (P:\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-<./images//Baskets.PNG, id=89, 280.79906pt x 380.17032pt>
-File: ./images//Baskets.PNG Graphic file (type png)
-<use ./images//Baskets.PNG>
-Package pdftex.def Info: ./images//Baskets.PNG  used on input line 68.
-(pdftex.def)             Requested size: 82.8019pt x 112.10286pt.
-<./images//Batch_fi.PNG, id=91, 188.20313pt x 182.18062pt>
-File: ./images//Batch_fi.PNG Graphic file (type png)
-<use ./images//Batch_fi.PNG>
-Package pdftex.def Info: ./images//Batch_fi.PNG  used on input line 75.
-(pdftex.def)             Requested size: 82.8019pt x 80.15414pt.
-<./images//grouped.PNG, id=92, 215.30438pt x 93.34875pt>
-File: ./images//grouped.PNG Graphic file (type png)
-<use ./images//grouped.PNG>
-Package pdftex.def Info: ./images//grouped.PNG  used on input line 82.
-(pdftex.def)             Requested size: 82.8019pt x 35.90019pt.
-<./images//candidates.PNG, id=93, 179.92218pt x 97.11281pt>
-File: ./images//candidates.PNG Graphic file (type png)
-<use ./images//candidates.PNG>
-Package pdftex.def Info: ./images//candidates.PNG  used on input line 89.
-(pdftex.def)             Requested size: 82.8019pt x 44.69318pt.
-
-Underfull \hbox (badness 2503) in paragraph at lines 90--90
-[]\OT1/cmr/m/n/9 (d) |Can-di-date fre-
+Overfull \hbox (27.00378pt too wide) in paragraph at lines 47--48
+[][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [3]
-LaTeX Font Info:    Trying to load font information for OML+cmr on input line 115.
- (P:\MiKTeX\tex/latex/base\omlcmr.fd
+<./images//Baskets.PNG, id=104, 280.79906pt x 380.17032pt>
+File: ./images//Baskets.PNG Graphic file (type png)
+<use ./images//Baskets.PNG>
+Package pdftex.def Info: ./images//Baskets.PNG  used on input line 69.
+(pdftex.def)             Requested size: 82.8019pt x 112.10286pt.
+<./images//Batch_fi.PNG, id=106, 188.20313pt x 182.18062pt>
+File: ./images//Batch_fi.PNG Graphic file (type png)
+<use ./images//Batch_fi.PNG>
+Package pdftex.def Info: ./images//Batch_fi.PNG  used on input line 76.
+(pdftex.def)             Requested size: 82.8019pt x 80.15414pt.
+<./images//grouped.PNG, id=107, 215.30438pt x 93.34875pt>
+File: ./images//grouped.PNG Graphic file (type png)
+<use ./images//grouped.PNG>
+Package pdftex.def Info: ./images//grouped.PNG  used on input line 83.
+(pdftex.def)             Requested size: 82.8019pt x 35.90019pt.
+<./images//candidates.PNG, id=108, 179.92218pt x 97.11281pt>
+File: ./images//candidates.PNG Graphic file (type png)
+<use ./images//candidates.PNG>
+Package pdftex.def Info: ./images//candidates.PNG  used on input line 90.
+(pdftex.def)             Requested size: 82.8019pt x 44.69318pt.
+
+Underfull \hbox (badness 2503) in paragraph at lines 91--91
+[]\OT1/cmr/m/n/9 (d) |Can-di-date fre-
+ []
+
+
+Overfull \hbox (177.00531pt too wide) in paragraph at lines 101--102
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+LaTeX Font Info:    Trying to load font information for OML+cmr on input line 110.
+(P:\MiKTeX\tex/latex/base\omlcmr.fd
 File: omlcmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 115.
-<./images//cartesian.PNG, id=113, 295.85532pt x 182.18062pt>
-File: ./images//cartesian.PNG Graphic file (type png)
-<use ./images//cartesian.PNG>
-Package pdftex.def Info: ./images//cartesian.PNG  used on input line 127.
-(pdftex.def)             Requested size: 103.50105pt x 63.73358pt.
-<./images//counts.PNG, id=114, 222.07968pt x 184.43906pt>
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 110.
+<./images//counts.PNG, id=111, 222.07968pt x 184.43906pt>
 File: ./images//counts.PNG Graphic file (type png)
 <use ./images//counts.PNG>
-Package pdftex.def Info: ./images//counts.PNG  used on input line 134.
-(pdftex.def)             Requested size: 103.50105pt x 85.95746pt.
-<./images//totals.PNG, id=115, 214.55156pt x 95.6072pt>
+Package pdftex.def Info: ./images//counts.PNG  used on input line 121.
+(pdftex.def)             Requested size: 137.9979pt x 114.60713pt.
+<./images//totals.PNG, id=112, 214.55156pt x 95.6072pt>
 File: ./images//totals.PNG Graphic file (type png)
 <use ./images//totals.PNG>
-Package pdftex.def Info: ./images//totals.PNG  used on input line 141.
-(pdftex.def)             Requested size: 103.50105pt x 46.12141pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[4 <./images//Baskets.PNG> <./images//Batch_fi.PNG> <./images//grouped.PNG> <./images//candidates.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 152--153
+Package pdftex.def Info: ./images//totals.PNG  used on input line 128.
+(pdftex.def)             Requested size: 137.9979pt x 61.49474pt.
+ [4 <./images//Baskets.PNG> <./images//Batch_fi.PNG> <./images//grouped.PNG> <./images//candidates.PNG> <./images//counts.PNG> <./images//totals.PNG>]
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
  []
 
 
-Overfull \hbox (87.0044pt too wide) in paragraph at lines 161--162
+Overfull \hbox (87.0044pt too wide) in paragraph at lines 148--149
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 165.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 152.
 (P:\MiKTeX\tex/latex/base\omscmr.fd
 File: omscmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 165.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 152.
 
-Overfull \hbox (81.00433pt too wide) in paragraph at lines 165--166
+Overfull \hbox (81.00433pt too wide) in paragraph at lines 152--153
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (45.00397pt too wide) in paragraph at lines 166--167
+Overfull \hbox (45.00397pt too wide) in paragraph at lines 153--154
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (57.00409pt too wide) in paragraph at lines 168--169
+Overfull \hbox (57.00409pt too wide) in paragraph at lines 155--156
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (39.0039pt too wide) in paragraph at lines 170--171
+Overfull \hbox (39.0039pt too wide) in paragraph at lines 157--158
 [][][][][][][][][][][][][][][] 
  []
 
-[5 <./images//cartesian.PNG> <./images//counts.PNG> <./images//totals.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 187--192
+
+Underfull \hbox (badness 10000) in paragraph at lines 174--179
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 193--198
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 180--185
 
  []
 
-<./images//benchmarkeasy.png, id=170, 1387.584pt x 711.8595pt>
+<./images//benchmarkeasy.png, id=158, 1387.584pt x 711.8595pt>
 File: ./images//benchmarkeasy.png Graphic file (type png)
 <use ./images//benchmarkeasy.png>
-Package pdftex.def Info: ./images//benchmarkeasy.png  used on input line 208.
+Package pdftex.def Info: ./images//benchmarkeasy.png  used on input line 195.
 (pdftex.def)             Requested size: 345.0pt x 176.98685pt.
-<./images//benchmarkhard.png, id=171, 1387.584pt x 711.8595pt>
+<./images//benchmarkhard.png, id=159, 1387.584pt x 711.8595pt>
 File: ./images//benchmarkhard.png Graphic file (type png)
 <use ./images//benchmarkhard.png>
-Package pdftex.def Info: ./images//benchmarkhard.png  used on input line 216.
+Package pdftex.def Info: ./images//benchmarkhard.png  used on input line 203.
 (pdftex.def)             Requested size: 345.0pt x 176.98685pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--229
+Underfull \hbox (badness 10000) in paragraph at lines 213--215
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 230--233
+Underfull \hbox (badness 10000) in paragraph at lines 216--219
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 220--222
 
  []
 
@@ -415,17 +420,17 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: BE6C09AEBE94C8A3142692E81DD03322;1393.
  ) 
 Here is how much of TeX's memory you used:
- 11534 strings out of 476375
- 182184 string characters out of 5805391
+ 11515 strings out of 476375
+ 181837 string characters out of 5805391
  1884299 words of memory out of 5000000
- 31741 multiletter control sequences out of 15000+600000
+ 31728 multiletter control sequences out of 15000+600000
  516841 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,8n,76p,483b,1327s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (7 pages, 301939 bytes).
+<P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on report.pdf (7 pages, 265075 bytes).
 PDF statistics:
- 246 PDF objects out of 1000 (max. 8388607)
- 63 named destinations out of 1000 (max. 500000)
- 150 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 221 PDF objects out of 1000 (max. 8388607)
+ 58 named destinations out of 1000 (max. 500000)
+ 145 words of extra memory for PDF output out of 10000 (max. 10000000)
 

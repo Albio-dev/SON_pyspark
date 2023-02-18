@@ -44,9 +44,9 @@
 	
 	Apriori algorithm is applied to every batch, which returns a list of frequent itemsets (fig: \ref{fig:apriori}). This is done with the $mapPartitions$ function of $pyspark$: 
 	\begin{lstlisting}[language=Python]
-.mapPartitions(lambda x: apriori(list(x), chunk_support))
+.mapPartitions(lambda x: apriori(list(x), support, data_size))
 	\end{lstlisting}	
-	We will discuss our implementation of apriori, in details, in section \ref{section:apriori}. We chose not to keep only the largest set because we saw that there may be cases where the larger set is not globally supported, but the smaller ones are.\\
+	We will discuss our implementation of apriori, in details, in section \ref{section:apriori}. We chose not to keep only the largest sets because we saw that there may be cases where the larger set is not globally supported, but the smaller ones are.\\
 	Then every itemset is "emitted" with a 1, to facilitate the reduce phase:
 	\begin{lstlisting}[language=Python]
 .map(lambda x: (x, 1))
@@ -58,7 +58,8 @@
 .groupByKey()
 .map(lambda x: x[0])
 	\end{lstlisting}
-	The result is the list of all itemsets that appear at least once (fig: \ref{fig:candidate_fi}), which means that they are frequent in at least one batch.
+	The result is the list of all itemsets that appear at least once (fig: \ref{fig:candidate_fi}), which means that they are frequent in at least one batch.\\
+	Then the list is collected and broadcasted to all the nodes.
 	
 	\begin{figure}[h]
 		\centering
@@ -94,16 +95,10 @@
 	\end{figure}
 	
 	\subsubsection{Second Map}
-	At this point our candidate frequent itemsets are still partitioned. We need to distribute the whole list to every batch of data. In order to do so we coalesced the candidates RDD into one single partition, group it together and multiply if with every partition of the original data:
+	Now we need to count the occurrences of every itemset in the whole dataset.\\
+	We do it on every partition:
 	\begin{lstlisting}[language=Python]
-.repartition(1)
-.glom()
-.cartesian(baskets.glom())
-	\end{lstlisting}
-	The result is, for every partition, a list containing two lists; the first one is a list of itemsets and the second one is the batch of data (fig: \ref{fig:cartesian}).\\
-	Then, for every itemset in the first list, we count in how many baskets is present\footnote{count\_frequencies is a function we developed that does exactly that: count the occurrences of the elements in the first list in the second list}:
-	\begin{lstlisting}[language=Python]
-.mapPartitions(lambda x : count_frequencies(list(x)[0])) 
+.mapPartitions(lambda x: count_frequencies(candidate_frequent_itemsets.value, list(x)))
 	\end{lstlisting}
 	The result is a list of tuples where the first element is the itemset and the second is the count for every batch (fig: \ref{fig:counts}).
 	
@@ -113,8 +108,7 @@
 	\begin{lstlisting}[language=Python]
 .reduceByKey(lambda x, y: x + y)
 .filter(lambda x: x[1] / data_size >= support)
-	\end{lstlisting}
-	
+	\end{lstlisting}	
 	The result is the list of every itemset which is supported enough to be considered frequent. Our next step is to filter out all the smaller sets which are included in larger sets.
 	
 	
@@ -122,21 +116,14 @@
 	\begin{figure}[h]
 		\centering
 		
-		\begin{subfigure}[b]{0.3\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{cartesian.PNG}
-         	\caption{Cartesian product result}
-         	\label{fig:cartesian}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}[b]{0.3\textwidth}
+		\begin{subfigure}[b]{0.4\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{counts.PNG}
          	\caption{Counts of itemsets for every batch}
          	\label{fig:counts}
 		\end{subfigure}
 		\hfill
-		\begin{subfigure}[b]{0.3\textwidth}
+		\begin{subfigure}[b]{0.4\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{totals.PNG}
          	\caption{Sum of counts across partitions}
@@ -224,13 +211,13 @@ def apriori(data, support):
 	
 	\section{Conclusions}
 	The main advantage of SON, that we could appreciate in our single machine setup, was the ability to use all available core, distributing the load.\\
-	But aside from that, we appreciated how the algorithm is slow and only to be used when needed. It is not to be preferred to apriori or FP-Trees.\\
 	We have seen how easy it is connecting pyspark to a distributed database, eventually sharded.\\
 
 	With the testing we have appreciated how SON execution time remains somewhat constant, while apriori execution time grows exponentially with the number of items.\\
-	Also, because of the way SON works, we expect to work better on denser datasets and with a higher number of items, because the splitting of the datasets produces
+	Also, because of the way SON works, we expect it to work better on denser datasets and with a higher number of items, because the splitting of the datasets produces
 	smaller exponentiation in the number of candidates.\\
 	
-	After the benchmarks it is clear that apriori is blazingly fast and the only reasons one should instead use SON is when data doesen't fit in memory or many compute units are available.
+	Finally, we have seen that even though the use case for SON is when the data doesen't fit in memory, there are some cases where it is still useful, like when the data is
+	already distributed in a database or when it's very dense and the number of items is high.\\
 	
 \end{document}
