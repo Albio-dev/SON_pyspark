@@ -19,5 +19,5 @@ ToDo progetto:
  ToDo per consegnare:
  - [X] aggiustare il chunk support
  - [ ] provare apriori da un'altra libreria
- - [ ] dividere la versione db e la versione locale
+ - [X] dividere la versione db e la versione locale
  - [ ] revisionare il report
