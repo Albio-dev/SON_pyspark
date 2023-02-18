@@ -1,11 +1,12 @@
 from Scripts import apriori
-import csv
 import time
-import Frequent_Itemset
+import Frequent_Itemset_db
+import Frequent_Itemset_local
 from pymongo import MongoClient
 import logging
 from pyspark import SparkContext
 from pyspark.sql import SparkSession
+import Scripts.preprocessing
 
 benchmark_logger = logging.getLogger('benchmark')
 benchmark_logger.setLevel(logging.INFO)
@@ -55,17 +56,18 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
 
     # Use logging if so specified
     if logging:
-        logger = Frequent_Itemset.loadlogger()
+        logger = Frequent_Itemset_db.loadlogger()
     else:
         logger = None
+
     # Load spark session with specified parameters
     # selectedDataset: dataset to use
     # forcePartitions: how many partitions to use. None for automatic
     benchmark_logger.info(f'Starting DB execution...')
-    data = Frequent_Itemset.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, partition_size=partition_size, samples_per_partition=samples_per_partition).cache()
+    data = Frequent_Itemset_db.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, partition_size=partition_size, samples_per_partition=samples_per_partition).cache()
     # Run and time SON
     start_time = time.time()
-    SON_result = Frequent_Itemset.execute_SON(data, support, logger).collect()
+    SON_result = Frequent_Itemset_db.execute_SON(data, support, logger).collect()
     benchmark_logger.info(f'SON result: {SON_result}')
     benchmark_logger.info(f'DB SON execution time: {time.time() - start_time}s')
 
@@ -82,76 +84,20 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     data.context.stop()
 
     # Executes SON locally
-    spark = SparkContext(appName='benchmark')
     benchmark_logger.info(f'Starting LOCAL execution...')
-    data = spark.parallelize(dataset, partitions)
+    data = Frequent_Itemset_local.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, partition_size=partition_size, samples_per_partition=samples_per_partition, benchmarkData=dataset)
     start_time = time.time()
-    SON_result = Frequent_Itemset.execute_SON(data, support, logger).collect()
+    SON_result = Frequent_Itemset_local.execute_SON(data, support, logger).collect()
     benchmark_logger.info(f'SON result: {SON_result}')
     benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
 
-    spark.stop()
-
-
-def online_retail():
-    file = './Datasets/Online Retail/Online Retail.csv'
-    dataset = []
-    with open(file, 'r') as f:
-        csv_reader = csv.DictReader(f, delimiter=',')
-        
-        items = []
-        invoice_no = ''
-        for line in csv_reader:
-            if line['InvoiceNo'].startswith('C'):
-                continue
-            if line['InvoiceNo'] != invoice_no:
-                if len(items) > 0:
-                    document = items
-                    dataset.append(document)
-                items = []
-            invoice_no = line['InvoiceNo']
-            stock_code = line['StockCode']
-            items.append(stock_code)
-            
-        # Insert the last document
-        document = items
-        dataset.append(document)
-    return dataset
-
-
-# Function to load and preprocess data
-def tripadvisor_review():
-    file = './Datasets/Travel Reviews/tripadvisor_review.csv'
-    dataset = []
-    # Open the file and read it
-    with open(file, 'r') as f:
-        csv_reader = csv.DictReader(f, delimiter=',')
-
-        for line in csv_reader:
-            # We arbitrarily consider that a score of 2.5 or more is a good score
-            good_score_limit = 2.5
-            dataset.append([i for i, j in list(line.items())[1:] if float(j) >= good_score_limit])
-
-    return dataset
-
-
-def user_business():    
-    data = {}
-
-    with open("./Datasets/user_business/user_business.csv", "r") as f:
-        for i in f.readlines():
-            user, business = i.strip().split(',')
-            try:
-                data[business].append(user)
-            except:
-                data[business] = [user]
-
-    return list(data.values())
-
+    data.context.stop()
 
 # Code to execute when the file is executed directly
 if __name__ == '__main__':
-    data = load_data(online_retail, perc_ds = .5, ip = 'localhost')
+    print('Executing preprocessing...')
+    data = load_data(Scripts.preprocessing.online_retail, perc_ds = .5, ip = 'localhost')
+    print('Preprocessing done. Executing benchmark...')
     benchmark(data, support = .2)
 
 
@@ -159,7 +105,7 @@ def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_pa
     # Iterate over every required data percentage
     for i in data_sizes:
         # data = load_data(online_retail, perc_ds = i, port = '60000')
-        data = load_data(online_retail, perc_ds = i)
+        data = load_data(Scripts.preprocessing.online_retail, perc_ds = i)
 
         # Iterate over partitions and supports
         for j in partitions:
