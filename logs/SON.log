@@ -651,3 +651,131 @@
 2023-02-18 11:00:08,800:INFO:Run with dataset benchmark
 2023-02-18 11:00:09,733:INFO:Support set to 0.2
 2023-02-18 11:00:09,736:INFO:Created SON instance with: partitions=6, support=0.2
+2023-02-19 09:05:52,800:INFO:Run with dataset <function tripadvisor_review at 0x0000017C8D9C32E0>
+2023-02-19 09:06:20,884:INFO:Created SON instance with: partitions=6, support=0.1
+2023-02-19 09:11:04,985:INFO:Run with dataset BenchmarkData.data
+2023-02-19 09:11:15,883:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-19 09:11:15,884:DEBUG:Core on this worker: 6
+2023-02-19 09:11:17,627:INFO:Dataset size: 4412
+2023-02-19 09:11:17,716:INFO:Automatically created 1 partitions
+2023-02-19 09:11:17,734:INFO:Support set to 0.1
+2023-02-19 09:11:17,734:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 09:11:31,415:INFO:Run with dataset benchmark
+2023-02-19 09:12:31,432:INFO:Run with dataset BenchmarkData.data
+2023-02-19 09:12:40,199:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-19 09:12:40,200:DEBUG:Core on this worker: 6
+2023-02-19 09:12:41,617:INFO:Dataset size: 4412
+2023-02-19 09:12:41,725:INFO:Automatically created 1 partitions
+2023-02-19 09:12:41,739:INFO:Support set to 0.1
+2023-02-19 09:12:41,739:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 09:12:54,529:INFO:Run with dataset benchmark
+2023-02-19 09:13:51,792:INFO:Run with dataset BenchmarkData.data
+2023-02-19 09:14:01,272:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-19 09:14:01,272:DEBUG:Core on this worker: 6
+2023-02-19 09:14:02,717:INFO:Dataset size: 4412
+2023-02-19 09:14:02,805:INFO:Automatically created 1 partitions
+2023-02-19 09:14:02,821:INFO:Support set to 0.1
+2023-02-19 09:14:02,822:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 09:14:16,175:INFO:Run with dataset benchmark
+2023-02-19 09:16:18,482:INFO:Run with dataset BenchmarkData.data
+2023-02-19 09:16:27,924:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-19 09:16:27,924:DEBUG:Core on this worker: 6
+2023-02-19 09:16:29,443:INFO:Dataset size: 4412
+2023-02-19 09:16:29,554:INFO:Automatically created 1 partitions
+2023-02-19 09:16:29,573:INFO:Support set to 0.1
+2023-02-19 09:16:29,574:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 09:16:44,570:INFO:Run with dataset benchmark
+2023-02-19 09:17:14,253:INFO:Run with dataset BenchmarkData.data
+2023-02-19 09:17:23,013:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-19 09:17:23,013:DEBUG:Core on this worker: 6
+2023-02-19 09:17:24,631:INFO:Dataset size: 4412
+2023-02-19 09:17:24,719:INFO:Automatically created 1 partitions
+2023-02-19 09:17:24,733:INFO:Support set to 0.1
+2023-02-19 09:17:24,733:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 09:17:37,835:INFO:Run with dataset benchmark
+2023-02-19 09:19:24,165:INFO:Run with dataset BenchmarkData.data
+2023-02-19 09:19:33,206:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-19 09:19:33,206:DEBUG:Core on this worker: 6
+2023-02-19 09:19:34,595:INFO:Dataset size: 4412
+2023-02-19 09:19:34,689:INFO:Automatically created 1 partitions
+2023-02-19 09:19:34,703:INFO:Support set to 0.1
+2023-02-19 09:19:34,703:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 09:19:48,268:INFO:Run with dataset benchmark
+2023-02-19 09:23:00,442:INFO:Run with dataset BenchmarkData.data
+2023-02-19 09:23:09,601:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-19 09:23:09,601:DEBUG:Core on this worker: 6
+2023-02-19 09:23:11,090:INFO:Dataset size: 4412
+2023-02-19 09:23:11,180:INFO:Automatically created 1 partitions
+2023-02-19 09:23:11,194:INFO:Support set to 0.1
+2023-02-19 09:23:11,194:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 09:23:24,350:INFO:Run with dataset benchmark
+2023-02-19 09:24:27,480:INFO:Run with dataset BenchmarkData.data
+2023-02-19 09:24:36,551:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-19 09:24:36,552:DEBUG:Core on this worker: 6
+2023-02-19 09:24:38,039:INFO:Dataset size: 4412
+2023-02-19 09:24:38,128:INFO:Automatically created 1 partitions
+2023-02-19 09:24:38,140:INFO:Support set to 0.1
+2023-02-19 09:24:38,141:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 09:24:51,317:INFO:Run with dataset benchmark
+2023-02-19 09:24:52,190:INFO:Support set to 0.1
+2023-02-19 09:24:52,193:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 09:26:10,229:INFO:Run with dataset BenchmarkData.data
+2023-02-19 09:26:19,870:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-19 09:26:19,870:DEBUG:Core on this worker: 6
+2023-02-19 09:26:21,374:INFO:Dataset size: 4412
+2023-02-19 09:26:21,462:INFO:Automatically created 1 partitions
+2023-02-19 09:26:21,476:INFO:Support set to 0.1
+2023-02-19 09:26:21,477:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 09:26:34,783:INFO:Run with dataset benchmark
+2023-02-19 09:26:35,677:INFO:Support set to 0.1
+2023-02-19 09:26:35,680:INFO:Created SON instance with: partitions=6, support=0.1
+2023-02-19 09:28:39,363:INFO:Run with dataset BenchmarkData.data
+2023-02-19 09:28:48,359:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-19 09:28:48,360:DEBUG:Core on this worker: 6
+2023-02-19 09:28:49,790:INFO:Dataset size: 4412
+2023-02-19 09:28:49,879:INFO:Automatically created 1 partitions
+2023-02-19 09:28:49,892:INFO:Support set to 0.1
+2023-02-19 09:28:49,893:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 09:29:03,024:INFO:Run with dataset benchmark
+2023-02-19 09:29:03,897:INFO:Support set to 0.1
+2023-02-19 09:29:03,900:INFO:Created SON instance with: partitions=6, support=0.1
+2023-02-19 09:38:18,081:INFO:Run with dataset BenchmarkData.data
+2023-02-19 09:38:27,365:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-19 09:38:27,366:DEBUG:Core on this worker: 6
+2023-02-19 09:38:28,855:INFO:Dataset size: 4412
+2023-02-19 09:38:28,948:INFO:Automatically created 1 partitions
+2023-02-19 09:38:28,962:INFO:Support set to 0.1
+2023-02-19 09:38:28,962:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 09:38:42,748:INFO:Run with dataset benchmark
+2023-02-19 09:38:43,622:INFO:Support set to 0.1
+2023-02-19 09:38:43,626:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 09:40:25,912:INFO:Run with dataset BenchmarkData.data
+2023-02-19 09:40:35,259:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-19 09:40:35,260:DEBUG:Core on this worker: 6
+2023-02-19 09:40:36,905:INFO:Dataset size: 4412
+2023-02-19 09:40:37,003:INFO:Automatically created 1 partitions
+2023-02-19 09:40:37,017:INFO:Support set to 0.1
+2023-02-19 09:40:37,018:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 09:40:51,425:INFO:Run with dataset benchmark
+2023-02-19 09:40:52,355:INFO:Support set to 0.1
+2023-02-19 09:40:52,357:INFO:Created SON instance with: partitions=6, support=0.1
+2023-02-19 09:47:40,015:INFO:Run with dataset BenchmarkData.data
+2023-02-19 09:47:49,172:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-19 09:47:49,172:DEBUG:Core on this worker: 6
+2023-02-19 09:47:50,625:INFO:Dataset size: 4412
+2023-02-19 09:47:50,720:INFO:Automatically created 1 partitions
+2023-02-19 09:47:51,294:INFO:Support set to 0.1
+2023-02-19 09:47:51,296:INFO:Created SON instance with: partitions=6, support=0.1
+2023-02-19 09:53:08,636:INFO:Run with dataset benchmark
+2023-02-19 09:53:09,554:INFO:Support set to 0.1
+2023-02-19 09:53:09,557:INFO:Created SON instance with: partitions=6, support=0.1
+2023-02-19 10:07:35,201:INFO:Run with dataset BenchmarkData.data
+2023-02-19 10:07:44,207:DEBUG:Connecting to mongodb://127.0.0.1:27017/BenchmarkData.data
+2023-02-19 10:07:44,208:DEBUG:Core on this worker: 6
+2023-02-19 10:07:45,701:INFO:Dataset size: 4412
+2023-02-19 10:07:45,791:INFO:Automatically created 1 partitions
+2023-02-19 10:07:45,805:INFO:Support set to 0.1
+2023-02-19 10:07:45,805:INFO:Created SON instance with: partitions=1, support=0.1
+2023-02-19 10:07:59,089:INFO:Run with dataset benchmark
+2023-02-19 10:07:59,967:INFO:Support set to 0.1
+2023-02-19 10:07:59,970:INFO:Created SON instance with: partitions=1, support=0.1

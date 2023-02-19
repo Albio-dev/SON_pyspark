@@ -96,9 +96,9 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
 # Code to execute when the file is executed directly
 if __name__ == '__main__':
     print('Executing preprocessing...')
-    data = load_data(Scripts.preprocessing.online_retail, perc_ds = .5, ip = 'localhost')
+    data = load_data(Scripts.preprocessing.online_retail, perc_ds = .2, ip = 'localhost')
     print('Preprocessing done. Executing benchmark...')
-    benchmark(data, support = .2)
+    benchmark(data, support = .1)
 
 
 def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_partition):
