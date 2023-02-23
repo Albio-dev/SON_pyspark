@@ -61,13 +61,16 @@
 	\subsection{SON Algorithm}	
 	The algorithm, as described in the book, involves two phases of MapReduce as follows:
 	\begin{enumerate}
-	\item The mapper basically executes Apriori (or whatever algorithm to find frequent itemsets) on every batch of baskets, extracting all frequent itemsets for each batch. The required frequency (support) is reduced by a factor equal to the number of number of batches the data is partitioned in, using the following formula:
+	\item The mapper basically executes Apriori (or whatever algorithm to find frequent itemsets) on every batch of baskets, extracting all frequent itemsets for each batch. The required frequency (support) is reduced by a factor equal to the number of batches the data is partitioned in, using the following formula:
 	\[ batch\_support = basket\_size / total\_data\_size * total\_support \]
-	The reducer combines all the frequent itemsets from every batch in a single list. These are \textit{candidate frequent itemsets}.
-	\item The map function takes a batch of the data and counts every occurrence of every itemset in the candidates list.\\
-	The reducer adds up the counts from every batch and finally filters out the infrequent ones using the original support.
+	The reducer combines all the frequent itemsets from every batch in a single list. These are \textit{candidate frequent itemsets}.\\
+	This step removes false negatives by keeping all the itemsets that are frequent in at least one batch.\\
+	\item The map function takes a batch of the data and counts the occurrence of every candidate itemset.\\
+	The reducer adds up the counts from every batch and finally filters out the infrequent ones using the original support.\\
+	This step removes false positives by keeping only the itemsets that are globally supported.\\
+
 	\end{enumerate}
-	The result of these phases is the list of \textit{frequent itemsets} (without false positives).
+	The result of these phases is the list of \textit{frequent itemsets}.
 	
 	\subsection{Our Implementation}
 	Our implementation expects a $pyspark$ RDD.
@@ -194,7 +197,7 @@
 	\section{Benchmark}
 	We have ran some benchmarks to better understand how SON compares to Apriori.\\
 	In order to do so we made a script for the specific purpose of being able to programatically change parameters and 	subsample datasets.
-	Also, we implemented a gridsearch to test many parameters. We also added a logging feature to our project to better follow executions and ease debug.
+	Also, we implemented a gridsearch to test many parameters. We also added a logging feature to our project to better follow executions and ease debug.\\
 	We compared our implementation, both \textbf{based on DB} (using the \href{https://www.mongodb.com/docs/spark-connector/current/}{MongoDB Connector for Spark}, which is kind of a ``real world'' example) and \textbf{in memory} (having all the data locally), to a method $FreqItems$ provided by $pyspark.sql$. 
 	This function implements the algorithm proposed by \href{https://doi.org/10.1145/762471.762473}{Karp, Schenker, and Papadimitriou}, which uses a modified version of FP-Tree to be more parallelizeable. This function proved itself to be absurdly fast, at the expense of false positives.
 	Both a  `simple' dataset and a `harder' one were used to compare performances.
@@ -204,13 +207,13 @@
 	categories of places on TripAdvisor. We arbitrarily kept only the ones with an average mark above 2.5.\\
 	This way our dataset is in the form:
 	\[ user\_id: category1, category2, \ldots \]
-	It is considered ``easy'' because it is very sparse and the number of items is very low.
+	It is considered ``easy'' because it is very sparse and the number of items is very low (10 items).
 
 	The second ``harder'' dataset is a collection of transactions where some user bought some items in a transaction, again from UCI \href{https://archive.ics.uci.edu/ml/datasets/online+retail}{(Online Retail)}.
 	We decided to form transactions on invoices, so we extracted the list of items bought together.
 	This way our dataset is in the form:
 	\[ invoice\_no: item\_code1, item\_code2, \ldots \]
-	It is considered ``harder'' because of the higher number of items.
+	It is considered ``harder'' because of the higher number of items (4059).
 
 	\subsection{Results}
 	% Setups (CPU, MEMORY, MONGO)
@@ -243,9 +246,10 @@
 	We also have seen how easy it is connecting pyspark to a distributed database, eventually sharded.
 
 	With the testing we have appreciated how SON execution time remains somewhat constant, while Apriori execution time grows exponentially with the number of items.\\
-	Also, because of the way SON works, we expect it to work better on denser datasets and with a higher number of items, because the splitting of the datasets produces
-	smaller exponentiation in the number of candidates.
-	
+	Also, because of the way SON works, we expect it to work better on denser datasets and with a higher number of items, because splitting of the datasets produces
+	smaller exponentiation in the number of candidates.\\	
+	In our test we appreciated the overhead of the database connection as well as the overhead of spark framework management.\\
+
 	Finally, we have seen that even though the use case for SON is when the data doesen't fit in memory, there are some cases where it is still useful, like when the data is
 	already distributed in a database or when it's very dense and the number of items is high.\\
 	
