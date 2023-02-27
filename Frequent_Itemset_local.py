@@ -25,8 +25,8 @@ def loadlogger():
 # Start spark session and load dataset from mongodb with the specified parameters
 # selectedDataset: which path to load from in mongo
 # forcePartitions: How many partitions force onto the dataset
-# logger: the logger object to use for logging 
-# db_addr: the address of the mongodb database
+# logger: the logger object to use for logging
+# benchmarkData: the data to use for benchmarking
 def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchmarkData = None):
     if selectedDataset == 'benchmark' and benchmarkData is None:
         print('No benchmark data provided')
@@ -39,7 +39,7 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchm
 
         config = (SparkConf()
                   .setAppName('SON')
-                  .setMaster('local')
+                  .setMaster('local[*]')
                   .set('spark.executor.memory', '4g')
                   .set('spark.driver.memory', '4g')
                   )
