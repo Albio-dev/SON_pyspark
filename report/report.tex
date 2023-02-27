@@ -46,9 +46,9 @@
 	\tableofcontents
 	\newpage
 	\section{Introduction}
-	Finding frequent itemsets is frequently done in data mining domains to understand which items frequently appear together. The definition of ``items'' is beyond the scope of this work. Suffice to say that we treated them as binary variables, listed in a basket only when their value is True. In our project a \textbf{basket} is a list of items that appear together (for example products bought by a customer).\\
+	Finding frequent itemsets is frequently done in data mining domains to understand which items frequently appear together. The definition of ``items'' is beyond the scope of this work. Suffice to say that we treated them as binary variables, listed in a basket only when their value is True. In our project a \textbf{basket} is a list of items that appear together (for example products bought by a customer).
 	
-	This is an analysis that can be performed on almost any dataset, but is especially suited for domains like e-commerce. It is an interesting challenge to try and take the system to the extreme where the dataset is so large that it does not fit on any single machine's memory and it is more convenient to distribute analysis to multiple compute units.\\
+	This is an analysis that can be performed on almost any dataset, but is especially suited for domains like e-commerce. It is an interesting challenge to try and take the system to the extreme where the dataset is so large that it does not fit on any single machine's memory and it is more convenient to distribute analysis to multiple compute units.
 	
 	We tried to imagine ourselves into a big e-commerce company that stores transaction data on a distributed database and wants to periodically analyse data to understand which items are usually bought together. \\
 	The data is simply a list of items bought at any time. To store the data in a distributed database we used MongoDB and thus we needed a version of parallel \textbf{Apriori} (an algorithm to find frequent itemsets on a single machine). \\
@@ -56,7 +56,7 @@
 	\newpage
 
 	\section{SON}
-	In this section we will dissect our implementation of SON through Spark, describing all the steps of computation and their result.\\
+	In this section we will dissect our implementation of SON through Spark, describing all the steps of computation and their result.
 	
 	\subsection{SON Algorithm}	
 	The algorithm, as described in the book, involves two phases of MapReduce as follows:
@@ -64,11 +64,10 @@
 	\item The mapper basically executes Apriori (or whatever algorithm to find frequent itemsets) on every batch of baskets, extracting all frequent itemsets for each batch. The required frequency (support) is reduced by a factor equal to the number of batches the data is partitioned in, using the following formula:
 	\[ batch\_support = basket\_size / total\_data\_size * total\_support \]
 	The reducer combines all the frequent itemsets from every batch in a single list. These are \textit{candidate frequent itemsets}.\\
-	This step removes false negatives by keeping all the itemsets that are frequent in at least one batch.\\
+	This step removes false negatives by keeping all the itemsets that are frequent in at least one batch.
 	\item The map function takes a batch of the data and counts the occurrence of every candidate itemset.\\
 	The reducer adds up the counts from every batch and finally filters out the infrequent ones using the original support.\\
-	This step removes false positives by keeping only the itemsets that are globally supported.\\
-
+	This step removes false positives by keeping only the itemsets that are globally supported.
 	\end{enumerate}
 	The result of these phases is the list of \textit{frequent itemsets}.
 	
@@ -179,10 +178,10 @@
 \label{algo:apriori}
 \begin{algorithmic}[1]
 \Function{apriori}{data, total\_support, total\_db\_size}
-	\State $L_1 \gets \{frequent \ 1-itemsets\}$
+	\State $L_1 \gets \{frequent \ 1-itemsets\}$ \Comment{\textcolor{gray}{\emph{\parbox[t]{.3\linewidth}{$L_k$ is the set of truly frequent itemsets of size $k$}}}}
     	\State $k \gets 2$
     	\While{$L_{k-1}$ is not empty}
-    		\State create $C_k$ using $L_{k-1}$ (by adding singlets)
+    		\State create $C_k$ using $L_{k-1}$ (by adding singlets) \Comment{\textcolor{gray}{\emph{\parbox[t]{.3\linewidth}{$C_k$ is the set of candidate itemsets of size $k$}}}}
     		\State count occurrences of each itemset of $C_k$ in $data$
     		\State filter out non-frequent itemsets in $C_k$
     		\State $L_k \gets C_k$
@@ -195,17 +194,18 @@
     In our implementation of the Apriori pseudocode we first extract the items from the data, keep the frequent ones and then use them to build all the candidate couples, count them, filter out infrequent ones and then expand those couples to form triples and so on.
 	
 	\section{Benchmark}
-	We have ran some benchmarks to better understand how SON compares to Apriori.\\
+	We have ran some benchmarks to better understand how SON compares to Apriori.
+	
 	In order to do so we made a script for the specific purpose of being able to programatically change parameters and 	subsample datasets.
-	Also, we implemented a gridsearch to test many parameters. We also added a logging feature to our project to better follow executions and ease debug.\\
+	Also, we implemented a gridsearch to test many parameters. We also added a logging feature to our project to better follow executions and ease debug.
+	
 	We compared our implementation, both \textbf{based on DB} (using the \href{https://www.mongodb.com/docs/spark-connector/current/}{MongoDB Connector for Spark}, which is kind of a ``real world'' example) and \textbf{in memory} (having all the data locally), to a method $FreqItems$ provided by $pyspark.sql$. 
 	This function implements the algorithm proposed by \href{https://doi.org/10.1145/762471.762473}{Karp, Schenker, and Papadimitriou}, which uses a modified version of FP-Tree to be more parallelizeable. This function proved itself to be absurdly fast, at the expense of false positives.
 	Both a  `simple' dataset and a `harder' one were used to compare performances.
 
 	\subsection{Datasets}
 	The first ``easier'' dataset is from UCI \href{https://archive.ics.uci.edu/ml/datasets/Travel+Reviews#}{(Travel Reviews)} and is composed of averages of scores that every user gave to some
-	categories of places on TripAdvisor. We arbitrarily kept only the ones with an average mark above 2.5.\\
-	This way our dataset is in the form:
+	categories of places on TripAdvisor. We arbitrarily kept only the ones with an average mark above 2.5. This way our dataset is in the form:
 	\[ user\_id: category1, category2, \ldots \]
 	It is considered ``easy'' because it is very sparse and the number of items is very low (10 items).
 
@@ -242,15 +242,14 @@
 
 	
 	\section{Conclusions}
-	The main advantage of SON, that we could appreciate in our single machine setup, was the ability to use all the available cores, distributing the load.\\
-	We also have seen how easy it is connecting pyspark to a distributed database, eventually sharded.
+	The main advantage of SON, that we could appreciate in our single machine setup, was the ability to use all the available cores, distributing the load. We also have seen how easy it is connecting pyspark to a distributed database, eventually sharded.
 
-	With the testing we have appreciated how SON execution time remains somewhat constant, while Apriori execution time grows exponentially with the number of items.\\
-	Also, because of the way SON works, we expect it to work better on denser datasets and with a higher number of items, because splitting of the datasets produces
-	smaller exponentiation in the number of candidates.\\	
-	In our test we appreciated the overhead of the database connection as well as the overhead of spark framework management.\\
+	With the testing we have appreciated how SON execution time remains somewhat constant, while Apriori execution time grows exponentially with the number of items. Also, because of the way SON works, we expect it to work better on denser datasets and with a higher number of items, because splitting of the datasets produces
+	smaller exponentiation in the number of candidates.
+	
+	In our test we appreciated the overhead of the database connection as well as the overhead of spark framework management.
 
 	Finally, we have seen that even though the use case for SON is when the data doesen't fit in memory, there are some cases where it is still useful, like when the data is
-	already distributed in a database or when it's very dense and the number of items is high.\\
+	already distributed in a database or when it's very dense and the number of items is high.
 	
 \end{document}
