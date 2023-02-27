@@ -40,5 +40,3 @@ def tripadvisor_review():
             dataset.append([i for i, j in list(line.items())[1:] if float(j) >= good_score_limit])
 
     return dataset
-
-
