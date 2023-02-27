@@ -32,15 +32,6 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchm
         print('No benchmark data provided')
         sys.exit(1)
     datasets = {0: lib.preprocessing.tripadvisor_review, 1:lib.preprocessing.online_retail, 'benchmark': benchmarkData}
-    
-    # Create the spark context
-    config = (SparkConf()
-            .setAppName('SON')
-            .setMaster('local')
-            .set('spark.executor.memory', '4g')
-            .set('spark.driver.memory', '4g')
-            )
-    spark = SparkContext(conf=config)
 
     # If it is a benchmark run, use the provided data
     if selectedDataset == 'benchmark':
