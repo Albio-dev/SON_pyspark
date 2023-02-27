@@ -1,14 +1,14 @@
-from Scripts import apriori
+from lib import apriori
 import time
 import Frequent_Itemset_db
 import Frequent_Itemset_local
 from pymongo import MongoClient
 import logging
 from pyspark.sql import SparkSession
-import Scripts.preprocessing
+import lib.preprocessing
 import matplotlib.pyplot as plt
-from Scripts.utils import count_frequencies
-import Scripts.plotter as plotter
+from lib.utils import count_frequencies
+import lib.plotter as plotter
 
 benchmark_logger = logging.getLogger('benchmark')
 benchmark_logger.setLevel(logging.INFO)
@@ -110,9 +110,9 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
 # Code to execute when the file is executed directly
 if __name__ == '__main__':
     print('Executing preprocessing...')
-    data = load_data(Scripts.preprocessing.online_retail, perc_ds = 1, ip = 'localhost')
+    data = load_data(lib.preprocessing.online_retail, perc_ds = 1, ip = 'localhost')
     print('Preprocessing done. Executing benchmark...')
-    benchmark(data, support = .1, plot = True)
+    benchmark(data, support = .01, plot = True)
 
 
 
@@ -120,7 +120,7 @@ def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_pa
     # Iterate over every required data percentage
     for i in data_sizes:
         # data = load_data(online_retail, perc_ds = i, port = '60000')
-        data = load_data(Scripts.preprocessing.online_retail, perc_ds = i)
+        data = load_data(lib.preprocessing.online_retail, perc_ds = i)
 
         # Iterate over partitions and supports
         for j in partitions:

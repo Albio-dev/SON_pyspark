@@ -1,8 +1,8 @@
 from pyspark import SparkContext, SparkConf
 import logging
 import sys
-import Scripts.SON
-import Scripts.preprocessing
+import lib.SON
+import lib.preprocessing
 
 # Logging functions definition
 def loadlogger():
@@ -31,7 +31,7 @@ def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr =
     if selectedDataset == 'benchmark' and benchmarkData is None:
         print('No benchmark data provided')
         sys.exit(1)
-    datasets = {0: Scripts.preprocessing.tripadvisor_review, 1:Scripts.preprocessing.online_retail, 'benchmark': benchmarkData}
+    datasets = {0: lib.preprocessing.tripadvisor_review, 1:lib.preprocessing.online_retail, 'benchmark': benchmarkData}
 
     if selectedDataset == 'benchmark':
         if logger is not None:
@@ -79,7 +79,7 @@ def execute_SON(data, epsilon = .85, logger = None):
         logger.info(f'Support set to {epsilon}')
 
     # SON algorithm class creation
-    son = Scripts.SON.SON(data, epsilon)
+    son = lib.SON.SON(data, epsilon)
 
     # SON algorithm execution
     frequent_itemsets = son.candidate_frequent_itemsets()

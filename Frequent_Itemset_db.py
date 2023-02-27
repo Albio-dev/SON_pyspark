@@ -1,7 +1,7 @@
 from pyspark.sql import SparkSession
 import logging
 
-import Scripts.SON
+import lib.SON
 
 # Logging functions definition
 def loadlogger():
@@ -75,7 +75,7 @@ def execute_SON(data, epsilon = .85, logger = None):
         logger.info(f'Support set to {epsilon}')
 
     # SON algorithm class creation
-    son = Scripts.SON.SON(data, epsilon)
+    son = lib.SON.SON(data, epsilon)
 
     # SON algorithm execution
     frequent_itemsets = son.candidate_frequent_itemsets()
