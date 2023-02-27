@@ -16,4 +16,3 @@ def count_frequencies(itemsets, data):
                     count += 1
         values.append((i, count))
     return values
-

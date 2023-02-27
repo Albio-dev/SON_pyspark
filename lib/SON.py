@@ -1,4 +1,3 @@
-#from pymongo import MongoClient
 from lib.apriori import apriori
 from lib.utils import count_frequencies
 

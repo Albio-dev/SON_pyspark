@@ -1,5 +1,3 @@
-import matplotlib.pyplot as plt
-
 def plot(ax, dataset, title):
 
     frequencies = [x[1] for x in dataset]
