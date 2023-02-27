@@ -4,9 +4,11 @@ import Frequent_Itemset_db
 import Frequent_Itemset_local
 from pymongo import MongoClient
 import logging
-from pyspark import SparkContext
 from pyspark.sql import SparkSession
 import Scripts.preprocessing
+import matplotlib.pyplot as plt
+from Scripts.utils import count_frequencies
+import Scripts.plotter as plotter
 
 benchmark_logger = logging.getLogger('benchmark')
 benchmark_logger.setLevel(logging.INFO)
@@ -44,7 +46,7 @@ def load_data(preprocessing_function, perc_ds = 1, ip = 'localhost', port = 2701
 # support: the support accepted in both apriori and SON
 # partitions: how many partitions use in SON
 # logging: if SON should use the logging functionalities
-def benchmark(dataset, support = 0.5, partitions = None, logging = True, partition_size = None, samples_per_partition = None ):
+def benchmark(dataset, support = 0.5, partitions = None, logging = True, partition_size = None, samples_per_partition = None, plot = True):
     benchmark_logger.info(f'Benchmark with support: {support}, partitions: {partitions}, partition_size: {partition_size}, samples_per_partition: {samples_per_partition}')
 
     # Run and time apriori
@@ -67,8 +69,8 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     data = Frequent_Itemset_db.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, partition_size=partition_size, samples_per_partition=samples_per_partition).cache()
     # Run and time SON
     start_time = time.time()
-    SON_result = Frequent_Itemset_db.execute_SON(data, support, logger).collect()
-    benchmark_logger.info(f'SON result: {SON_result}')
+    SON_db_result = Frequent_Itemset_db.execute_SON(data, support, logger).collect()
+    benchmark_logger.info(f'SON result: {SON_db_result}')
     benchmark_logger.info(f'DB SON execution time: {time.time() - start_time}s')
 
     # Automatic frequent itemsets
@@ -87,18 +89,31 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     benchmark_logger.info(f'Starting LOCAL execution...')
     data = Frequent_Itemset_local.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, partition_size=partition_size, samples_per_partition=samples_per_partition, benchmarkData=dataset)
     start_time = time.time()
-    SON_result = Frequent_Itemset_local.execute_SON(data, support, logger).collect()
-    benchmark_logger.info(f'SON result: {SON_result}')
+    SON_local_result = Frequent_Itemset_local.execute_SON(data, support, logger).collect()
+    benchmark_logger.info(f'SON result: {SON_local_result}')
     benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
 
     data.context.stop()
 
+    if plot:
+        fig, axs = plt.subplots(2, 2)#, figsize=(15, 5), sharey=True)
+
+        # plot apriori_result        
+        plotter.plot(axs[0][0], set(count_frequencies(apriori_result, dataset)), 'Apriori')
+        plotter.plot(axs[0][1], set(SON_db_result), 'DB SON')
+        plotter.plot(axs[1][0], set(count_frequencies(auto_result, dataset)), 'Spark FreqItems')
+        plotter.plot(axs[1][1], set(SON_local_result), 'local SON')
+
+        plt.show()
+
+
 # Code to execute when the file is executed directly
 if __name__ == '__main__':
     print('Executing preprocessing...')
-    data = load_data(Scripts.preprocessing.online_retail, perc_ds = .2, ip = 'localhost')
+    data = load_data(Scripts.preprocessing.online_retail, perc_ds = 1, ip = 'localhost')
     print('Preprocessing done. Executing benchmark...')
-    benchmark(data, support = .1)
+    benchmark(data, support = .1, plot = True)
+
 
 
 def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_partition):
@@ -112,4 +127,4 @@ def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_pa
             for n in partition_sizes:
                 for m in samples_per_partition:
                     for k in supports:
-                        benchmark(data, partitions = j, support=k, partition_size=n, samples_per_partition=m)
+                        benchmark(data, partitions = j, support=k, partition_size=n, samples_per_partition=m, plot=False)
