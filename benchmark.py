@@ -108,7 +108,7 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
         # plot apriori_result        
         plotter.plot(axs[0][0], set(count_frequencies(apriori_result, dataset)), 'Apriori')
         plotter.plot(axs[0][1], set(SON_db_result), 'DB SON')
-        plotter.plot(axs[1][0], set(count_frequencies(auto_result, dataset)), 'Spark FreqItems')
+        plotter.plot(axs[1][0], set(count_frequencies(auto_result[0][0][0], dataset)), 'Spark FreqItems')
         plotter.plot(axs[1][1], set(SON_local_result), 'local SON')
 
         plt.show()
