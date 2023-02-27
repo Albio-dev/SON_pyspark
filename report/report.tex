@@ -215,6 +215,22 @@
 	\[ invoice\_no: item\_code1, item\_code2, \ldots \]
 	It is considered ``harder'' because of the higher number of items (4059).
 
+	\subsection{Database}
+	Part of our project was to explore how spark interacts with a database like MongoDB.\\
+	We found that exists a \href{https://www.mongodb.com/docs/spark-connector/current/}{MongoDB Connector for Spark} to connect to a MongoDB database and read the data from it as well as 
+	write the results back to it.\\
+	We had some difficulties because the connector version 10 is not compatible with any spark version and had to check, as well as finding the right place to download the connector from.\\
+	Also it is very difficult to work in the environment spark+connector, because the connector is written in scala and spark uses function written in java.\\
+	
+	The main difference between a local spark instance (e.g. reads from disk and not a database) is that the environment is a $SparkSession$, which allows to use connectors to read and write data from databases as well as repartition it.\\
+	A partitioner can be specified to regulate how the data is handled and to change how it is distributed.\\	
+	The read data is in the form of a $DataFrame$ which wraps an RDD and allows to use SQL queries on it.\\
+
+	We used this connector to test the difference when the data is stored in a database versus when it is read from disk and found out that there is a appreciable difference in performance, but not as much as we expected.\\
+
+	We tried using spark connected to a sharded database, with a sharded partitioner and while it was easy to use (no particular setup on the spark side) it was really difficult to setup the database with no noticeable execution difference.\\
+	So we settled on a single node database with a default partitioner, which in the case of our datasets, always produced a single partition.\\
+
 	\subsection{Results}
 	% Setups (CPU, MEMORY, MONGO)
 	These tests were performed on an 8 core $i5-8250U @1.6GHz$, with 16 GB DDR4 memory $@2400MHz$, but both the driver and the executor were capped at 4 GB.
@@ -242,14 +258,14 @@
 
 	
 	\section{Conclusions}
-	The main advantage of SON, that we could appreciate in our single machine setup, was the ability to use all the available cores, distributing the load. We also have seen how easy it is connecting pyspark to a distributed database, eventually sharded.
-
-	With the testing we have appreciated how SON execution time remains somewhat constant, while Apriori execution time grows exponentially with the number of items. Also, because of the way SON works, we expect it to work better on denser datasets and with a higher number of items, because splitting of the datasets produces
-	smaller exponentiation in the number of candidates.
+	The main advantage of SON, that we could appreciate in our single machine setup, was the ability to use all the available cores, distributing the load. We also have seen how easy it is connecting pyspark 
+	to a distributed database, eventually sharded.
 	
-	In our test we appreciated the overhead of the database connection as well as the overhead of spark framework management.
+	Partitioning in multiple threads seems to not be rewarded both in the local and the database case. We came to the conclusion that the database partitioner optimizes for the database connection, 
+	while the local partitioner ($parallelize$ function) optimizes for exploiting all the resources of the machine.\\
+	We also found out that a single partition per CPU and not CORE is very efficient.
 
-	Finally, we have seen that even though the use case for SON is when the data doesen't fit in memory, there are some cases where it is still useful, like when the data is
-	already distributed in a database or when it's very dense and the number of items is high.
-	
+	With the testing we have appreciated how SON execution time remains somewhat constant across the dataset sizes, while Apriori execution time grows exponentially with the number of items.
+	We could also notice the overhead of the database connection as well as the overhead of spark framework management.
+		
 \end{document}

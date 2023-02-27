@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.2.5)  27 FEB 2023 16:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.2.5)  27 FEB 2023 19:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -319,22 +319,22 @@ Overfull \hbox (0.88892pt too wide) in paragraph at lines 84--87
  []
 
 [3]
-<./images//Baskets.PNG, id=105, 280.79906pt x 380.17032pt>
+<./images//Baskets.PNG, id=110, 280.79906pt x 380.17032pt>
 File: ./images//Baskets.PNG Graphic file (type png)
 <use ./images//Baskets.PNG>
 Package pdftex.def Info: ./images//Baskets.PNG  used on input line 105.
 (pdftex.def)             Requested size: 82.8019pt x 112.10286pt.
-<./images//Batch_fi.PNG, id=107, 188.20313pt x 182.18062pt>
+<./images//Batch_fi.PNG, id=112, 188.20313pt x 182.18062pt>
 File: ./images//Batch_fi.PNG Graphic file (type png)
 <use ./images//Batch_fi.PNG>
 Package pdftex.def Info: ./images//Batch_fi.PNG  used on input line 112.
 (pdftex.def)             Requested size: 82.8019pt x 80.15414pt.
-<./images//grouped.PNG, id=108, 215.30438pt x 93.34875pt>
+<./images//grouped.PNG, id=113, 215.30438pt x 93.34875pt>
 File: ./images//grouped.PNG Graphic file (type png)
 <use ./images//grouped.PNG>
 Package pdftex.def Info: ./images//grouped.PNG  used on input line 119.
 (pdftex.def)             Requested size: 82.8019pt x 35.90019pt.
-<./images//candidates.PNG, id=109, 179.92218pt x 97.11281pt>
+<./images//candidates.PNG, id=114, 179.92218pt x 97.11281pt>
 File: ./images//candidates.PNG Graphic file (type png)
 <use ./images//candidates.PNG>
 Package pdftex.def Info: ./images//candidates.PNG  used on input line 126.
@@ -344,12 +344,12 @@ Underfull \hbox (badness 2503) in paragraph at lines 127--127
 []\OT1/cmr/m/n/9 (d) |Can-di-date fre-
  []
 
-<./images//counts.PNG, id=112, 222.07968pt x 184.43906pt>
+<./images//counts.PNG, id=117, 222.07968pt x 184.43906pt>
 File: ./images//counts.PNG Graphic file (type png)
 <use ./images//counts.PNG>
 Package pdftex.def Info: ./images//counts.PNG  used on input line 154.
 (pdftex.def)             Requested size: 137.9979pt x 114.60713pt.
-<./images//totals.PNG, id=113, 214.55156pt x 95.6072pt>
+<./images//totals.PNG, id=118, 214.55156pt x 95.6072pt>
 File: ./images//totals.PNG Graphic file (type png)
 <use ./images//totals.PNG>
 Package pdftex.def Info: ./images//totals.PNG  used on input line 161.
@@ -365,36 +365,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 181--181
  []
 
 [5 <./images//counts.PNG> <./images//totals.PNG>]
-<./images//benchmarkeasy.png, id=152, 1387.584pt x 711.8595pt>
+Underfull \hbox (badness 10000) in paragraph at lines 219--224
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 225--228
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 231--233
+
+ []
+
+<./images//benchmarkeasy.png, id=164, 1387.584pt x 711.8595pt>
 File: ./images//benchmarkeasy.png Graphic file (type png)
 <use ./images//benchmarkeasy.png>
-Package pdftex.def Info: ./images//benchmarkeasy.png  used on input line 227.
+Package pdftex.def Info: ./images//benchmarkeasy.png  used on input line 243.
 (pdftex.def)             Requested size: 345.0pt x 176.98685pt.
-<./images//benchmarkhard.png, id=153, 1387.584pt x 711.8595pt>
+<./images//benchmarkhard.png, id=165, 1387.584pt x 711.8595pt>
 File: ./images//benchmarkhard.png Graphic file (type png)
 <use ./images//benchmarkhard.png>
-Package pdftex.def Info: ./images//benchmarkhard.png  used on input line 235.
+Package pdftex.def Info: ./images//benchmarkhard.png  used on input line 251.
 (pdftex.def)             Requested size: 345.0pt x 176.98685pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6] [7 <./images//benchmarkeasy.png> <./images//benchmarkhard.png>] (report.aux)
+[7] [8 <./images//benchmarkeasy.png> <./images//benchmarkhard.png>] (report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: A4F3518974FC8D26D66584484FEC9928;1393.
+(rerunfilecheck)             Checksum: 63571AABDEA112C3965EC5B2B4B4E438;1491.
  ) 
 Here is how much of TeX's memory you used:
- 12630 strings out of 476375
- 198052 string characters out of 5805391
+ 12633 strings out of 476375
+ 198088 string characters out of 5805391
  1892299 words of memory out of 5000000
- 32836 multiletter control sequences out of 15000+600000
+ 32837 multiletter control sequences out of 15000+600000
  517824 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,8n,76p,545b,1248s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><P:/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on report.pdf (7 pages, 357501 bytes).
+Output written on report.pdf (8 pages, 361572 bytes).
 PDF statistics:
- 250 PDF objects out of 1000 (max. 8388607)
- 40 named destinations out of 1000 (max. 500000)
- 145 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 260 PDF objects out of 1000 (max. 8388607)
+ 42 named destinations out of 1000 (max. 500000)
+ 153 words of extra memory for PDF output out of 10000 (max. 10000000)
 

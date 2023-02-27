@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1677510542 "f:/Albio Cloud/Scuola/Magistrale/(2022-2023) Big data/Progetto/Frequent_itemset_spark/report/report.tex" "report.pdf" "report" 1677510545 0
+["pdflatex"] 1677521488 "f:/Albio Cloud/Scuola/Magistrale/(2022-2023) Big data/Progetto/Frequent_itemset_spark/report/report.tex" "report.pdf" "report" 1677521490 0
   "C:/Users/Albio/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1677510540 278015 b5ae8789d05c9394f564dcef5be6e51a ""
   "C:/Users/Albio/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1675590878 23157458 88523904eca5e13c50194ba1366b9ecb ""
   "P:/MiKTeX/fonts/tfm/public/cm/cmbx10.tfm" 1136765053 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -92,7 +92,7 @@
   "P:/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657797096 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "P:/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "P:/MiKTeX/tex/latex/xcolor/xcolor.sty" 1656233290 56148 51a9a8571c07b9921892ae11063ae853 ""
-  "f:/Albio Cloud/Scuola/Magistrale/(2022-2023) Big data/Progetto/Frequent_itemset_spark/report/report.tex" 1677510522 13597 306f4ce7c87c223123d22836a2a79480 ""
+  "f:/Albio Cloud/Scuola/Magistrale/(2022-2023) Big data/Progetto/Frequent_itemset_spark/report/report.tex" 1677521488 15281 ccb2a6df3b1ec5bd41889046ea63cc0c ""
   "images//Baskets.PNG" 1674928111 22040 53f5ebcf3c73bbaa52551d499acc8a18 ""
   "images//Batch_fi.PNG" 1674929706 7106 2c80e660c84d8624dd613cafca0abea5 ""
   "images//benchmarkeasy.png" 1676567462 52361 e87d589528bcc5ac88c67552b04d2be2 ""
@@ -101,10 +101,10 @@
   "images//counts.PNG" 1674933597 10459 ce143a5c583926a8bf4f1ed823a145ae ""
   "images//grouped.PNG" 1674930672 4830 cece76bcf9c85aef9deee7233a9fc7d6 ""
   "images//totals.PNG" 1674933959 5366 ef9e9138b6caa9ef682dce3a02c9539e ""
-  "report.aux" 1677510545 3978 7f7dbc74ac2047d6e312471e6858d187 "pdflatex"
-  "report.out" 1677510545 1393 a4f3518974fc8d26d66584484fec9928 "pdflatex"
-  "report.tex" 1677510522 13597 306f4ce7c87c223123d22836a2a79480 ""
-  "report.toc" 1677510545 980 24381d6f4d94f374c5b3d7beda7460c2 "pdflatex"
+  "report.aux" 1677521490 4093 3862cbf735259702aaa4db9135d58bbe "pdflatex"
+  "report.out" 1677521490 1491 63571aabdea112c3965ec5b2b4b4e438 "pdflatex"
+  "report.tex" 1677521488 15281 ccb2a6df3b1ec5bd41889046ea63cc0c ""
+  "report.toc" 1677521490 1054 46823ba12735868a89d7dfba29f4d5fb "pdflatex"
   (generated)
   "report.aux"
   "report.log"
