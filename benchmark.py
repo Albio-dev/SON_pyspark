@@ -46,8 +46,9 @@ def load_data(preprocessing_function, perc_ds = 1, ip = 'localhost', port = 2701
 # support: the support accepted in both apriori and SON
 # partitions: how many partitions use in SON
 # logging: if SON should use the logging functionalities
-def benchmark(dataset, support = 0.5, partitions = None, logging = True, partition_size = None, samples_per_partition = None, plot = True):
-    benchmark_logger.info(f'Benchmark with support: {support}, partitions: {partitions}, partition_size: {partition_size}, samples_per_partition: {samples_per_partition}')
+# plot: if the results should be plotted
+def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = True):
+    benchmark_logger.info(f'Benchmark with support: {support}, partitions: {partitions}')
 
     # Run and time apriori
     start_time = time.time()
@@ -67,8 +68,8 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     # selectedDataset: dataset to use
     # forcePartitions: how many partitions to use. None for automatic
     benchmark_logger.info(f'Starting DB execution...')
-    data = Frequent_Itemset_db.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, partition_size=partition_size, samples_per_partition=samples_per_partition).cache()
-    # Run and time DB SON
+    data = Frequent_Itemset_db.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger).cache()
+    # Run and time SON
     start_time = time.time()
     SON_db_result = Frequent_Itemset_db.execute_SON(data, support, logger).collect()
     benchmark_logger.info(f'SON result: {SON_db_result}')
@@ -91,8 +92,7 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
     # SON local
     # Create new spark context
     benchmark_logger.info(f'Starting LOCAL execution...')
-    data = Frequent_Itemset_local.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, partition_size=partition_size, samples_per_partition=samples_per_partition, benchmarkData=dataset)
-    # Run and time local SON
+    data = Frequent_Itemset_local.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, benchmarkData=dataset)
     start_time = time.time()
     SON_local_result = Frequent_Itemset_local.execute_SON(data, support, logger).collect()
     benchmark_logger.info(f'SON result: {SON_local_result}')
@@ -103,7 +103,7 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, partiti
 
     # Plot algorithms results, if plot = True
     if plot:
-        fig, axs = plt.subplots(2, 2)
+        _, axs = plt.subplots(2, 2)
 
         # plot apriori_result        
         plotter.plot(axs[0][0], set(count_frequencies(apriori_result, dataset)), 'Apriori')
@@ -123,15 +123,12 @@ if __name__ == '__main__':
 
 
 # Grid search function for automated benchmarking
-def gridsearch(data_sizes, partitions, supports, partition_sizes, samples_per_partition):
+def gridsearch(data_sizes, partitions, supports):
     # Iterate over every required data percentage
     for i in data_sizes:
         data = load_data(lib.preprocessing.online_retail, perc_ds = i)
 
         # Iterate over partitions and supports
         for j in partitions:
-            # Iterate over partition sizes and samples per partition (db connector parameters)
-            for n in partition_sizes:
-                for m in samples_per_partition:
-                    for k in supports:
-                        benchmark(data, partitions = j, support=k, partition_size=n, samples_per_partition=m, plot=False)
+            for k in supports:
+                benchmark(data, partitions = j, support=k, plot=False)

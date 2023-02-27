@@ -25,29 +25,26 @@ def loadlogger():
 # Start spark session and load dataset from mongodb with the specified parameters
 # selectedDataset: which path to load from in mongo
 # forcePartitions: How many partitions force onto the dataset
-# logger: the logger object to use for logging 
-# db_addr: the address of the mongodb database
-def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr = '127.0.0.1', port = '27017', partition_size = None, samples_per_partition = None, benchmarkData = None):
-    # If it is a benchmark run, use the provided data
+# logger: the logger object to use for logging
+# benchmarkData: the data to use for benchmarking
+def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchmarkData = None):
     if selectedDataset == 'benchmark' and benchmarkData is None:
         print('No benchmark data provided')
         sys.exit(1)
     datasets = {0: lib.preprocessing.tripadvisor_review, 1:lib.preprocessing.online_retail, 'benchmark': benchmarkData}
-    
-    # Create the spark context
-    config = (SparkConf()
-            .setAppName('SON')
-            .setMaster('local')
-            .set('spark.executor.memory', '4g')
-            .set('spark.driver.memory', '4g')
-            )
-    spark = SparkContext(conf=config)
 
     # If it is a benchmark run, use the provided data
     if selectedDataset == 'benchmark':
         if logger is not None:
             logger.info(f'Run with dataset {selectedDataset}')
-        
+
+        config = (SparkConf()
+                  .setAppName('SON')
+                  .setMaster('local[*]')
+                  .set('spark.executor.memory', '4g')
+                  .set('spark.driver.memory', '4g')
+                  )
+        spark = SparkContext(conf=config)
         data = spark.parallelize(benchmarkData)
         if forcePartitions is not None:
             if logger is not None:
@@ -93,7 +90,7 @@ if __name__ == '__main__':
     # Create the logger object
     logger = loadlogger()
     # Create the spark context and load data
-    data = loadspark(logger = logger, port = '27017', forcePartitions=1)
+    data = loadspark(logger = logger)
 
     # Execute algorithm
     print(execute_SON(data, 0.1))
