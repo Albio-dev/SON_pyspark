@@ -20,7 +20,7 @@ class SON:
     def candidate_frequent_itemsets(self):
         # Extract basket support from class (spark doesn't like instance attributes)
         data_size = self.data.count()
-        print(f'Number of baskets: {data_size}')
+        # print(f'Number of baskets: {data_size}')
         baskets = self.data
         support = self.support
 
