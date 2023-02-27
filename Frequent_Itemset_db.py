@@ -27,20 +27,23 @@ def loadlogger():
 # logger: the logger object to use for logging 
 # db_addr: the address of the mongodb database
 def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr = '127.0.0.1', port = '27017', partition_size = None, samples_per_partition = None):
+    # Collection names
     datasets = {0: 'TravelReviews.reviews', 1:'OnlineRetail.transactions', 'benchmark': 'BenchmarkData.data'}
 
     if logger is not None:
         logger.info(f'Run with dataset {datasets[selectedDataset]}')
 
+    # Create spark session. Get mongo connector and configure spark
     spark = (SparkSession.builder
         .master("local[*]")
+        .config('spark.executor.memory', '4g')
+        .config('spark.driver.memory', '4g')
         .config('spark.jars.packages', 'org.mongodb.spark:mongo-spark-connector:10.0.2')
         .config("spark.mongodb.read.connection.uri", f"mongodb://{db_addr}:{port}/{datasets[selectedDataset]}")
         .config("spark.mongodb.write.connection.uri", f"mongodb://{db_addr}:{port}/{datasets[selectedDataset]}")
-        .config('spark.executor.memory', '4g')
-        .config('spark.driver.memory', '4g')
         .getOrCreate()
         )
+    # Changing partitioner options
     if partition_size is not None:
         spark.conf.set("partitioner.options.partition.size", partition_size) # The size (in MB) for each partition.
         logger.info(f'Partition size: {partition_size}')
@@ -55,6 +58,7 @@ def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr =
         logger.info(f'Dataset size: {input_data.count()}')
         logger.info(f'Automatically created {input_data.rdd.getNumPartitions()} partitions')
 
+    # Force partitions if required
     if forcePartitions is not None:
         if logger is not None:
             logger.debug(f'Forced {forcePartitions} partitions')
@@ -62,6 +66,7 @@ def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr =
         if logger is not None:
             logger.info(f'Partitions after forcing: {input_data.rdd.getNumPartitions()}')
 
+    # Extract the RDD from the dataframe
     data = input_data.rdd.mapPartitions(lambda x: [j.items for j in x])
     return data
 
