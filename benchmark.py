@@ -68,7 +68,7 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = 
     # selectedDataset: dataset to use
     # forcePartitions: how many partitions to use. None for automatic
     benchmark_logger.info(f'Starting DB execution...')
-    data = Frequent_Itemset_db.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger).cache()
+    data = Frequent_Itemset_db.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, partition_size=partition_size, samples_per_partition=samples_per_partition).cache()
     # Run and time SON
     start_time = time.time()
     SON_db_result = Frequent_Itemset_db.execute_SON(data, support, logger).collect()
@@ -123,7 +123,7 @@ if __name__ == '__main__':
 
 
 # Grid search function for automated benchmarking
-def gridsearch(data_sizes, partitions, supports, p39.9038467407227sartition_sizes, samples_per_partition):
+def gridsearch(data_sizes, partitions, supports):
     # Iterate over every required data percentage
     for i in data_sizes:
         data = load_data(lib.preprocessing.online_retail, perc_ds = i)
