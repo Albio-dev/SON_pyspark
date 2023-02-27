@@ -68,7 +68,7 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = 
     # selectedDataset: dataset to use
     # forcePartitions: how many partitions to use. None for automatic
     benchmark_logger.info(f'Starting DB execution...')
-    data = Frequent_Itemset_db.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, partition_size=partition_size, samples_per_partition=samples_per_partition).cache()
+    data = Frequent_Itemset_db.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger).cache()
     # Run and time SON
     start_time = time.time()
     SON_db_result = Frequent_Itemset_db.execute_SON(data, support, logger).collect()
