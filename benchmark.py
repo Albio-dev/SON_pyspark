@@ -62,7 +62,8 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = 
         logger = Frequent_Itemset_db.loadlogger()
     else:
         logger = None
-
+    
+    # SON DB
     # Load spark session with specified parameters
     # selectedDataset: dataset to use
     # forcePartitions: how many partitions to use. None for automatic
@@ -74,19 +75,22 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = 
     benchmark_logger.info(f'SON result: {SON_db_result}')
     benchmark_logger.info(f'DB SON execution time: {time.time() - start_time}s')
 
-    # Automatic frequent itemsets
-    # DB
+    # Automatic frequent itemsets DB
+    # Get previously loaded spark session
     ss = SparkSession.getActiveSession()
     input_data = ss.read.format("mongodb").load()
     benchmark_logger.info(f'Starting method execution.')
+    # Run and time freqItems
     start_time = time.time()
     auto_result = input_data.freqItems(('items',), support=support).collect()
     benchmark_logger.info(f'Auto result: {auto_result}')
     benchmark_logger.info(f'DB FI execution time: {time.time() - start_time}s')
     
+    # Close spark session
     data.context.stop()
 
-    # Executes SON locally
+    # SON local
+    # Create new spark context
     benchmark_logger.info(f'Starting LOCAL execution...')
     data = Frequent_Itemset_local.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, benchmarkData=dataset)
     start_time = time.time()
@@ -94,8 +98,10 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = 
     benchmark_logger.info(f'SON result: {SON_local_result}')
     benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
 
+    # Clear spark context
     data.context.stop()
 
+    # Plot algorithms results, if plot = True
     if plot:
         _, axs = plt.subplots(2, 2)
 
@@ -116,7 +122,8 @@ if __name__ == '__main__':
     benchmark(data, support = .1, plot = True)
 
 
-def gridsearch(data_sizes, partitions, supports):
+# Grid search function for automated benchmarking
+def gridsearch(data_sizes, partitions, supports, p39.9038467407227sartition_sizes, samples_per_partition):
     # Iterate over every required data percentage
     for i in data_sizes:
         data = load_data(lib.preprocessing.online_retail, perc_ds = i)
