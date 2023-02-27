@@ -26,7 +26,8 @@ def loadlogger():
 # forcePartitions: How many partitions force onto the dataset
 # logger: the logger object to use for logging 
 # db_addr: the address of the mongodb database
-def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr = '127.0.0.1', port = '27017', partition_size = None, samples_per_partition = None):
+# port: the port of the mongodb database
+def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, db_addr = '127.0.0.1', port = '27017'):
     datasets = {0: 'TravelReviews.reviews', 1:'OnlineRetail.transactions', 'benchmark': 'BenchmarkData.data'}
 
     if logger is not None:
@@ -41,12 +42,6 @@ def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr =
         .config('spark.driver.memory', '4g')
         .getOrCreate()
         )
-    if partition_size is not None:
-        spark.conf.set("partitioner.options.partition.size", partition_size) # The size (in MB) for each partition.
-        logger.info(f'Partition size: {partition_size}')
-    if samples_per_partition is not None:
-        spark.conf.set("partitioner.options.samples.per.partition", samples_per_partition) # The number of samples to take per partition.
-        logger.info(f'Samples per partition: {samples_per_partition}')
     input_data = spark.read.format("mongodb").load()
 
     if logger is not None:
@@ -86,7 +81,7 @@ if __name__ == '__main__':
     # Create the logger object
     logger = loadlogger()
     # Create the spark context and load data
-    data = loadspark(selectedDataset=0, logger = logger, port = '27017', forcePartitions=None)
+    data = loadspark(selectedDataset=0, logger = logger, port = '27017')
 
     # Execute algorithm
     print(execute_SON(data, 0.1))

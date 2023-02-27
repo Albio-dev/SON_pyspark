@@ -27,7 +27,7 @@ def loadlogger():
 # forcePartitions: How many partitions force onto the dataset
 # logger: the logger object to use for logging 
 # db_addr: the address of the mongodb database
-def loadspark(selectedDataset = 0, forcePartitions = 2, logger = None, db_addr = '127.0.0.1', port = '27017', partition_size = None, samples_per_partition = None, benchmarkData = None):
+def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchmarkData = None):
     if selectedDataset == 'benchmark' and benchmarkData is None:
         print('No benchmark data provided')
         sys.exit(1)
@@ -90,7 +90,7 @@ if __name__ == '__main__':
     # Create the logger object
     logger = loadlogger()
     # Create the spark context and load data
-    data = loadspark(logger = logger, port = '27017', forcePartitions=1)
+    data = loadspark(logger = logger)
 
     # Execute algorithm
     print(execute_SON(data, 0.1))
