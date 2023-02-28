@@ -1,4 +1,5 @@
 from lib.apriori import apriori
+from lib.apriori import apriori2
 from lib.utils import count_frequencies
 
 import logging
@@ -26,12 +27,13 @@ class SON:
 
         # Extract frequent itemsets from every partition (mapreduce 1)
         candidate_frequent_itemsets = (baskets
-            .mapPartitions(lambda x: apriori(list(x), support, data_size))      # Applying apriori algorithm on every partition
-            .map(lambda x: (x, 1))                                              # Form key-value shape emitting (itemset, 1)
-            .groupByKey()                                                       # Group every itemset
-            .map(lambda x: x[0])                                                # Keep only itemsets
+            .mapPartitions(lambda x: apriori2(list(x), support, data_size))      # Applying apriori algorithm on every partition
             ).collect()
-        
+        '''.map(lambda x: (x, 1))                                              # Form key-value shape emitting (itemset, 1)
+        .groupByKey()                                                       # Group every itemset
+        .map(lambda x: x[0])                                                # Keep only itemsets
+        '''
+        candidate_frequent_itemsets = list(set(candidate_frequent_itemsets))
         candidate_frequent_itemsets = baskets.context.broadcast(candidate_frequent_itemsets)
 
         # Count the number of baskets containing every itemset (mapreduce 2)

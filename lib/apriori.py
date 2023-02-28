@@ -1,4 +1,5 @@
 from lib.utils import count_frequencies
+from efficient_apriori import apriori as e_apriori
 
 # Apriori algorithm. Requires data as list and accepted support
 def apriori(data, total_support, total_data_size):
@@ -31,3 +32,13 @@ def apriori(data, total_support, total_data_size):
         new_frequent_itemsets = [i[0] for i in temp if i[1] / basket_size >= support]
         
     return frequent_itemsets
+
+def apriori2(data, total_support, total_data_size):
+    # Get actual batch size
+    basket_size = len(data)
+    # Scale support for a single batch
+    support = basket_size / total_data_size * total_support
+    # print(f'basket_size: {basket_size} - total_data_size: {total_data_size} - total_support: {total_support} - support: {support}')
+
+    frequent_itemsets, _ = e_apriori(data, support)
+    return frequent_itemsets[1]
