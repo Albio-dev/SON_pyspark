@@ -7,7 +7,7 @@ def apriori(data, total_support, total_data_size):
     basket_size = len(data)
     # Scale support for a single batch
     support = basket_size / total_data_size * total_support
-    # print(f'basket_size: {basket_size} - total_data_size: {total_data_size} - total_support: {total_support} - support: {support}')
+    print(f'basket_size: {basket_size} - total_data_size: {total_data_size} - total_support: {total_support} - support: {support}')
 
     frequent_itemsets = []
     # Extract item list
@@ -38,7 +38,14 @@ def apriori2(data, total_support, total_data_size):
     basket_size = len(data)
     # Scale support for a single batch
     support = basket_size / total_data_size * total_support
-    # print(f'basket_size: {basket_size} - total_data_size: {total_data_size} - total_support: {total_support} - support: {support}')
+    print(f'basket_size: {basket_size} - total_data_size: {total_data_size} - total_support: {total_support} - support: {support}')
 
     frequent_itemsets, _ = e_apriori(data, support)
-    return frequent_itemsets[1]
+
+    # Union of dictionaries
+    result = {}
+    for e in list(frequent_itemsets.values()):
+        result.update(e)
+
+    print(result)
+    return result
