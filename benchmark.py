@@ -53,7 +53,7 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = 
     # Run and time apriori
     start_time = time.time()
     benchmark_logger.info(f'Starting Apriori execution')
-    apriori_result = apriori.apriori(dataset, support, len(dataset))
+    apriori_result = apriori.apriori2(dataset, support, len(dataset))
     benchmark_logger.info(f'Apriori result: {apriori_result}')
     benchmark_logger.info(f'Apriori execution time: {time.time() - start_time}s')
 
@@ -87,7 +87,7 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = 
     benchmark_logger.info(f'DB FI execution time: {time.time() - start_time}s')
     
     # Close spark session
-    data.context.stop()
+    SparkSession.getActiveSession().stop()
 
     # SON local
     # Create new spark context
@@ -117,9 +117,9 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = 
 # Code to execute when the file is executed directly
 if __name__ == '__main__':
     print('Executing preprocessing...')
-    data = load_data(lib.preprocessing.online_retail, perc_ds = .2, ip = 'localhost')
+    data = load_data(lib.preprocessing.online_retail, perc_ds = .5, ip = 'localhost')
     print('Preprocessing done. Executing benchmark...')
-    benchmark(data, support = .1, plot = True)
+    benchmark(data, support = .1, plot = True, partitions=None)
 
 
 # Grid search function for automated benchmarking

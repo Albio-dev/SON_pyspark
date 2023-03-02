@@ -3,6 +3,7 @@ import logging
 import sys
 import lib.SON
 import lib.preprocessing
+import time 
 
 # Logging functions definition
 def loadlogger():
@@ -32,10 +33,11 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchm
         print('No benchmark data provided')
         sys.exit(1)
     datasets = {0: lib.preprocessing.tripadvisor_review, 1:lib.preprocessing.online_retail, 'benchmark': benchmarkData}
+
     config = (SparkConf()
             .setAppName('SON')
             .setMaster('local[*]')
-            .set('spark.executor.memory', '4g')
+            .set('spark.executor.memory', '1g')
             .set('spark.driver.memory', '4g')
             )
     spark = SparkContext(conf=config)
@@ -53,6 +55,9 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchm
             data = data.repartition(forcePartitions)
             if logger is not None:
                 logger.info(f'Partitions after forcing: {data.getNumPartitions()}')
+        else:
+            pass
+            #data = data.repartition(spark.defaultParallelism)
         return data
 
     if logger is not None:
@@ -60,6 +65,7 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchm
     
     # Load the data by using preprocessing functions
     data = spark.parallelize(datasets[selectedDataset]())
+ 
 
     if forcePartitions is not None:
         if logger is not None:
@@ -67,6 +73,9 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchm
         data = data.repartition(forcePartitions)
         if logger is not None:
             logger.info(f'Partitions after forcing: {data.getNumPartitions()}')
+    else:
+        pass
+        #data = data.repartition(spark.defaultParallelism)
 
     return data
 
@@ -84,6 +93,14 @@ def execute_SON(data, epsilon = .85, logger = None):
 
     # SON algorithm execution
     frequent_itemsets = son.candidate_frequent_itemsets()
+
+    # Check if the dataset is too small to produce frequent itemsets with the given support
+    # Writes on SON.log
+    if frequent_itemsets is None:
+        if logger is not None:
+            logger.error('Dataset or support too small. Cannot produce frequent itemsets')
+        return data.context.emptyRDD()
+    
     return frequent_itemsets
 
 # Code to be executed when this script is called directly with a sample SON execution
@@ -91,7 +108,10 @@ if __name__ == '__main__':
     # Create the logger object
     logger = loadlogger()
     # Create the spark context and load data
-    data = loadspark(logger = logger)
+    data = loadspark(logger = logger, selectedDataset=1, forcePartitions=16)
 
+    start = time.time()
     # Execute algorithm
-    print(execute_SON(data, 0.1))
+    print(execute_SON(data, 0.2))
+    duration = time.time()-start
+    logger.info(f'Execution time: {duration}s')

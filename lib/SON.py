@@ -17,7 +17,9 @@ class SON:
 
         logger.info(f'Created SON instance with: partitions={self.partitions}, support={self.support}')
 
-
+    # This function is used to extract the candidate frequent itemsets
+    # Returns a pyspark rdd with the candidate frequent itemsets
+    # Returns None if the dataset is too small to produce frequent itemsets with the given support
     def candidate_frequent_itemsets(self):
         # Extract basket support from class (spark doesn't like instance attributes)
         data_size = self.data.count()
@@ -29,11 +31,11 @@ class SON:
         candidate_frequent_itemsets = (baskets
             .mapPartitions(lambda x: apriori2(list(x), support, data_size))      # Applying apriori algorithm on every partition
             ).collect()
-        '''.map(lambda x: (x, 1))                                              # Form key-value shape emitting (itemset, 1)
-        .groupByKey()                                                       # Group every itemset
-        .map(lambda x: x[0])                                                # Keep only itemsets
-        '''
+        
         candidate_frequent_itemsets = list(set(candidate_frequent_itemsets))
+        if None in candidate_frequent_itemsets:
+            print(f'None in candidate_frequent_itemsets')
+            return None
         candidate_frequent_itemsets = baskets.context.broadcast(candidate_frequent_itemsets)
 
         # Count the number of baskets containing every itemset (mapreduce 2)

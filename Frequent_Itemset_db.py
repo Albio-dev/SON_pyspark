@@ -58,9 +58,12 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, db_add
         input_data = input_data.repartition(forcePartitions)
         if logger is not None:
             logger.info(f'Partitions after forcing: {input_data.rdd.getNumPartitions()}')
-
+    else:
+        pass
+        #input_data = input_data.repartition(spark.defaultParallelism)
     # Extract the RDD from the dataframe
     data = input_data.rdd.mapPartitions(lambda x: [j.items for j in x])
+    
     return data
 
 
@@ -77,6 +80,14 @@ def execute_SON(data, epsilon = .85, logger = None):
 
     # SON algorithm execution
     frequent_itemsets = son.candidate_frequent_itemsets()
+
+    # Check if the dataset is too small to produce frequent itemsets with the given support
+    # Writes on SON.log
+    if frequent_itemsets is None:
+        if logger is not None:
+            logger.error('Dataset or support too small. Cannot produce frequent itemsets')
+        return data.context.emptyRDD()
+    
     return frequent_itemsets
 
 # Code to be executed when this script is called directly with a sample SON execution
