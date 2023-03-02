@@ -263,7 +263,10 @@
 	
 	Partitioning in multiple threads seems to not be rewarded both in the local and the database case. We came to the conclusion that the database partitioner optimizes for the database connection, 
 	while the local partitioner ($parallelize$ function) optimizes for exploiting all the resources of the machine.\\
-	We also found out that a single partition per CPU and not CORE is very efficient.
+	We also found out that a single partition per CPU and not CORE is very efficient.\\
+	Furthermore, we have encountered a weird bug where the global support was reduced so much that the support in the partition
+	turned out to be less than 1, which caused an explosion in the number of candidates, not because they were actually frequent
+	in the partition, but because every item (and their combination in each basket) always appear at least once.\\
 
 	With the testing we have appreciated how SON execution time remains somewhat constant across the dataset sizes, while Apriori execution time grows exponentially with the number of items.
 	We could also notice the overhead of the database connection as well as the overhead of spark framework management.
