@@ -217,10 +217,9 @@
 
 	\subsection{Database}
 	Part of our project was to explore how spark interacts with a database like MongoDB.\\
-	We found that exists a \href{https://www.mongodb.com/docs/spark-connector/current/}{MongoDB Connector for Spark} to connect to a MongoDB database and read the data from it as well as 
-	write the results back to it.\\
-	We had some difficulties because the connector version 10 is not compatible with any spark version and had to check, as well as finding the right place to download the connector from.\\
-	Also it is very difficult to work in the environment spark+connector, because the connector is written in scala and spark uses function written in java.\\
+	We found that a \href{https://www.mongodb.com/docs/spark-connector/current/}{MongoDB Connector for Spark} exists, to connect to a MongoDB database and read and write the data from it.\\
+	We had some difficulties because the connector version 10 is not compatible with all spark versions and had to check, as well as finding the right place to download the connector from.\\
+	Also, it is very difficult to understand the environment spark+connector, because the connector is written in scala and spark uses function written in java and the provided documentation is not the best.\\
 	
 	The main difference between a local spark instance (e.g. reads from disk and not a database) is that the environment is a $SparkSession$, which allows to use connectors to read and write data from databases as well as repartition it.\\
 	A partitioner can be specified to regulate how the data is handled and to change how it is distributed.\\	
@@ -233,8 +232,9 @@
 
 	\subsection{Results}
 	% Setups (CPU, MEMORY, MONGO)
-	These tests were performed on an 8 core $i5-8250U @1.6GHz$, with 16 GB DDR4 memory $@2400MHz$, but both the driver and the executor were capped at 4 GB.
-	figures \ref{fig:easybenchmark}, \ref{fig:hardbenchmark}
+	These tests were performed on an 8 core $i5-8250U @1.6GHz$, with 16 GB DDR4 memory $@2400MHz$, but both the driver and the executor were capped at 4 GB.\\
+	Figures \ref{fig:easybenchmark}, \ref{fig:hardbenchmark} represent execution times with the growth of the datasets.\\
+
 
 	\begin{figure}[h]
 		\centering
@@ -259,16 +259,22 @@
 	
 	\section{Conclusions}
 	The main advantage of SON, that we could appreciate in our single machine setup, was the ability to use all the available cores, distributing the load. We also have seen how easy it is connecting pyspark 
-	to a distributed database, eventually sharded.
+	to a distributed database, eventually sharded.\\
 	
 	Partitioning in multiple threads seems to not be rewarded both in the local and the database case. We came to the conclusion that the database partitioner optimizes for the database connection, 
 	while the local partitioner ($parallelize$ function) optimizes for exploiting all the resources of the machine.\\
 	We also found out that a single partition per CPU and not CORE is very efficient.\\
-	Furthermore, we have encountered a weird bug where the global support was reduced so much that the support in the partition
-	turned out to be less than 1, which caused an explosion in the number of candidates, not because they were actually frequent
+	Furthermore, we have encountered an issue where the global support was reduced so much that the support in the partition
+	turned out to be less than what would be corresponding to one basket, which caused an explosion in the number of candidates, not because they were actually frequent
 	in the partition, but because every item (and their combination in each basket) always appear at least once.\\
+	This is, in fact, something to keep an eye on when using SON, because this can happen whenever there are way too many partitions 
+	compared to the number of baskets.\\
+	Execution slows down massively any time the support in a basket approaches one, especially in our harder dataset, because
+	of a heavy imbalance in the number of items per basket.\\
 
-	With the testing we have appreciated how SON execution time remains somewhat constant across the dataset sizes, while Apriori execution time grows exponentially with the number of items.
-	We could also notice the overhead of the database connection as well as the overhead of spark framework management.
+	Another possible issue we encountered was that unbalanced partition sizes can cause major slowdowns for the same reasons as before.\\
+	One should consider whether to privilege data locality versus better balancing.\\
+	We had to always add a $repartition$ function to our code to avoid getting stuck in exploding some partition. This solved the issue for us.\\
+
 		
 \end{document}
