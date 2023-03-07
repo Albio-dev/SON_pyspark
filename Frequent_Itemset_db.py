@@ -36,7 +36,7 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, db_add
     # Create spark session. Get mongo connector and configure spark
     spark = (SparkSession.builder
         .master("local[*]")
-        .config('spark.executor.memory', '4g')
+        .config('spark.executor.memory', '1g')
         .config('spark.driver.memory', '4g')
         .config('spark.jars.packages', 'org.mongodb.spark:mongo-spark-connector:10.0.2')
         .config("spark.mongodb.read.connection.uri", f"mongodb://{db_addr}:{port}/{datasets[selectedDataset]}")
@@ -59,8 +59,7 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, db_add
         if logger is not None:
             logger.info(f'Partitions after forcing: {input_data.rdd.getNumPartitions()}')
     else:
-        pass
-        #input_data = input_data.repartition(spark.defaultParallelism)
+        input_data = input_data.repartition(spark.sparkContext.defaultParallelism)
     # Extract the RDD from the dataframe
     data = input_data.rdd.mapPartitions(lambda x: [j.items for j in x])
     

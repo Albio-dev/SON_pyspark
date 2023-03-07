@@ -37,7 +37,7 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchm
     config = (SparkConf()
             .setAppName('SON')
             .setMaster('local[*]')
-            .set('spark.executor.memory', '1g')
+            .set('spark.executor.memory', '2g')
             .set('spark.driver.memory', '4g')
             )
     spark = SparkContext(conf=config)
@@ -55,9 +55,7 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchm
             data = data.repartition(forcePartitions)
             if logger is not None:
                 logger.info(f'Partitions after forcing: {data.getNumPartitions()}')
-        else:
-            pass
-            #data = data.repartition(spark.defaultParallelism)
+        
         return data
 
     if logger is not None:
@@ -73,9 +71,7 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchm
         data = data.repartition(forcePartitions)
         if logger is not None:
             logger.info(f'Partitions after forcing: {data.getNumPartitions()}')
-    else:
-        pass
-        #data = data.repartition(spark.defaultParallelism)
+   
 
     return data
 
