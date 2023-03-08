@@ -54,5 +54,4 @@ def apriori2(data, total_support, total_data_size):
     for e in list(frequent_itemsets.values()):
         result.update(e)
 
-    #print(result)
     return result

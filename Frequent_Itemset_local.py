@@ -72,7 +72,6 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchm
         if logger is not None:
             logger.info(f'Partitions after forcing: {data.getNumPartitions()}')
    
-
     return data
 
 
