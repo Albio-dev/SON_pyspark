@@ -61,5 +61,6 @@ The benchmark dataset can be changed by defining a preprocessing function which 
 
 It is possible to configure the benchmark by changing the parameters in the file at line 125.
 By changing the support parameter it is possible to change the frequency threshold for the frequent itemsets, while by changing the partitions parameter it is possible to change the number of partitions used by the algorithm. By default is set to None, wich lets the specific
-partitioner assign it. The local instance will by default use one partition per core, while the DataBase version will use the connector partitioner.
-By setting partitions anything other than None will force both DB and local versions to use the specified number of partitions. Choose the number of partitions is particularly important because if we have too many, the support of each partition will be to low for the algorithm (Apriori) to work well.
+partitioner assign it. The local instance will by default use one partition per core, while the Database version will use the connector partitioner.
+By setting partitions anything other than *None* will force both DB and local versions to use the specified number of partitions.
+Note: **Choosing the number of partitions is an important operation because if we have too many, the support of each partition will be to low for the algorithm to find frequent itemsets inside the single partition (Apriori in our case) to work well. Otherwise, if the number of partitions is too low we will not appreciate the parallelization that Spark can apply to the computation.**
