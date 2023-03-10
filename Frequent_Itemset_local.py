@@ -72,7 +72,6 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchm
         if logger is not None:
             logger.info(f'Partitions after forcing: {data.getNumPartitions()}')
    
-
     return data
 
 
@@ -104,10 +103,10 @@ if __name__ == '__main__':
     # Create the logger object
     logger = loadlogger()
     # Create the spark context and load data
-    data = loadspark(logger = logger, selectedDataset=1, forcePartitions=16)
+    data = loadspark(logger = logger, selectedDataset=1, forcePartitions=None)
 
     start = time.time()
     # Execute algorithm
-    print(execute_SON(data, 0.2))
+    print(execute_SON(data, 0.05).collect())
     duration = time.time()-start
     logger.info(f'Execution time: {duration}s')

@@ -107,7 +107,10 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = 
 
         # plot apriori_result        
         plotter.plot(axs[0][0], set(count_frequencies(apriori_result, dataset)), 'Apriori')
+        # print((count_frequencies(apriori_result, dataset)))
+        # print(set(count_frequencies(apriori_result, dataset)))
         plotter.plot(axs[0][1], set(SON_db_result), 'DB SON')
+        # print(count_frequencies(auto_result[0][0], dataset))
         plotter.plot(axs[1][0], set(count_frequencies(list(set([y for x in auto_result[0][0] for y in x])), dataset)), 'Spark FreqItems')
         plotter.plot(axs[1][1], set(SON_local_result), 'local SON')
 
@@ -117,9 +120,9 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = 
 # Code to execute when the file is executed directly
 if __name__ == '__main__':
     print('Executing preprocessing...')
-    data = load_data(lib.preprocessing.online_retail, perc_ds = 1, ip = 'localhost')
+    data = load_data(lib.preprocessing.tripadvisor_review, perc_ds = 1, ip = 'localhost')
     print('Preprocessing done. Executing benchmark...')
-    benchmark(data, support = .1, plot = True, partitions=2)
+    benchmark(data, support = .5, plot = True, partitions=2)
 
 
 # Grid search function for automated benchmarking

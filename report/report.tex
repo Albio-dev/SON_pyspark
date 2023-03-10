@@ -130,6 +130,24 @@
 	\caption{Results of first MapReduce phase}
 	\end{figure}
 	
+	\subsubsection{Considerations and final implementation of first pass of MapReduce}
+	Initially we have implemented the code following the instructions on the book using Spark operations, but then we found another method that has slightly better performances. So the final implementation of the first pass of MapReduce goes from
+	\begin{lstlisting}
+candidate_frequent_itemsets = (baskets
+    .mapPartitions(lambda x: apriori(list(x), support, data_size))
+    .map(lambda x: (x, 1))                                             
+    .groupByKey()                                                      
+    .map(lambda x: x[0])                                               
+    ).collect()
+\end{lstlisting}
+to
+	\begin{lstlisting}
+candidate_frequent_itemsets = (baskets
+    .mapPartitions(lambda x: apriori(list(x), support, data_size))
+    ).collect()
+candidate_frequent_itemsets = list(set(candidate_frequent_itemsets))
+\end{lstlisting}
+	
 	\subsubsection{Second Map}
 	Now we need to count the occurrences of every itemset in the whole dataset.\\
 	We do it on every partition:
@@ -192,6 +210,8 @@
 \end{algorithm}
 
     In our implementation of the Apriori pseudocode we first extract the items from the data, keep the frequent ones and then use them to build all the candidate couples, count them, filter out infrequent ones and then expand those couples to form triples and so on.
+    
+    Moreover, we found a state-of-the-art implementation of Apriori: it is called \href{https://github.com/tommyod/Efficient-Apriori}{Efficient Apriori} and it is the fastest implementation of Apriori. We tried to use it in our SON code and we can appreciate the improvements in execution time.
 	
 	\section{Benchmark}
 	We have ran some benchmarks to better understand how SON compares to Apriori.
@@ -216,25 +236,20 @@
 	It is considered ``harder'' because of the higher number of items (4059).
 
 	\subsection{Database}
-	Part of our project was to explore how spark interacts with a database like MongoDB.\\
-	We found that a \href{https://www.mongodb.com/docs/spark-connector/current/}{MongoDB Connector for Spark} exists, to connect to a MongoDB database and read and write the data from it.\\
-	We had some difficulties because the connector version 10 is not compatible with all spark versions and had to check, as well as finding the right place to download the connector from.\\
-	Also, it is very difficult to understand the environment spark+connector, because the connector is written in scala and spark uses function written in java and the provided documentation is not the best.\\
+	Part of our project was to explore how spark interacts with a database like MongoDB.
 	
-	The main difference between a local spark instance (e.g. reads from disk and not a database) is that the environment is a $SparkSession$, which allows to use connectors to read and write data from databases as well as repartition it.\\
-	A partitioner can be specified to regulate how the data is handled and to change how it is distributed.\\	
-	The read data is in the form of a $DataFrame$ which wraps an RDD and allows to use SQL queries on it.\\
-
-	We used this connector to test the difference when the data is stored in a database versus when it is read from disk and found out that there is a appreciable difference in performance, but not as much as we expected.\\
+	We found that there is a \href{https://www.mongodb.com/docs/spark-connector/current/}{MongoDB Connector for Spark} to connect to a MongoDB database and read the data from it as well as 	write the results back to it.
+	
+	The main difference between a local spark instance (e.g. reads from disk and not a database) is that the environment is a $SparkSession$ (instead of a $SparkContext$), which allows to use connectors to read and write data from databases as well as repartition it.\\
+	A $partitioner$ can be specified to regulate how the data is handled and to change how it is distributed.\\	
+	The read data is in the form of a $DataFrame$ which wraps an RDD and allows to use SQL queries on it.
 
 	We tried using spark connected to a sharded database, with a sharded partitioner and while it was easy to use (no particular setup on the spark side) it was really difficult to setup the database with no noticeable execution difference.\\
 	So we settled on a single node database with a default partitioner, which in the case of our datasets, always produced a single partition.\\
 
 	\subsection{Results}
 	% Setups (CPU, MEMORY, MONGO)
-	These tests were performed on an 8 core $i5-8250U @1.6GHz$, with 16 GB DDR4 memory $@2400MHz$, but both the driver and the executor were capped at 4 GB.\\
-	Figures \ref{fig:easybenchmark}, \ref{fig:hardbenchmark} represent execution times with the growth of the datasets.\\
-
+	These tests were performed on an 8 core $i5-8250U @1.6GHz$, with 16 GB DDR4 memory $@2400MHz$, but both the driver and the executor were capped at 4 GB. Figures \ref{fig:easybenchmark}, \ref{fig:hardbenchmark} represent execution times with the growth of the datasets.
 
 	\begin{figure}[h]
 		\centering
@@ -259,22 +274,16 @@
 	
 	\section{Conclusions}
 	The main advantage of SON, that we could appreciate in our single machine setup, was the ability to use all the available cores, distributing the load. We also have seen how easy it is connecting pyspark 
-	to a distributed database, eventually sharded.\\
+	to a distributed database, eventually sharded.
 	
-	Partitioning in multiple threads seems to not be rewarded both in the local and the database case. We came to the conclusion that the database partitioner optimizes for the database connection, 
-	while the local partitioner ($parallelize$ function) optimizes for exploiting all the resources of the machine.\\
-	We also found out that a single partition per CPU and not CORE is very efficient.\\
-	Furthermore, we have encountered an issue where the global support was reduced so much that the support in the partition
-	turned out to be less than what would be corresponding to one basket, which caused an explosion in the number of candidates, not because they were actually frequent
-	in the partition, but because every item (and their combination in each basket) always appear at least once.\\
+	We noticed that the database partitioner optimizes for the database connection (based on the size of the database itself), 
+	while the local partitioner ($parallelize$ function) optimizes for exploiting all the resources of the machine.
+	
+	Furthermore, we have encountered an issue where the global support was reduced so much that the support in the partitions turned out to be less than what would be corresponding to one basket, which caused an explosion in the number of candidates generated by Apriori, not because they were actually frequent in the partition, but because every item (and the combinations in each basket) always appear at least once. In general this issue happens every time the support of a partition is too low ($\leq$ 5\% in a single partition) because the core is still Apriori and it's very important that the minimum support is high enough to prune the data as the algorithm works.\\
 	This is, in fact, something to keep an eye on when using SON, because this can happen whenever there are way too many partitions 
-	compared to the number of baskets.\\
-	Execution slows down massively any time the support in a basket approaches one, especially in our harder dataset, because
-	of a heavy imbalance in the number of items per basket.\\
+	compared to the number of baskets.
 
-	Another possible issue we encountered was that unbalanced partition sizes can cause major slowdowns for the same reasons as before.\\
-	One should consider whether to privilege data locality versus better balancing.\\
-	We had to always add a $repartition$ function to our code to avoid getting stuck in exploding some partition. This solved the issue for us.\\
-
+	Another possible issue we encountered was that uneven partition sizes can cause major slowdowns for the same reasons as before.\\
+	One should consider whether to privilege data locality versus better balancing.
 		
 \end{document}
