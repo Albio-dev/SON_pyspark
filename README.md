@@ -27,7 +27,7 @@ python Frequent_Itemset_local.py
 ```
 You can change the selected dataset in the script `Frequent_Itemset_local.py`: 0 for travel reviews, 1 for online retail (line X)
 
-Execution informations can be found in the file logs/SON.log
+Execution informations can be found in the file `logs/SON.log`.
 
 ## Run with data stored on MongoDB
 For a MongoDB execution, the following steps are required:
@@ -45,7 +45,7 @@ python dataset_importers/import_online_retail.py
 python Frequent_Itemset_db.py
 ```
 
-Execution informations can be found in the file logs/SON.log
+Execution informations can be found in the file `logs/SON.log`.
 
 ## How to run a benchmark:
 Follow the instructions explained in the [How to run](#how-to-run) section
@@ -55,11 +55,11 @@ python benchmark.py
 ```
 
 The benchmark program takes care of loading the data where it needs to.
-Results are saved in the file logs/benchmark.log
+Results are saved in the file `logs/benchmark.log`.
 
-The benchmark dataset can be changed by defining a preprocessing function which returns the dataset as list in the Scripts/preprocessing.py file and then passing it as argument to the benchmark preprocessing function call (line 123).
+The benchmark dataset can be changed by defining a preprocessing function which returns the dataset as list in the `Scripts/preprocessing.py` file and then passing it as argument to the benchmark preprocessing function call (line 123).
 
 It is possible to configure the benchmark by changing the parameters in the file at line 125.
-By changing the support parameter it is possible to change the frequency threshold for the frequent itemsets, while by changing che partitions parameter it is possible to change the number of partitions used by the algorithm. By default is set to None, wich lets the specific
+By changing the support parameter it is possible to change the frequency threshold for the frequent itemsets, while by changing the partitions parameter it is possible to change the number of partitions used by the algorithm. By default is set to None, wich lets the specific
 partitioner assign it. The local instance will by default use one partition per core, while the DataBase version will use the connector partitioner.
-By setting partitions anything other than None will force both DB and local versions to use the specified number of partitions.
+By setting partitions anything other than None will force both DB and local versions to use the specified number of partitions. Choose the number of partitions is particularly important because if we have too many, the support of each partition will be to low for the algorithm (Apriori) to work well.
