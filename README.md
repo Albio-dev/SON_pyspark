@@ -57,4 +57,9 @@ python benchmark.py
 The benchmark program takes care of loading the data where it needs to.
 Results are saved in the file logs/benchmark.log
 
-The benchmark dataset can be changed by defining a preprocessing function which returns the dataset as list in the Scripts/preprocessing.py file and then passing it as argument to the benchmark preprocessing function call (line X).
+The benchmark dataset can be changed by defining a preprocessing function which returns the dataset as list in the Scripts/preprocessing.py file and then passing it as argument to the benchmark preprocessing function call (line 123).
+
+It is possible to configure the benchmark by changing the parameters in the file at line 125.
+By changing the support parameter it is possible to change the frequency threshold for the frequent itemsets, while by changing che partitions parameter it is possible to change the number of partitions used by the algorithm. By default is set to None, wich lets the specific
+partitioner assign it. The local instance will by default use one partition per core, while the DataBase version will use the connector partitioner.
+By setting partitions anything other than None will force both DB and local versions to use the specified number of partitions.
