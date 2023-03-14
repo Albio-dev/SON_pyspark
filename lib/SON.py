@@ -24,7 +24,7 @@ class SON:
         # Extract basket support from class (spark doesn't like instance attributes)
         data_size = self.data.count()
         # print(f'Number of baskets: {data_size}')
-        baskets = self.data
+        baskets = self.data.map(lambda x: set((x, )) if type(x) == str else set(x))
         support = self.support
 
         # Extract frequent itemsets from every partition (mapreduce 1)

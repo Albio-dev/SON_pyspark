@@ -1,18 +1,14 @@
 # Utility function to count occurrences of items in the first list inside elements of the second list
 # e.g.: ( [itemsets], [baskets] )
 def count_frequencies(itemsets, data):
-    values = []
-    # For every itemset
-    for i in itemsets:
-        count = 0        
-        # Check if it exists in every basket
-        for j in data:
-            # This check is to handle strings
-            if type(i) not in [list, tuple, set]:
-                if i in j:
-                    count += 1
+    values = {}
+
+    for i in data:
+        for j in itemsets:
+            if type(j) not in [list, tuple, set]:
+                if j in i:
+                    values[j] = values.get(j, 0) + 1
             else:
-                if all(items in j for items in i):
-                    count += 1
-        values.append((i, count))
-    return values
+                if set(j) in i:
+                    values[j] = values.get(j, 0) + 1
+    return list(values.items())
