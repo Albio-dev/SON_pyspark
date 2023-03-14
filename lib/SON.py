@@ -29,7 +29,7 @@ class SON:
 
         # Extract frequent itemsets from every partition (mapreduce 1)
         candidate_frequent_itemsets = (baskets
-            .mapPartitions(lambda x: apriori2(list(x), support, data_size))      # Applying apriori algorithm on every partition
+            .mapPartitions(lambda x: apriori(list(x), support, data_size))      # Applying apriori algorithm on every partition
             ).collect()
         
         candidate_frequent_itemsets = list(set(candidate_frequent_itemsets))
