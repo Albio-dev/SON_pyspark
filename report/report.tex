@@ -209,15 +209,17 @@ candidate_frequent_itemsets = list(set(candidate_frequent_itemsets))
 \end{algorithmic}
 \end{algorithm}
 
-    In our implementation of the Apriori pseudocode we first extract the items from the data, keep the frequent ones and then use them to build all the candidate couples, count them, filter out infrequent ones and then expand those couples to form triples and so on.
-    
-    Moreover, we found a state-of-the-art implementation of Apriori: it is called \href{https://github.com/tommyod/Efficient-Apriori}{Efficient Apriori} and it is the fastest implementation of Apriori. We tried to use it in our SON code and we can appreciate the improvements in execution time.
+    In our implementation of the Apriori pseudocode we first extract the items from the data, keep the frequent ones and then use them to build all the candidate couples, count them, filter out infrequent ones and then expand those couples to form triples and so on.\\
+    We also added a fail-safe feature to our implementation: if the support in a partition is so low that all possible item sets are frequent, it doesn't even begin to create them. It instead prints some error message and returns None.\\
+	The other threads won't stop for this, but detecting at least one null result will void the other results.
+
+    Moreover, we found a state-of-the-art implementation of Apriori: it is called \href{https://github.com/tommyod/Efficient-Apriori}{Efficient Apriori}, and it is the fastest implementation of Apriori. We tried to use it in our SON code and we can appreciate the improvements in execution time.
 	
 	\section{Benchmark}
-	We have ran some benchmarks to better understand how SON compares to Apriori.
+	We have run some benchmarks to better understand how SON compares to Apriori.
 	
-	In order to do so we made a script for the specific purpose of being able to programatically change parameters and 	subsample datasets.
-	Also, we implemented a gridsearch to test many parameters. We also added a logging feature to our project to better follow executions and ease debug.
+	In order to do so we made a script for the specific purpose of being able to programmatically change parameters and 	subsample datasets.
+	Also, we implemented a grid search to test many parameters. We also added a logging feature to our project to better follow executions and ease debug.
 	
 	We compared our implementation, both \textbf{based on DB} (using the \href{https://www.mongodb.com/docs/spark-connector/current/}{MongoDB Connector for Spark}, which is kind of a ``real world'' example) and \textbf{in memory} (having all the data locally), to a method $FreqItems$ provided by $pyspark.sql$. 
 	This function implements the algorithm proposed by \href{https://doi.org/10.1145/762471.762473}{Karp, Schenker, and Papadimitriou}, which uses a modified version of FP-Tree to be more parallelizeable. This function proved itself to be absurdly fast, at the expense of false positives.
@@ -249,23 +251,92 @@ candidate_frequent_itemsets = list(set(candidate_frequent_itemsets))
 
 	\subsection{Results}
 	% Setups (CPU, MEMORY, MONGO)
-	These tests were performed on an 8 core $i5-8250U @1.6GHz$, with 16 GB DDR4 memory $@2400MHz$, but both the driver and the executor were capped at 4 GB. Figures \ref{fig:easybenchmark}, \ref{fig:hardbenchmark} represent execution times with the growth of the datasets.
+	After some testing we figured that both the support and the partitions played a major role, on top of the dataset,
+	in determining an algorithm's performance.\\
+	We tested a mix of different supports on each dataset with the growth of both dataset size and partition number.\\
 
+	These tests were performed on an 8 core $i5-8250U @1.6GHz$, with 16 GB DDR4 memory $@2400MHz$, but both the driver and the executor were capped at 4 GB.
+	\begin{enumerate}
+		\item \textbf{Minimum support} required to produce frequent itemsets. In the case of our datasets, after some testing we figured that this is 0.3 for the "easy" dataset and 0.1 for the "hard" one.\\
+		We tested with 1 (easy \ref{fig:1-03sup-1par-ds-e}, hard \ref{fig:1-01sup-1par-ds-h}) and 2 (easy \ref{fig:1-03sup-2par-ds-e}, hard \ref{fig:1-01sup-2par-ds-h}) partitions.
+		\item \textbf{Reasonable support} that is more likely used in a real scenario. Here we tried to see ho performance varied with partitions, using all dataset.\\
+		We tested with support 0.75 (easy \ref{fig:1-075sup-1ds-par-e}, hard \ref{fig:1-075sup-1ds-par-h}) and 0.9 (easy \ref{fig:1-09sup-1ds-par-e}, hard \ref{fig:1-09sup-1ds-par-h}).
+
+	\end{enumerate}
 	\begin{figure}[h]
 		\centering
-		\begin{subfigure}[b]{1\textwidth}
+		\begin{subfigure}[b]{0.45\textwidth}
 			\centering
-			\includegraphics[width=\textwidth]{benchmarkeasy.png}
+			\includegraphics[width=\textwidth]{1_easy_0,3_1_dataset.png}
          	\caption{Easy dataset benchmark results}
-         	\label{fig:easybenchmark}
+         	\label{fig:1-03sup-1par-ds-e}
+		\end{subfigure}
+		\hfill		
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{1_hard_0,1_1_dataset.png}
+         	\caption{Hard dataset benchmark results}
+         	\label{fig:1-01sup-1par-ds-h}
 		\end{subfigure}
 		\hfill
 		
-		\begin{subfigure}[b]{1\textwidth}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\begin{subfigure}[b]{0.45\textwidth}
 			\centering
-			\includegraphics[width=\textwidth]{benchmarkhard.png}
+			\includegraphics[width=\textwidth]{1_easy_0,3_2_dataset.png}
+         	\caption{Easy dataset benchmark results}
+         	\label{fig:1-03sup-2par-ds-e}
+		\end{subfigure}
+		\hfill		
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{1_hard_0,1_2_dataset.png}
          	\caption{Hard dataset benchmark results}
-         	\label{fig:hardbenchmark}
+         	\label{fig:1-01sup-2par-ds-h}
+		\end{subfigure}
+		\hfill
+		
+	\end{figure}
+	
+	
+	
+	
+	\begin{figure}[h]
+		\centering
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{1_easy_0,75_1_partitions.png}
+         	\caption{Easy dataset benchmark results}
+         	\label{fig:1-075sup-1ds-par-e}
+		\end{subfigure}
+		\hfill		
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{1_hard_0,75_1_partitions.png}
+         	\caption{Hard dataset benchmark results}
+         	\label{fig:1-075sup-1ds-par-h}
+		\end{subfigure}
+		\hfill
+		
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{1_easy_0,9_1_partitions.png}
+         	\caption{Easy dataset benchmark results}
+         	\label{fig:1-09sup-1ds-par-e}
+		\end{subfigure}
+		\hfill		
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{1_hard_0,9_1_partitions.png}
+         	\caption{Hard dataset benchmark results}
+         	\label{fig:1-09sup-1ds-par-h}
 		\end{subfigure}
 		\hfill
 		
@@ -273,17 +344,22 @@ candidate_frequent_itemsets = list(set(candidate_frequent_itemsets))
 
 	
 	\section{Conclusions}
-	The main advantage of SON, that we could appreciate in our single machine setup, was the ability to use all the available cores, distributing the load. We also have seen how easy it is connecting pyspark 
-	to a distributed database, eventually sharded.
-	
-	We noticed that the database partitioner optimizes for the database connection (based on the size of the database itself), 
-	while the local partitioner ($parallelize$ function) optimizes for exploiting all the resources of the machine.
-	
-	Furthermore, we have encountered an issue where the global support was reduced so much that the support in the partitions turned out to be less than what would be corresponding to one basket, which caused an explosion in the number of candidates generated by Apriori, not because they were actually frequent in the partition, but because every item (and the combinations in each basket) always appear at least once. In general this issue happens every time the support of a partition is too low ($\leq$ 5\% in a single partition) because the core is still Apriori and it's very important that the minimum support is high enough to prune the data as the algorithm works.\\
-	This is, in fact, something to keep an eye on when using SON, because this can happen whenever there are way too many partitions 
-	compared to the number of baskets.
+	The main advantage of SON, that we could appreciate in our single machine setup, was the ability to use all the available cores, distributing the load, which, for some datasets, could prove beneficial to execution time.\\
 
-	Another possible issue we encountered was that uneven partition sizes can cause major slowdowns for the same reasons as before.\\
-	One should consider whether to privilege data locality versus better balancing.
+	We have seen how easy it is connecting pyspark to a distributed database, eventually sharded.	
+	We noticed that the database partitioner optimizes for the database connection (based on the size of the database itself), 
+	while the local partitioner ($parallelize$ function) optimizes for exploiting all the resources of the machine.\\
+	
+	We have encountered an issue where, in some cases, the support in a partition was so low that a frequency of one (or less) was considered frequent, 
+	which caused an explosion in the number of candidates generated by Apriori, not because they were actually frequent in the partition, but 
+	because every item (and all the combinations in each basket) always appear at least once. 
+
+	In general, the huge reduction in support is an issue that happens every time the global support is too low or when the support is divided over many partitions ($\leq$ 5\% in a single partition).\\
+	This is an issue because the core is still Apriori and it's very important that the minimum support is high enough to prune the data as the algorithm works.\\
+
+	In fact, this may be the major factor to consider when using SON, because this can happen whenever a lot of candidates are produced in each partition.
+	Dataset conformation must be taken into account when deciding how to partition the data.\\
+
+	
 		
 \end{document}
