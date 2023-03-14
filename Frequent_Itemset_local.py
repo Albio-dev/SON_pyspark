@@ -37,8 +37,8 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, benchm
     config = (SparkConf()
             .setAppName('SON')
             .setMaster('local[*]')
-            .set('spark.executor.memory', '2g')
-            .set('spark.driver.memory', '4g')
+            .set('spark.executor.memory', '8g')
+            .set('spark.driver.memory', '8g')
             )
     spark = SparkContext(conf=config)
 
