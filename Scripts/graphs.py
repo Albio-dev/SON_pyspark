@@ -1,6 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+support = .9
+partitions = 2
+dataset = 'easy'
+
 with open("./logs/benchmark.log", "r") as f:
     log = f.readlines()
 
@@ -19,13 +23,16 @@ def autolabel(rects):
                 ha='center', va='bottom')
         
 tr_sizes = [i.split(":")[3].split(" ")[3] for i in log if "Loaded dataset" in i]
+tr_partitions = [i.split(":")[-1].strip() for i in log if "partitions" in i]
+
+x_data = tr_partitions
 
 apriori_time = extract_data(benchmarks[0])
 SON_DB_time = extract_data(benchmarks[1])
 SON_LOCAL_TIME = extract_data(benchmarks[2])
 FI_DB_time = extract_data(benchmarks[3])
 
-ind = np.arange(len(tr_sizes))
+ind = np.arange(len(x_data))
 width=.2
 i = -2
 plt.figure()
@@ -38,10 +45,10 @@ i += 1
 d = plt.bar(ind+(i*width), FI_DB_time, width, label='FI DB', color='y')
 plt.legend()
 
-plt.xticks(ind, tr_sizes)
-plt.xlabel('Sample size')
+plt.xticks(ind, x_data)
+plt.xlabel('Partitions')
 plt.ylabel('Time (s)')
-plt.title('Execution time for different algorithms, "easy" dataset')
+plt.title(f'Execution time for different algorithms, {dataset} dataset\nSupport: {support}, Data size: {tr_sizes[0]}')
 autolabel(a)
 autolabel(b)
 autolabel(c)
