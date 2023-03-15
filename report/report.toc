@@ -4,11 +4,12 @@
 \contentsline {subsection}{\numberline {2.2}Our Implementation}{3}{subsection.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.1}First Map}{3}{subsubsection.2.2.1}%
 \contentsline {subsubsection}{\numberline {2.2.2}First Reduce}{4}{subsubsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.3}Second Map}{4}{subsubsection.2.2.3}%
-\contentsline {subsubsection}{\numberline {2.2.4}Second Reduce}{4}{subsubsection.2.2.4}%
-\contentsline {section}{\numberline {3}Apriori}{5}{section.3}%
-\contentsline {section}{\numberline {4}Benchmark}{5}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Datasets}{6}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Database}{6}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Other considerations and final implementation of first pass of MapReduce}{4}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Second Map}{4}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Second Reduce}{5}{subsubsection.2.2.5}%
+\contentsline {section}{\numberline {3}Apriori}{6}{section.3}%
+\contentsline {section}{\numberline {4}Benchmark}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Datasets}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Database}{7}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Results}{7}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Conclusions}{7}{section.5}%
+\contentsline {section}{\numberline {5}Conclusions}{9}{section.5}%

@@ -36,8 +36,8 @@ def loadspark(selectedDataset = 0, forcePartitions = None, logger = None, db_add
     # Create spark session. Get mongo connector and configure spark
     spark = (SparkSession.builder
         .master("local[*]")
-        .config('spark.executor.memory', '8g')
-        .config('spark.driver.memory', '8g')
+        .config('spark.executor.memory', '2g')
+        .config('spark.driver.memory', '4g')
         .config('spark.jars.packages', 'org.mongodb.spark:mongo-spark-connector:10.0.2')
         .config("spark.mongodb.read.connection.uri", f"mongodb://{db_addr}:{port}/{datasets[selectedDataset]}")
         .config("spark.mongodb.write.connection.uri", f"mongodb://{db_addr}:{port}/{datasets[selectedDataset]}")
