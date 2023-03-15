@@ -8,7 +8,8 @@ In both cases `pyspark` is necessary. Install with
 pip install pyspark
 ```
 Other additional steps may be required (e.g. installing spark on the system).
-`matplotlib` is also used for plotting the results:
+ - `matplotlib` is also used for plotting the results
+ - `efficient-apriori` is the state-of-the-art implementation of Apriori, we used it to do some benchmarks:
 ```shell
 pip install matplotlib efficient-apriori
 ```
