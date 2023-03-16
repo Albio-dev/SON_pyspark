@@ -50,12 +50,14 @@ def load_data(preprocessing_function, perc_ds = 1, ip = 'localhost', port = 2701
 def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = True):
     benchmark_logger.info(f'Benchmark with support: {support}, partitions: {partitions}')
 
+    apriori_ds = [set(i) for i in dataset]
     # Run and time apriori
-    start_time = time.time()
     benchmark_logger.info(f'Starting Apriori execution')
-    apriori_result = apriori.apriori(dataset, support, len(dataset))
+    start_time = time.time()
+    apriori_result = apriori.apriori(apriori_ds, support, len(apriori_ds))
+    end_time = time.time()
     benchmark_logger.info(f'Apriori result: {apriori_result}')
-    benchmark_logger.info(f'Apriori execution time: {time.time() - start_time}s')
+    benchmark_logger.info(f'Apriori execution time: {end_time - start_time}s')
 
     # Use logging if so specified
     if logging:
@@ -72,8 +74,9 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = 
     # Run and time SON
     start_time = time.time()
     SON_db_result = Frequent_Itemset_db.execute_SON(data, support, logger).collect()
+    end_time = time.time()
     benchmark_logger.info(f'SON result: {SON_db_result}')
-    benchmark_logger.info(f'DB SON execution time: {time.time() - start_time}s')
+    benchmark_logger.info(f'DB SON execution time: {end_time - start_time}s')
 
     # Automatic frequent itemsets DB
     # Get previously loaded spark session
@@ -83,8 +86,9 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = 
     # Run and time freqItems
     start_time = time.time()
     auto_result = input_data.freqItems(('items',), support=support).collect()
+    end_time = time.time()
     benchmark_logger.info(f'Auto result: {auto_result}')
-    benchmark_logger.info(f'DB FI execution time: {time.time() - start_time}s')
+    benchmark_logger.info(f'DB FI execution time: {end_time - start_time}s')
     
     # Close spark session
     SparkSession.getActiveSession().stop()
@@ -95,8 +99,9 @@ def benchmark(dataset, support = 0.5, partitions = None, logging = True, plot = 
     data = Frequent_Itemset_local.loadspark(selectedDataset='benchmark', forcePartitions=partitions, logger=logger, benchmarkData=dataset)
     start_time = time.time()
     SON_local_result = Frequent_Itemset_local.execute_SON(data, support, logger).collect()
+    end_time = time.time()
     benchmark_logger.info(f'SON result: {SON_local_result}')
-    benchmark_logger.info(f'Local SON execution time: {time.time() - start_time}s')
+    benchmark_logger.info(f'Local SON execution time: {end_time - start_time}s')
 
     # Clear spark context
     data.context.stop()
