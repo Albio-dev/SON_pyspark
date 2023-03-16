@@ -5,10 +5,13 @@ def count_frequencies(itemsets, data):
 
     for i in data:
         for j in itemsets:
-            if type(j) not in [list, tuple, set]:
-                if j in i:
-                    values[j] = values.get(j, 0) + 1
+            if type(j) == str:
+                j = set((j,))
+            
+            if type(i) == set:
+                if set(j).issubset(i):
+                    values[tuple(j)] = values.get(tuple(j), 0) + 1
             else:
-                if set(j) in i:
-                    values[j] = values.get(j, 0) + 1
+                if all(k in i for k in j):
+                    values[tuple(j)] = values.get(tuple(j), 0) + 1
     return list(values.items())
