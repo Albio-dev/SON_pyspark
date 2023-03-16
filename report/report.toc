@@ -12,4 +12,5 @@
 \contentsline {subsection}{\numberline {4.1}Datasets}{7}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Database}{7}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Results}{7}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Conclusions}{9}{section.5}%
+\contentsline {section}{\numberline {5}Conclusions}{8}{section.5}%
+\contentsline {section}{\numberline {A}Benchmark Images}{9}{appendix.A}%
