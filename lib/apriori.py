@@ -7,7 +7,7 @@ def apriori(data, total_support, total_data_size):
     basket_size = len(data)
     # Scale support for a single batch
     support = basket_size / total_data_size * total_support
-    print(f'basket_size: {basket_size} - total_data_size: {total_data_size} - total_support: {total_support} - support: {support} - required baskets for frequency: {support*basket_size}')
+    #print(f'basket_size: {basket_size} - total_data_size: {total_data_size} - total_support: {total_support} - support: {support} - required baskets for frequency: {support*basket_size}')
     if support*basket_size <= 1:
         print(f'support too low: {support} - {support*basket_size}')
         return [None]
