@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-support = .9
+support = .3
 partitions = 2
 dataset = 'easy'
 
@@ -25,7 +25,7 @@ def autolabel(rects):
 tr_sizes = [i.split(":")[3].split(" ")[3] for i in log if "Loaded dataset" in i]
 tr_partitions = [i.split(":")[-1].strip() for i in log if "partitions" in i]
 
-x_data = tr_partitions
+x_data = tr_sizes
 
 apriori_time = extract_data(benchmarks[0])
 SON_DB_time = extract_data(benchmarks[1])
@@ -35,7 +35,7 @@ FI_DB_time = extract_data(benchmarks[3])
 ind = np.arange(len(x_data))
 width=.2
 i = -2
-plt.figure()
+plt.figure(figsize=(9, 7))
 a = plt.bar(ind+(i*width), apriori_time, width, label='Apriori', color='r')
 i += 1
 b = plt.bar(ind+(i*width), SON_DB_time, width, label='SON DB', color='g')
@@ -45,10 +45,10 @@ i += 1
 d = plt.bar(ind+(i*width), FI_DB_time, width, label='FI DB', color='y')
 plt.legend()
 
-plt.xticks(ind, x_data)
-plt.xlabel('Partitions')
+plt.xticks(ind, x_data, rotation=-15)
+plt.xlabel('Dataset size')
 plt.ylabel('Time (s)')
-plt.title(f'Execution time for different algorithms, {dataset} dataset\nSupport: {support}, Data size: {tr_sizes[0]}')
+plt.title(f'Execution time for different algorithms, {dataset} dataset\nSupport: {support}, Partitions: {tr_partitions[0]}')
 autolabel(a)
 autolabel(b)
 autolabel(c)
