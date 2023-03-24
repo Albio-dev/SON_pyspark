@@ -175,10 +175,10 @@
 	\subsubsection{Other considerations and final implementation of SON}
 	Initially, we implemented the code following the instructions on the book using Spark operations, but then we found another method that has slightly better performances to implement the first
 	pass of MapReduce.\\
-	So the final implementation goes from
+	So the final implementation went from
 	\begin{lstlisting}
 candidate_frequent_itemsets = (baskets
-    .mapPartitions(lambda x: apriori(list(x), support, data_size))
+    .mapPartitions(lambda x: apriori(list(i for i in x), support, data_size))
     .map(lambda x: (x, 1))                                             
     .groupByKey()                                                      
     .map(lambda x: x[0])                                               
@@ -187,7 +187,7 @@ candidate_frequent_itemsets = (baskets
 to
 	\begin{lstlisting}
 candidate_frequent_itemsets = (baskets
-    .mapPartitions(lambda x: apriori(list(x), support, data_size))
+    .mapPartitions(lambda x: apriori(list(i for i in x), support, data_size))
     ).collect()
 candidate_frequent_itemsets = list(set(candidate_frequent_itemsets))
 \end{lstlisting}
@@ -282,7 +282,7 @@ followed by the broadcast of the variable to all nodes
 
 	We tried executing SON on a sharded database. Spark makes it transparent to the user, because the connector simply connects to the database master node and it is the database that handles the
 	connection to the shards. On the other side, the setup of the sharded database is not trivial.\\
-	After the connection, Spark provides a specific partitioner, the $ShardedPartitioner$ which theoretically creates a partition per shard and assigns it to the same machine, to maximize data locality.
+	After the connection, Spark provides a specific partitioner, the \textit{ShardedPartitioner} which theoretically creates a partition per shard and assigns it to the same machine, to maximize data locality.
 
 	We tried this configuration and although it is theoretically better for load distribution and allows exploiting data locality, it was difficult to setup the database sharding, it added complexity 
 	in handling and distributing data while not providing any performance improvement. 
@@ -320,6 +320,15 @@ followed by the broadcast of the variable to all nodes
 	Tests show a clear difference in execution time between the local and database based algorithms (fig.\ref{fig:075sup-e} and fig.\ref{fig:09sup-e}, easy dataset), despite SON being exactly the same. This shows that handling the database brings in additional overhead.
 	This is partly because of the additional operations we have to do to strip the data from the $Row$ structure and to convert it to a list of lists, but mostly due to the database access. We also noted that the second phase of MapReduce takes a lot longer, although we weren't able to determine if it was due to the database access or to something else.
 	
+	The figure \ref{fig:result-example} is an example of a result obtained executing the file \textit{benchmark.py}.
+	
+	\begin{figure}[h]
+			\centering
+			\includegraphics[width=\textwidth]{result_example.png}
+         	\caption{Comparison of different algorithms output}
+		\label{fig:result-example}
+	\end{figure}
+	
 	\section{Conclusions}
 	\label{section:conclusion}
 	The main advantage of SON, that we could appreciate in our single machine setup, was the ability to use all the available cores, distributing the load, which could proves highly beneficial to execution time on larger datasets.
@@ -342,6 +351,7 @@ followed by the broadcast of the variable to all nodes
 	maximum performance.
 	
 
+	\newpage
 	\appendix 
 
 	\section{Apriori benchmarks}
@@ -382,22 +392,21 @@ followed by the broadcast of the variable to all nodes
 		\label{fig:aprioribenchmark-e}
 	\end{figure}
 
+	\newpage
 	\section{Benchmark Images}
 
-	\begin{figure}[h]
+	\begin{figure}[h!]
 		\centering
 		\begin{subfigure}[b]{\textwidth}
 			\centering
-			\includegraphics[width=\textwidth]{1_easy_0,3_1_dataset.png}
+			\includegraphics[width=.9\textwidth]{1_easy_0,3_1_dataset.png}
          	\caption{Easy dataset}
 		\end{subfigure}
-		\hfill		
 		\begin{subfigure}[b]{\textwidth}
 			\centering
-			\includegraphics[width=\textwidth]{1_hard_0,1_1_dataset.png}
+			\includegraphics[width=.9\textwidth]{1_hard_0,1_1_dataset.png}
          	\caption{Hard dataset}
 		\end{subfigure}
-		\hfill
 
 		\caption{One partition, minimum support benchmarks}
 		\label{fig:1par-minsup}
