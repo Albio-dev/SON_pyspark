@@ -97,4 +97,4 @@ if __name__ == '__main__':
     data = loadspark(selectedDataset=0, logger = logger, port = '27017')
 
     # Execute algorithm
-    print(execute_SON(data, 0.1))
+    print(execute_SON(data, 0.1).collect())
