@@ -1,7 +1,14 @@
 # Frequent_itemset_spark
 This file explains the instructions to run the project.
+# Prerequisites
+Both Python and Java must be installed on the system.
+We tested that the python version must be less than 3.10.9. We didn't test for a minimum required version.
 
 ## How to run
+All required packages acan easily be installed with:
+```shell
+pip install -r requirements.txt
+```
 We implemented SON using both data on a local machine (`Frequent_Itemset_local.py`) and stored on a MongoDB database (`Frequent_Itemset_db.py`).
 In both cases `pyspark` is necessary. Install with
 ```shell
