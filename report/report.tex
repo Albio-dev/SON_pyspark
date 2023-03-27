@@ -309,7 +309,7 @@ followed by the broadcast of the variable to all nodes
 
 	We performed all these tests with our implementation of Apriori, to show how its execution time compares to the SON one.
 	
-	We noticed the overhead added by the second MapReduce phase of SON using a single partition when the number of baskets is high (e.g. easy dataset), compared to Apriori (fig.\ref{fig:075sup-e} and fig.\ref{fig:09sup-e}). This is especially visible when using efficient-apriori because the time spent in the first MapReduce phase is negligible compared to the second one (fig.\ref{fig:aprioribenchmark-e}).
+	We noticed the overhead added by the second MapReduce phase of SON using a single partition when the number of baskets is high (e.g. easy dataset), compared to Apriori. For example in figure \ref{fig:1par-minsup-a} we can see the overhead of the second MapReduce phase is much bigger than in the figure \ref{fig:1par-minsup-b}, because of the bigger size of the dataset. This is especially visible when using efficient-apriori because the time spent in the first MapReduce phase is negligible compared to the second one (fig.\ref{fig:aprioribenchmark-e}).
 
 	Not all the difference in time is due to the time taken by the second MapReduce phase. Indeed, we found that the \textit{collect()} operation takes a time proportional to the dataset size and it is not
 	negligible. In our testing it takes about 4 seconds for the 3 million rows of the easy dataset. This \textit{collect()} time does not depend on pending operations on the collected RDD and it slightly increases with the number of partitions. And this is just on one machine. We expect it to be much
@@ -401,11 +401,13 @@ followed by the broadcast of the variable to all nodes
 			\centering
 			\includegraphics[width=.9\textwidth]{1_easy_0,3_1_dataset.png}
          	\caption{Easy dataset}
+         	\label{fig:1par-minsup-a}
 		\end{subfigure}
 		\begin{subfigure}[b]{\textwidth}
 			\centering
 			\includegraphics[width=.9\textwidth]{1_hard_0,1_1_dataset.png}
          	\caption{Hard dataset}
+         	\label{fig:1par-minsup-b}
 		\end{subfigure}
 
 		\caption{One partition, minimum support benchmarks}
