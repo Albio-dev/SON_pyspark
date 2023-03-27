@@ -60,7 +60,7 @@ python Frequent_Itemset_db.py
 Execution informations can be found in the file `logs/SON.log`.
 
 ## How to run a benchmark:
-Follow the instructions explained in the [How to run](#how-to-run) section
+Follow the instructions explained in the [How to run](#how-to-run) section.
 Then execute the script `benchmark.py` with
 ```shell
 python benchmark.py
