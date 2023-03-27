@@ -1,5 +1,7 @@
 # Frequent_itemset_spark
 This file explains the instructions to run the project.
+
+:warning: **Download with lfs** (git lfs install && git lfs pull). Datasets are too big for github.
 # Prerequisites
 Both Python and Java must be installed on the system.
 We tested that the Python version must be less than 3.10.9. We didn't test for a minimum required version.
