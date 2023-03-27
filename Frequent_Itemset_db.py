@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession
 import logging
+import time
 
 import lib.SON
 
@@ -94,7 +95,10 @@ if __name__ == '__main__':
     # Create the logger object
     logger = loadlogger()
     # Create the spark context and load data
-    data = loadspark(selectedDataset=0, logger = logger, port = '27017')
+    data = loadspark(selectedDataset=0, logger = logger, port = '27017', forcePartitions=None)
 
+    start = time.time()
     # Execute algorithm
-    print(execute_SON(data, 0.1).collect())
+    print(execute_SON(data, 0.9).collect())
+    duration = time.time()-start
+    logger.info(f'Execution time: {duration}s')
