@@ -60,8 +60,7 @@ python Frequent_Itemset_db.py
 Execution informations can be found in the file `logs/SON.log`.
 
 ## How to run a benchmark:
-Follow the instructions explained in the [How to run](#how-to-run) section.
-Then execute the script `benchmark.py` with
+Follow the instructions explained in the [How to run](#how-to-run) section. Then execute the script `benchmark.py` with
 ```shell
 python benchmark.py
 ```
@@ -76,4 +75,4 @@ By changing the `support` parameter it is possible to change the frequency thres
 partitioner assign it. The local instance will by default use one partition per core, while the Database version will use the connector partitioner.
 By setting `partitions` anything other than *None* will force both DB and local versions to use the specified number of partitions.
 
-Note: **Choosing the number of partitions is an important operation because if we have too many, the support of each partition will be too low for the algorithm to find frequent itemsets inside the single partition (Apriori in our case) to work well. Otherwise, if the number of partitions is too low we will not appreciate the benefits of the parallelization that Spark can apply to the computation.**
+:warning:Note: **Choosing the number of partitions is an important operation because if we have too many, the support of each partition will be too low for the algorithm to find frequent itemsets inside the single partition (Apriori in our case) to work well. Otherwise, if the number of partitions is too low we will not appreciate the benefits of the parallelization that Spark can apply to the computation.**:warning:
